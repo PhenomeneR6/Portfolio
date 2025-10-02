@@ -116,36 +116,54 @@
   </footer>
 
   <script>
-    let data = {};
+  let data = {};
 
-    async function loadData() {
-      const res = await fetch("data.json");
-      data = await res.json();
-      showSection("bio"); // <-- Bio affiché par défaut
-    }
+  async function loadData() {
+    const res = await fetch("data.json");
+    data = await res.json();
+    showSection("bio"); // Bio affiché par défaut
+  }
 
-    function showSection(section) {
-      const content = document.getElementById("content");
-      content.innerHTML = "";
-      data[section].forEach(item => {
-        const card = document.createElement("div");
-        card.className = "card";
+  function showSection(section) {
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+
+    data[section].forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      // Si item est un objet => format "experience"
+      if (typeof item === "object") {
+        card.innerHTML = `
+          <div style="display:flex; gap:1rem; align-items:flex-start;">
+            <img src="${item.image}" alt="${item.title}" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
+            <div style="flex:1;">
+              <h3 style="margin:0; font-size:1.2rem; color:#00acc1;">${item.title}</h3>
+              <p style="margin-top:0.5rem; color:#ddd;">${item.text}</p>
+            </div>
+          </div>
+        `;
+      } 
+      // Sinon, item est une simple string => Bio, Expertise, etc.
+      else {
         card.textContent = item;
-        content.appendChild(card);
-      });
+      }
 
-      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
-      document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
-    }
-
-    document.querySelectorAll("nav button").forEach(button => {
-      button.addEventListener("click", () => {
-        showSection(button.getAttribute("data-section"));
-      });
+      content.appendChild(card);
     });
 
-    loadData();
-  </script>
+    document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+    document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
+  }
+
+  document.querySelectorAll("nav button").forEach(button => {
+    button.addEventListener("click", () => {
+      showSection(button.getAttribute("data-section"));
+    });
+  });
+
+  loadData();
+</script>
 
 </body>
 </html>
