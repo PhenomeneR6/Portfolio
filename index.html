@@ -19,7 +19,7 @@
       width: 100%;
       height: 40vh;
       background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
-      position: relative; /* nécessaire pour placer le titre */
+      position: relative;
     }
     header h1 {
       position: absolute;
@@ -102,7 +102,8 @@
   </header>
 
   <nav>
-    <button data-section="experience" class="active">Experiences</button>
+    <button data-section="bio" class="active">Bio</button>
+    <button data-section="experience">Experiences</button>
     <button data-section="expertise">Area of Expertise</button>
     <button data-section="vouches">Vouches</button>
     <button data-section="contact">Contact</button>
@@ -120,7 +121,7 @@
     async function loadData() {
       const res = await fetch("data.json");
       data = await res.json();
-      showSection("experience");
+      showSection("bio"); // <-- Bio affiché par défaut
     }
 
     function showSection(section) {
