@@ -11,15 +11,17 @@
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(180deg, #0a0f0f, #0d1b1e);
       color: #f5f5f5;
-      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     header {
-      height: 60vh;
+      width: 100%;
+      height: 40vh;
       background: url("header.jpg") center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       font-size: 2.5rem;
       font-weight: 600;
       text-shadow: 0 0 20px rgba(0,0,0,0.8);
@@ -30,18 +32,20 @@
       gap: 2rem;
       background: rgba(0, 151, 167, 0.15);
       padding: 1rem;
-      position: sticky;
-      top: 0;
+      width: 100%;
       backdrop-filter: blur(8px);
     }
-    nav a {
+    nav button {
+      background: none;
+      border: none;
       color: #b2ebf2;
-      text-decoration: none;
       font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
       transition: 0.3s;
       position: relative;
     }
-    nav a::after {
+    nav button::after {
       content: "";
       display: block;
       width: 0;
@@ -50,17 +54,13 @@
       transition: width 0.3s;
       margin-top: 5px;
     }
-    nav a:hover::after {
+    nav button:hover::after, nav button.active::after {
       width: 100%;
     }
-    section {
-      padding: 4rem 10%;
-      min-height: 50vh;
-    }
-    h2 {
-      color: #00acc1;
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    #content {
+      max-width: 800px;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
     }
     .card {
       background: rgba(255,255,255,0.05);
@@ -80,50 +80,64 @@
       background: #0a1416;
       font-size: 0.9rem;
       color: #aaa;
+      width: 100%;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div>Rainbow Six Siege Coach</div>
+    Rainbow Six Siege Coach
   </header>
 
   <nav>
-    <a href="#experience">Experiences</a>
-    <a href="#expertise">Area of Expertise</a>
-    <a href="#vouches">Vouches</a>
-    <a href="#contact">Contact</a>
+    <button data-section="experience" class="active">Experiences</button>
+    <button data-section="expertise">Area of Expertise</button>
+    <button data-section="vouches">Vouches</button>
+    <button data-section="contact">Contact</button>
   </nav>
 
-  <section id="experience">
-    <h2>Experiences</h2>
-    <div class="card">Coach for semi-pro team XYZ (2022 - Present)</div>
-    <div class="card">Strategy analyst for R6 scrims</div>
-  </section>
-
-  <section id="expertise">
-    <h2>Area of Expertise</h2>
-    <div class="card">Team coordination & communication</div>
-    <div class="card">Map knowledge & strategy building</div>
-    <div class="card">Player performance tracking</div>
-  </section>
-
-  <section id="vouches">
-    <h2>Vouches</h2>
-    <div class="card">"Great coach, helped us reach Challenger League!"</div>
-    <div class="card">"Very professional and clear in communication."</div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">Discord: CoachR6#1234</div>
-    <div class="card">Email: coachr6@example.com</div>
-  </section>
+  <main id="content"></main>
 
   <footer>
     © 2025 Rainbow Six Siege Coach Portfolio
   </footer>
+
+  <script>
+    let data = {};
+
+    async function loadData() {
+      const res = await fetch("data.json");
+      data = await res.json();
+      showSection("experience");
+    }
+
+    function showSection(section) {
+      const content = document.getElementById("content");
+      content.innerHTML = "";
+      data[section].forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = item;
+        content.appendChild(card);
+      });
+
+      document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
+    }
+
+    document.querySelectorAll("nav button").forEach(button => {
+      button.addEventListener("click", () => {
+        showSection(button.getAttribute("data-section"));
+      });
+    });
+
+    loadData();
+  </script>
 
 </body>
 </html>
