@@ -1,1 +1,129 @@
-Welcome to my portfolio !
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R6 Coach Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #0a0f0f, #0d1b1e);
+      color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
+    header {
+      height: 60vh;
+      background: url("header.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: rgba(0, 151, 167, 0.15);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+    }
+    nav a {
+      color: #b2ebf2;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #0097a7;
+      transition: width 0.3s;
+      margin-top: 5px;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    section {
+      padding: 4rem 10%;
+      min-height: 50vh;
+    }
+    h2 {
+      color: #00acc1;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,151,167,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,151,167,0.4);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0a1416;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>Rainbow Six Siege Coach</div>
+  </header>
+
+  <nav>
+    <a href="#experience">Experiences</a>
+    <a href="#expertise">Area of Expertise</a>
+    <a href="#vouches">Vouches</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="experience">
+    <h2>Experiences</h2>
+    <div class="card">Coach for semi-pro team XYZ (2022 - Present)</div>
+    <div class="card">Strategy analyst for R6 scrims</div>
+  </section>
+
+  <section id="expertise">
+    <h2>Area of Expertise</h2>
+    <div class="card">Team coordination & communication</div>
+    <div class="card">Map knowledge & strategy building</div>
+    <div class="card">Player performance tracking</div>
+  </section>
+
+  <section id="vouches">
+    <h2>Vouches</h2>
+    <div class="card">"Great coach, helped us reach Challenger League!"</div>
+    <div class="card">"Very professional and clear in communication."</div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">Discord: CoachR6#1234</div>
+    <div class="card">Email: coachr6@example.com</div>
+  </section>
+
+  <footer>
+    © 2025 Rainbow Six Siege Coach Portfolio
+  </footer>
+
+</body>
+</html>
