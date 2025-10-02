@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>R6 Coach Portfolio</title>
+  <title>Phenomene - Siege X Coach</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,13 +18,20 @@
     header {
       width: 100%;
       height: 40vh;
-      background: url("header.jpg") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      font-weight: 600;
-      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+      background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
+      position: relative; /* nécessaire pour placer le titre */
+    }
+    header h1 {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 6px;
     }
     nav {
       display: flex;
@@ -91,7 +98,7 @@
 <body>
 
   <header>
-    Rainbow Six Siege Coach
+    <h1>Phenomene - Siege X Coach</h1>
   </header>
 
   <nav>
@@ -104,7 +111,7 @@
   <main id="content"></main>
 
   <footer>
-    © 2025 Rainbow Six Siege Coach Portfolio
+    © 2025 Phenomene - Siege X Coach
   </footer>
 
   <script>
