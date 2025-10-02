@@ -41,8 +41,21 @@
     "Player performance tracking"
   ],
   "vouches": [
-    "\"Great coach, helped us reach Challenger League!\"",
-    "\"Very professional and clear in communication.\""
+    {
+      "image": "img/FORREST.png",
+      "title": "FORREST - AMERICAN PLAYER",
+      "text": "“I'd like to thank Pheno for his time and commitment to the team.\n\nHis contributions helped us reach our first Major event as a roster\n\nHuge vouch to any teams seeking a +1 !”"
+    },
+    {
+      "image": "img/REDEEMER.png",
+      "title": "REDEEMER - MANAGER & FORMER PRO PLAYER",
+      "text": "“It was a pleasure working with Pheno and appreciate everything he did for our team \n\nIf anyone has any questions about him, please feel free to reach out.”"
+    },
+    {
+      "image": "img/KOREY.png",
+      "title": "KOREY - GERMAN FORMER PRO PLAYER",
+      "text": "“One of the best coaches out there, I hope teams will recognize his worth !”"
+    }
   ],
   "contact": [
     "Discord: CoachR6#1234",
