@@ -40,6 +40,20 @@
     "Map knowledge & strategy building",
     "Player performance tracking"
   ],
+  "work": [
+    {
+      "title": "Coaching Sessions",
+      "content": "Details about one-on-one and group coaching sessions.\nIncludes VOD reviews and live feedback."
+    },
+    {
+      "title": "Team Analysis",
+      "content": "Full breakdown of team strategies.\nFocus on communication, map control, and adaptability."
+    },
+    {
+      "title": "Content Creation",
+      "content": "Guides, video tutorials, and strategy breakdowns.\nSome available on YouTube and private Discord."
+    }
+  ],
   "vouches": [
     {
       "image": "img/DEAPEK.png",
