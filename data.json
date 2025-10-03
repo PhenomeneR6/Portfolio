@@ -81,7 +81,7 @@
     }
   ],
   "contact": [
-    { "text": "You can reach out via mail, X or Discord.\n\nI usually answer withing 24 hours."},
+    { "text": "You can reach out via mail, X or Discord.\n\nI usually answer within 24 hours."},
     { "type": "link", "label": "Email", "url": "mailto:hentgentheo@gmail.com" },
     { "type": "link", "label": "X", "url": "https://twitter.com/Phenomene_05" },
     { "text": "Discord : phenomene"}
