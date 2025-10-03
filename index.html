@@ -14,7 +14,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      white-space: pre-line;
     }
     header {
       width: 100%;
@@ -68,7 +67,6 @@
     #content {
       max-width: 800px;
       padding: 2rem;
-      animation: fadeIn 0.5s ease;
     }
     .card {
       background: rgba(255,255,255,0.05);
@@ -77,9 +75,10 @@
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,151,167,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.5s ease;
     }
     .card p {
-      white-space: pre-line;
+      white-space: pre-line; /* permet d'afficher \n en retour à la ligne */
       margin: 0;
       color: #ddd;
     }
@@ -88,7 +87,7 @@
       box-shadow: 0 0 25px rgba(0,151,167,0.4);
     }
     #content.bio .card {
-      text-align: justify;
+      text-align: justify; /* uniquement pour Bio */
     }
     footer {
       text-align: center;
@@ -118,7 +117,7 @@
     <button data-section="contact">Contact</button>
   </nav>
 
-  <main id="content"></main>
+  <main id="content" class="bio"></main>
 
   <footer>
     © 2025 Phenomene - Siege X Coach
@@ -130,32 +129,33 @@
   async function loadData() {
     const res = await fetch("data.json");
     data = await res.json();
-    showSection("bio"); // Bio affiché par défaut
+    showSection("bio"); // Bio affichée par défaut
   }
 
   function showSection(section) {
     const content = document.getElementById("content");
     content.innerHTML = "";
+    content.className = section; // ajoute la classe pour cibler la section active
 
     data[section].forEach(item => {
       const card = document.createElement("div");
       card.className = "card";
 
-      // Si item est un objet => format "experience"
+      // Format expérience (objet avec image + titre + texte)
       if (typeof item === "object") {
         card.innerHTML = `
           <div style="display:flex; gap:1rem; align-items:flex-start;">
             <img src="${item.image}" alt="${item.title}" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
             <div style="flex:1;">
               <h3 style="margin:0; font-size:1.2rem; color:#00acc1;">${item.title}</h3>
-              <p style="margin-top:0.5rem; color:#ddd;">${item.text}</p>
+              <p style="margin-top:0.5rem;">${item.text}</p>
             </div>
           </div>
         `;
       } 
-      // Sinon, item est une simple string => Bio, Expertise, etc.
+      // Format simple (string)
       else {
-        card.textContent = item;
+        card.innerHTML = `<p>${item}</p>`;
       }
 
       content.appendChild(card);
@@ -172,7 +172,7 @@
   });
 
   loadData();
-</script>
+  </script>
 
 </body>
 </html>
