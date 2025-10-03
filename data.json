@@ -43,15 +43,19 @@
   "work": [
     {
       "title": "Coaching Sessions",
-      "content": "Details about one-on-one and group coaching sessions.\nIncludes VOD reviews and live feedback."
+      "content": [
+        { "type": "text", "value": "I provide one-on-one and group coaching sessions with a focus on tactical decision-making and communication." },
+        { "type": "image", "value": "img/coaching.jpg" },
+        { "type": "text", "value": "Sessions include VOD reviews, strategy breakdowns, and live in-game feedback." }
+      ]
     },
     {
       "title": "Team Analysis",
-      "content": "Full breakdown of team strategies.\nFocus on communication, map control, and adaptability."
-    },
-    {
-      "title": "Content Creation",
-      "content": "Guides, video tutorials, and strategy breakdowns.\nSome available on YouTube and private Discord."
+      "content": [
+        { "type": "text", "value": "I analyze full team gameplay to identify weaknesses and opportunities." },
+        { "type": "image", "value": "img/team_analysis.jpg" },
+        { "type": "text", "value": "The focus is on synergy, map control, adaptability, and communication structures." }
+      ]
     }
   ],
   "vouches": [
