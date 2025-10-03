@@ -74,13 +74,24 @@
       margin: 1rem 0;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,151,167,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
       animation: fadeIn 0.5s ease;
     }
     .card p {
       white-space: pre-line;
       margin: 0;
       color: #ddd;
+    }
+    .card img {
+      display: block;
+      max-width: 100%;
+      margin: 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .card img:hover {
+      transform: scale(1.02);
     }
     .card:hover {
       transform: translateY(-5px);
@@ -89,21 +100,32 @@
     #content.bio .card {
       text-align: justify;
     }
-    /* style pour les liens dans Contact */
-    .contact-link {
-      display: inline-block;
-      margin: 0.5rem 0;
-      padding: 0.75rem 1.2rem;
-      border-radius: 6px;
-      background: rgba(0,151,167,0.2);
-      color: #00e5ff;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
+    /* Accordéon pour Work */
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
     }
-    .contact-link:hover {
-      background: rgba(0,151,167,0.4);
-      transform: translateY(-2px);
+    .accordion-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #00acc1;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      margin-top: 0.5rem;
+    }
+    .card.open .accordion-content {
+      max-height: 1000px;
+    }
+    .arrow {
+      transition: transform 0.3s;
+    }
+    .card.open .arrow {
+      transform: rotate(180deg);
     }
     footer {
       text-align: center;
@@ -129,6 +151,7 @@
     <button data-section="bio" class="active">Bio</button>
     <button data-section="experience">Experiences</button>
     <button data-section="expertise">Area of Expertise</button>
+    <button data-section="work">Work</button>
     <button data-section="vouches">Vouches</button>
     <button data-section="contact">Contact</button>
   </nav>
@@ -157,11 +180,39 @@
       const card = document.createElement("div");
       card.className = "card";
 
-      // Cas : lien (Contact)
-      if (item.type === "link") {
-        card.innerHTML = `<a href="${item.url}" target="_blank" class="contact-link">${item.label}</a>`;
+      // === Section Contact : card entière cliquable pour les liens ===
+      if (section === "contact" && typeof item === "object" && item.type === "link") {
+        card.style.cursor = "pointer";
+        card.innerHTML = `<p style="margin:0; font-weight:600; color:#00acc1;">${item.label}</p>`;
+        card.addEventListener("click", () => {
+          window.open(item.url, "_blank");
+        });
+        card.addEventListener("mouseenter", () => {
+          card.style.background = "rgba(0,151,167,0.2)";
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.background = "rgba(255,255,255,0.05)";
+        });
       }
-      // Cas : objet avec image + titre + texte (Expériences par ex.)
+      // === Work (accordéon) ===
+      else if (section === "work" && typeof item === "object") {
+        let innerContent = "";
+        item.content.forEach(block => {
+          if (block.type === "text") innerContent += `<p>${block.value}</p>`;
+          if (block.type === "image") innerContent += `<img src="${block.value}" alt="">`;
+        });
+        card.innerHTML = `
+          <div class="accordion-header">
+            <h3>${item.title}</h3>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-content">${innerContent}</div>
+        `;
+        card.querySelector(".accordion-header").addEventListener("click", () => {
+          card.classList.toggle("open");
+        });
+      }
+      // === Expérience (image + texte) ===
       else if (typeof item === "object" && item.text) {
         card.innerHTML = `
           <div style="display:flex; gap:1rem; align-items:flex-start; flex-wrap:wrap;">
@@ -173,7 +224,7 @@
           </div>
         `;
       }
-      // Cas : simple texte
+      // === Texte simple ===
       else {
         card.innerHTML = `<p>${item}</p>`;
       }
