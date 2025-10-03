@@ -79,8 +79,19 @@
     }
     .card p {
       white-space: pre-line;
-      margin: 0;
+      margin: 0.5rem 0;
       color: #ddd;
+    }
+    .card img {
+      display: block;
+      max-width: 100%;
+      margin: 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .card img:hover {
+      transform: scale(1.02);
     }
     .card:hover {
       transform: translateY(-5px);
@@ -108,7 +119,7 @@
       margin-top: 0.5rem;
     }
     .card.open .accordion-content {
-      max-height: 300px;
+      max-height: 1000px; /* assez grand pour tout le contenu */
     }
     .arrow {
       transition: transform 0.3s;
@@ -170,14 +181,23 @@
       card.className = "card";
 
       if (section === "work") {
-        // Accordéon
+        // Accordéon Work
+        let innerContent = "";
+        item.content.forEach(block => {
+          if (block.type === "text") {
+            innerContent += `<p>${block.value}</p>`;
+          } else if (block.type === "image") {
+            innerContent += `<img src="${block.value}" alt="">`;
+          }
+        });
+
         card.innerHTML = `
           <div class="accordion-header">
             <h3>${item.title}</h3>
             <span class="arrow">▼</span>
           </div>
           <div class="accordion-content">
-            <p>${item.content}</p>
+            ${innerContent}
           </div>
         `;
         card.querySelector(".accordion-header").addEventListener("click", () => {
