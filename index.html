@@ -79,19 +79,8 @@
     }
     .card p {
       white-space: pre-line;
-      margin: 0.5rem 0;
+      margin: 0;
       color: #ddd;
-    }
-    .card img {
-      display: block;
-      max-width: 100%;
-      margin: 1rem auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-    .card img:hover {
-      transform: scale(1.02);
     }
     .card:hover {
       transform: translateY(-5px);
@@ -100,32 +89,21 @@
     #content.bio .card {
       text-align: justify;
     }
-    /* --- Accordéon pour Work --- */
-    .accordion-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
+    /* style pour les liens dans Contact */
+    .contact-link {
+      display: inline-block;
+      margin: 0.5rem 0;
+      padding: 0.75rem 1.2rem;
+      border-radius: 6px;
+      background: rgba(0,151,167,0.2);
+      color: #00e5ff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
     }
-    .accordion-header h3 {
-      margin: 0;
-      font-size: 1.1rem;
-      color: #00acc1;
-    }
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      margin-top: 0.5rem;
-    }
-    .card.open .accordion-content {
-      max-height: 1000px; /* assez grand pour tout le contenu */
-    }
-    .arrow {
-      transition: transform 0.3s;
-    }
-    .card.open .arrow {
-      transform: rotate(180deg);
+    .contact-link:hover {
+      background: rgba(0,151,167,0.4);
+      transform: translateY(-2px);
     }
     footer {
       text-align: center;
@@ -151,7 +129,6 @@
     <button data-section="bio" class="active">Bio</button>
     <button data-section="experience">Experiences</button>
     <button data-section="expertise">Area of Expertise</button>
-    <button data-section="work">Work</button>
     <button data-section="vouches">Vouches</button>
     <button data-section="contact">Contact</button>
   </nav>
@@ -180,43 +157,24 @@
       const card = document.createElement("div");
       card.className = "card";
 
-      if (section === "work") {
-        // Accordéon Work
-        let innerContent = "";
-        item.content.forEach(block => {
-          if (block.type === "text") {
-            innerContent += `<p>${block.value}</p>`;
-          } else if (block.type === "image") {
-            innerContent += `<img src="${block.value}" alt="">`;
-          }
-        });
-
+      // Cas : lien (Contact)
+      if (item.type === "link") {
+        card.innerHTML = `<a href="${item.url}" target="_blank" class="contact-link">${item.label}</a>`;
+      }
+      // Cas : objet avec image + titre + texte (Expériences par ex.)
+      else if (typeof item === "object" && item.text) {
         card.innerHTML = `
-          <div class="accordion-header">
-            <h3>${item.title}</h3>
-            <span class="arrow">▼</span>
-          </div>
-          <div class="accordion-content">
-            ${innerContent}
-          </div>
-        `;
-        card.querySelector(".accordion-header").addEventListener("click", () => {
-          card.classList.toggle("open");
-        });
-
-      } else if (typeof item === "object") {
-        // Expérience
-        card.innerHTML = `
-          <div style="display:flex; gap:1rem; align-items:flex-start;">
-            <img src="${item.image}" alt="${item.title}" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
+          <div style="display:flex; gap:1rem; align-items:flex-start; flex-wrap:wrap;">
+            ${item.image ? `<img src="${item.image}" alt="${item.title}" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">` : ""}
             <div style="flex:1;">
-              <h3 style="margin:0; font-size:1.2rem; color:#00acc1;">${item.title}</h3>
+              ${item.title ? `<h3 style="margin:0; font-size:1.2rem; color:#00acc1;">${item.title}</h3>` : ""}
               <p style="margin-top:0.5rem;">${item.text}</p>
             </div>
           </div>
         `;
-      } else {
-        // Texte simple
+      }
+      // Cas : simple texte
+      else {
         card.innerHTML = `<p>${item}</p>`;
       }
 
