@@ -81,8 +81,8 @@
     }
   ],
   "contact": [
-    { "type": "link", "label": "📧 Email", "url": "mailto:hentgentheo@gmail.com" },
-    { "type": "link", "label": "🐦 Twitter", "url": "https://twitter.com/Phenomene_05" },
-    { "text": "💬 Discord : phenomene"}
+    { "type": "link", "label": "Email", "url": "mailto:hentgentheo@gmail.com" },
+    { "type": "link", "label": "X", "url": "https://twitter.com/Phenomene_05" },
+    { "text": "Discord : phenomene"}
   ]
 }
