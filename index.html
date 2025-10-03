@@ -78,7 +78,7 @@
       animation: fadeIn 0.5s ease;
     }
     .card p {
-      white-space: pre-line; /* permet d'afficher \n en retour à la ligne */
+      white-space: pre-line;
       margin: 0;
       color: #ddd;
     }
@@ -87,7 +87,34 @@
       box-shadow: 0 0 25px rgba(0,151,167,0.4);
     }
     #content.bio .card {
-      text-align: justify; /* uniquement pour Bio */
+      text-align: justify;
+    }
+    /* --- Accordéon pour Work --- */
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .accordion-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #00acc1;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      margin-top: 0.5rem;
+    }
+    .card.open .accordion-content {
+      max-height: 300px;
+    }
+    .arrow {
+      transition: transform 0.3s;
+    }
+    .card.open .arrow {
+      transform: rotate(180deg);
     }
     footer {
       text-align: center;
@@ -113,6 +140,7 @@
     <button data-section="bio" class="active">Bio</button>
     <button data-section="experience">Experiences</button>
     <button data-section="expertise">Area of Expertise</button>
+    <button data-section="work">Work</button>
     <button data-section="vouches">Vouches</button>
     <button data-section="contact">Contact</button>
   </nav>
@@ -129,20 +157,35 @@
   async function loadData() {
     const res = await fetch("data.json");
     data = await res.json();
-    showSection("bio"); // Bio affichée par défaut
+    showSection("bio");
   }
 
   function showSection(section) {
     const content = document.getElementById("content");
     content.innerHTML = "";
-    content.className = section; // ajoute la classe pour cibler la section active
+    content.className = section;
 
     data[section].forEach(item => {
       const card = document.createElement("div");
       card.className = "card";
 
-      // Format expérience (objet avec image + titre + texte)
-      if (typeof item === "object") {
+      if (section === "work") {
+        // Accordéon
+        card.innerHTML = `
+          <div class="accordion-header">
+            <h3>${item.title}</h3>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>${item.content}</p>
+          </div>
+        `;
+        card.querySelector(".accordion-header").addEventListener("click", () => {
+          card.classList.toggle("open");
+        });
+
+      } else if (typeof item === "object") {
+        // Expérience
         card.innerHTML = `
           <div style="display:flex; gap:1rem; align-items:flex-start;">
             <img src="${item.image}" alt="${item.title}" style="width:80px; height:80px; object-fit:cover; border-radius:8px;">
@@ -152,9 +195,8 @@
             </div>
           </div>
         `;
-      } 
-      // Format simple (string)
-      else {
+      } else {
+        // Texte simple
         card.innerHTML = `<p>${item}</p>`;
       }
 
