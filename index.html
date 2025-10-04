@@ -117,10 +117,10 @@ nav button.active::after { width: 100%; }
   gap: 1.5rem;
 }
 .expertise-text {
-  white-space: pre-line;
-  text-align: justify;
+  white-space: pre-line; /* garde les \n si jamais */
   color: #ddd;
   margin: 0;
+  text-align: left; /* plus justifié */
 }
 @media (max-width: 900px) {
   #content.expertise { grid-template-columns: 1fr; }
@@ -258,11 +258,9 @@ function showSection(section) {
         </div>
       `;
     }
-    // --- EXPERTISE ---
     else if(section==="expertise") {
       card.innerHTML = `
-        ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
-        ${item.text ? `<p class="expertise-text">${item.text}</p>` : ""}
+        <p class="expertise-text">${item}</p>
       `;
     }
     // --- VOUCHES ---
