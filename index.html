@@ -15,14 +15,12 @@
       flex-direction: column;
       align-items: center;
     }
-
     header {
       width: 100%;
       height: 40vh;
       background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
       position: relative;
     }
-
     header h1 {
       position: absolute;
       top: 20px;
@@ -35,18 +33,15 @@
       padding: 10px 20px;
       border-radius: 6px;
     }
-
     nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 2rem;
       background: rgba(0, 151, 167, 0.15);
       padding: 1rem;
       width: 100%;
       backdrop-filter: blur(8px);
     }
-
     nav button {
       background: none;
       border: none;
@@ -57,7 +52,6 @@
       transition: 0.3s;
       position: relative;
     }
-
     nav button::after {
       content: "";
       display: block;
@@ -67,48 +61,52 @@
       transition: width 0.3s;
       margin-top: 5px;
     }
-
-    nav button:hover::after,
-    nav button.active::after {
+    nav button:hover::after, nav button.active::after {
       width: 100%;
     }
-
-    /* --- Contenu principal --- */
     #content {
       max-width: 1000px;
       padding: 2rem;
+      width: 100%;
       display: grid;
       gap: 1.5rem;
-      width: 100%;
-      box-sizing: border-box;
+      transition: all 0.3s ease;
     }
-
-    /* Par défaut : 1 colonne */
-    #content {
+    /* --- BIO --- */
+    #content.bio {
       grid-template-columns: 1fr;
     }
-
-    /* Expériences : toujours 1 colonne */
-    #content.experience {
-      grid-template-columns: 1fr !important;
-    }
-
-    /* Work : 4 colonnes sur grand écran, 1 sur mobile/tablette */
-    #content.work {
-      grid-template-columns: repeat(4, 1fr);
-    }
-    @media (max-width: 1000px) {
-      #content.work {
-        grid-template-columns: 1fr;
+    @media (min-width: 900px) {
+      #content.bio {
+        grid-template-columns: 1fr 1fr;
       }
     }
-
-    /* Contact : toujours 1 colonne */
+    /* --- EXPERIENCES --- */
+    #content.experience {
+      display: flex;
+      flex-direction: column;
+    }
+    /* --- VOUCHES --- */
+    #content.vouches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    #content.vouches img {
+      width: 100%;
+      height: auto;
+      transform: scale(1.5);
+      transform-origin: center;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,151,167,0.3);
+    }
+    /* --- CONTACT --- */
     #content.contact {
-      grid-template-columns: 1fr !important;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
-    /* Cartes de base */
     .card {
       background: rgba(255,255,255,0.05);
       padding: 1.5rem;
@@ -116,43 +114,25 @@
       box-shadow: 0 0 15px rgba(0,151,167,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 0.5s ease;
-      cursor: default;
     }
-
+    .card p {
+      white-space: pre-line;
+      margin: 0;
+      color: #ddd;
+      text-align: justify;
+    }
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 25px rgba(0,151,167,0.4);
     }
 
-    /* Cartes cliquables (pour Contact) */
-    .card.clickable {
+    .clickable {
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-
-    /* Texte justifié pour la bio */
-    #content.bio .card {
-      text-align: justify;
-    }
-
-    /* Images dans les cartes */
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    /* Vouches : images plus petites */
-    #content.vouches .card img {
-      width: 80%;
-      max-width: 150px;
-      display: block;
-      margin: 0 auto 1rem;
-    }
-
-    .card p {
-      white-space: pre-line;
-      margin: 0;
-      color: #ddd;
+    .clickable:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(0,151,167,0.5);
     }
 
     footer {
@@ -209,39 +189,40 @@
       const card = document.createElement("div");
       card.className = "card";
 
-      // --- Images, titres, textes ---
-      if (item.image || item.title || item.text) {
+      // Si c’est un objet avec lien
+      if (typeof item === "object" && item.link) {
+        card.classList.add("clickable");
+        card.addEventListener("click", () => window.open(item.link, "_blank"));
+      }
+
+      // Format image + texte
+      if (typeof item === "object" && item.image && item.text) {
         card.innerHTML = `
-          ${item.image ? `<img src="${item.image}" alt="${item.title || ''}">` : ""}
-          ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
-          ${item.text ? `<p>${item.text}</p>` : ""}
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <img src="${item.image}" alt="${item.title || ''}" style="width:100%; border-radius:10px;">
+            ${item.title ? `<h3 style="margin:0; font-size:1.2rem; color:#00acc1;">${item.title}</h3>` : ""}
+            <p>${item.text}</p>
+          </div>
         `;
       } 
-      // --- Texte simple ---
+      // Texte seul
       else if (typeof item === "string") {
         card.innerHTML = `<p>${item}</p>`;
       }
-
-      // --- Lien (Contact ou autre) ---
-      if (item.link) {
-        card.classList.add("clickable");
-        card.addEventListener("click", () => {
-          window.open(item.link, "_blank");
-        });
+      // Image seule
+      else if (typeof item === "object" && item.image && !item.text) {
+        card.innerHTML = `<img src="${item.image}" alt="${item.title || ''}" style="width:100%; border-radius:10px;">`;
       }
 
       content.appendChild(card);
     });
 
-    // Gestion de l’état actif dans la nav
     document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
     document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
   }
 
   document.querySelectorAll("nav button").forEach(button => {
-    button.addEventListener("click", () => {
-      showSection(button.getAttribute("data-section"));
-    });
+    button.addEventListener("click", () => showSection(button.getAttribute("data-section")));
   });
 
   loadData();
