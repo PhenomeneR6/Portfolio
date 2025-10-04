@@ -104,12 +104,23 @@ nav button.active::after { width: 100%; }
   object-fit: cover;
   border-radius: 8px;
 }
+.experience-card p {
+  white-space: pre-line;
+  margin: 0;
+  color: #ddd;
+}
 
 /* --- EXPERTISE --- */
 #content.expertise {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+}
+.expertise-text {
+  white-space: pre-line;
+  text-align: justify;
+  color: #ddd;
+  margin: 0;
 }
 @media (max-width: 900px) {
   #content.expertise { grid-template-columns: 1fr; }
@@ -130,10 +141,10 @@ nav button.active::after { width: 100%; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  text-align: center; /* pour centrer l'image et le titre */
+  text-align: center;
 }
 #content.vouches img {
-  width: 60%; /* réduit de 40% */
+  width: 60%;
   height: auto;
   border-radius: 50%;
   box-shadow: none;
@@ -245,6 +256,13 @@ function showSection(section) {
           ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
           <p>${item.text}</p>
         </div>
+      `;
+    }
+    // --- EXPERTISE ---
+    else if(section==="expertise") {
+      card.innerHTML = `
+        ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
+        ${item.text ? `<p class="expertise-text">${item.text}</p>` : ""}
       `;
     }
     // --- VOUCHES ---
