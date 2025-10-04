@@ -130,7 +130,7 @@ nav button.active::after { width: 100%; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  text-align: center;
+  text-align: center; /* pour centrer l'image et le titre */
 }
 #content.vouches img {
   width: 60%; /* réduit de 40% */
@@ -138,6 +138,16 @@ nav button.active::after { width: 100%; }
   border-radius: 50%;
   box-shadow: none;
   margin: 0 auto;
+}
+.vouche-title {
+  color: #00acc1;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.vouche-text {
+  text-align: justify;
+  margin-top: 0.5rem;
+  color: #ddd;
 }
 
 /* --- CONTACT --- */
@@ -240,8 +250,9 @@ function showSection(section) {
     // --- VOUCHES ---
     else if(section==="vouches" && item.image) {
       card.innerHTML = `
-        <h3>${item.title||""}</h3>
         <img src="${item.image}" alt="${item.title||''}">
+        ${item.title ? `<h3 class="vouche-title">${item.title}</h3>` : ""}
+        ${item.text ? `<p class="vouche-text">${item.text}</p>` : ""}
       `;
     }
     // --- CONTACT ---
