@@ -73,23 +73,42 @@
       width: 100%;
     }
 
-    /* --- Contenu principal responsive --- */
+    /* --- Contenu principal --- */
     #content {
       max-width: 1000px;
       padding: 2rem;
       display: grid;
-      grid-template-columns: 1fr;
       gap: 1.5rem;
       width: 100%;
       box-sizing: border-box;
     }
 
-    @media (min-width: 900px) {
-      #content {
-        grid-template-columns: 1fr 1fr;
+    /* Par défaut : 1 colonne */
+    #content {
+      grid-template-columns: 1fr;
+    }
+
+    /* Expériences : toujours 1 colonne */
+    #content.experience {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Work : 4 colonnes sur grand écran, 1 sur mobile/tablette */
+    #content.work {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 1000px) {
+      #content.work {
+        grid-template-columns: 1fr;
       }
     }
 
+    /* Contact : toujours 1 colonne */
+    #content.contact {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Cartes de base */
     .card {
       background: rgba(255,255,255,0.05);
       padding: 1.5rem;
@@ -105,13 +124,29 @@
       box-shadow: 0 0 25px rgba(0,151,167,0.4);
     }
 
-    /* Rendre les cartes cliquables quand "link" est défini */
+    /* Cartes cliquables (pour Contact) */
     .card.clickable {
       cursor: pointer;
     }
 
+    /* Texte justifié pour la bio */
     #content.bio .card {
       text-align: justify;
+    }
+
+    /* Images dans les cartes */
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* Vouches : images plus petites */
+    #content.vouches .card img {
+      width: 80%;
+      max-width: 150px;
+      display: block;
+      margin: 0 auto 1rem;
     }
 
     .card p {
@@ -174,20 +209,20 @@
       const card = document.createElement("div");
       card.className = "card";
 
-      // --- Si c’est un objet avec image + titre + texte ---
+      // --- Images, titres, textes ---
       if (item.image || item.title || item.text) {
         card.innerHTML = `
-          ${item.image ? `<img src="${item.image}" alt="${item.title || ''}" style="width:100%; border-radius:8px; margin-bottom:1rem;">` : ""}
+          ${item.image ? `<img src="${item.image}" alt="${item.title || ''}">` : ""}
           ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
           ${item.text ? `<p>${item.text}</p>` : ""}
         `;
       } 
-      // --- Si c’est un simple texte ---
+      // --- Texte simple ---
       else if (typeof item === "string") {
         card.innerHTML = `<p>${item}</p>`;
       }
 
-      // --- Si un lien est défini ---
+      // --- Lien (Contact ou autre) ---
       if (item.link) {
         card.classList.add("clickable");
         card.addEventListener("click", () => {
@@ -198,6 +233,7 @@
       content.appendChild(card);
     });
 
+    // Gestion de l’état actif dans la nav
     document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
     document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
   }
