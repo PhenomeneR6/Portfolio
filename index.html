@@ -80,16 +80,10 @@ nav button.active::after { width: 100%; }
   column-count: 2;
   column-gap: 2rem;
 }
-@media (max-width: 900px) {
-  #content.bio { column-count: 1; }
-}
+@media (max-width: 900px) { #content.bio { column-count: 1; } }
 
 /* --- EXPERIENCES --- */
-#content.experience {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+#content.experience { display: flex; flex-direction: column; gap: 1rem; }
 .experience-card {
   display: flex;
   gap: 1rem;
@@ -117,48 +111,19 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
-.expertise-text {
-  white-space: pre-line;
-  color: #ddd;
-  margin: 0;
-  text-align: left;
-}
-#content.expertise p {
-  text-align: left !important;
-}
-@media (max-width: 900px) {
-  #content.expertise { grid-template-columns: 1fr; }
-}
+#content.expertise p { text-align: left !important; color: #ddd; margin:0; white-space: pre-line; }
+@media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
 /* --- WORK EXAMPLES --- */
-#content.work {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+.work-category-header { cursor:pointer; font-weight:600; font-size:1.2rem; margin-bottom:0.5rem; }
+.work-category-items { display:flex; flex-direction:column; gap:1rem; }
+@media (min-width: 1001px) {
+  #content.work { display:grid; grid-template-columns: repeat(4, 1fr); gap:1.5rem; }
 }
 @media (max-width: 1000px) {
-  #content.work { grid-template-columns: 1fr; }
+  #content.work { display:flex; flex-direction:column; }
 }
-.work-category {
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.work-category-header {
-  padding: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: rgba(0,151,167,0.15);
-}
-.work-category-items {
-  display: none;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-}
-.work-category-items .card {
-  width: 100%;
-}
+#content.work .card { width:100%; }
 
 /* --- VOUCHES --- */
 #content.vouches {
@@ -167,38 +132,14 @@ nav button.active::after { width: 100%; }
   gap: 1.5rem;
   text-align: center;
 }
-#content.vouches img {
-  width: 60%;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: none;
-  margin: 0 auto;
-}
-.vouche-title {
-  color: #00acc1;
-  margin-top: 0.5rem;
-  font-weight: 600;
-}
-.vouche-text {
-  text-align: justify;
-  margin-top: 0.5rem;
-  color: #ddd;
-}
+#content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
+.vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
+.vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
 
 /* --- CONTACT --- */
-#content.contact .card p {
-  text-align: center !important;
-}
-#content.contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-#content.contact .card {
-  width: fit-content;
-  min-width: 300px;
-}
+#content.contact .card p { text-align:center !important; }
+#content.contact { display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+#content.contact .card { width:fit-content; min-width:300px; }
 
 /* --- CARTES --- */
 .card {
@@ -210,35 +151,14 @@ nav button.active::after { width: 100%; }
   animation: fadeIn 0.5s ease;
   cursor: default;
 }
-.card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-  text-align: justify;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.4);
-}
-.card.clickable { cursor: pointer; }
-.card.clickable:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.5);
-}
+.card p { white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
+.card:hover { transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
+.card.clickable { cursor:pointer; }
+.card.clickable:hover { transform: translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
 
-footer {
-  text-align: center;
-  padding: 2rem;
-  background: #0a1416;
-  font-size: 0.9rem;
-  color: #aaa;
-  width: 100%;
-}
+footer { text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; color:#aaa; width:100%; }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
-}
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 </style>
 </head>
 <body>
@@ -274,106 +194,88 @@ function showSection(section) {
   content.innerHTML = "";
   content.className = section;
 
-  data[section].forEach(item => {
-    let card = document.createElement("div");
-    card.className = "card";
+  if(section==="work") {
+    data.work.forEach(category => {
+      const catDiv = document.createElement("div");
+      catDiv.className = "work-category";
+      
+      const header = document.createElement("div");
+      header.className = "work-category-header";
+      header.textContent = category.category;
 
-    // --- EXPERIENCES ---
-    if(section==="experience" && item.image && item.text) {
-      card = document.createElement("div");
-      card.className = "experience-card";
-      card.innerHTML = `
-        <img src="${item.image}" alt="${item.title||''}">
-        <div>
-          ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
-          <p>${item.text}</p>
-        </div>
-      `;
-    }
-    // --- EXPERTISE ---
-    else if(section==="expertise") {
-      card.innerHTML = `<p>${item}</p>`;
-    }
-    // --- VOUCHES ---
-    else if(section==="vouches" && item.image) {
-      card.innerHTML = `
-        <img src="${item.image}" alt="${item.title||''}">
-        ${item.title ? `<h3 class="vouche-title">${item.title}</h3>` : ""}
-        ${item.text ? `<p class="vouche-text">${item.text}</p>` : ""}
-      `;
-    }
-    // --- CONTACT ---
-    else if(section==="contact") {
-      if(item.type==="link") {
-        card.classList.add("clickable");
-        card.innerHTML = `<p>${item.label}</p>`;
-        card.addEventListener("click",()=>window.open(item.url,"_blank"));
-      } else if(item.text) {
-        card.innerHTML = `<p>${item.text}</p>`;
-      }
-    }
-    // --- WORK EXAMPLES ---
-    else if(section==="work") {
-      // Chaque catégorie
-      item.forEach(category => {
-        const catDiv = document.createElement("div");
-        catDiv.className = "work-category";
-    
-        const header = document.createElement("div");
-        header.className = "work-category-header";
-        header.textContent = category.category;
-    
-        const itemsDiv = document.createElement("div");
-        itemsDiv.className = "work-category-items";
-    
-        category.items.forEach(el => {
-          const card = document.createElement("div");
-          card.className = "card";
-    
-          if(el.image && el.text && el.layout==="image-left") {
-            // image à gauche + texte à droite
-            card.style.display = "flex";
-            card.style.gap = "1rem";
-            card.innerHTML = `
-              <img src="${el.image}" style="width:150px; height:auto; border-radius:8px; flex-shrink:0;">
-              <p style="flex:1;">${el.text}</p>
-            `;
-          } else if(el.image) {
-            // image seule
-            card.innerHTML = `<img src="${el.image}" style="width:100%; border-radius:8px;">`;
-          } else if(el.text) {
-            // texte seul
-            card.innerHTML = `<p>${el.text}</p>`;
-          }
-    
-          itemsDiv.appendChild(card);
-        });
-    
-        header.addEventListener("click", () => {
-          itemsDiv.style.display = itemsDiv.style.display === "flex" ? "none" : "flex";
-        });
-    
-        catDiv.appendChild(header);
-        catDiv.appendChild(itemsDiv);
-        content.appendChild(catDiv);
+      const itemsDiv = document.createElement("div");
+      itemsDiv.className = "work-category-items";
+
+      category.items.forEach(el => {
+        const card = document.createElement("div");
+        card.className = "card";
+        if(el.image && el.text) {
+          card.style.display="flex";
+          card.style.gap="1rem";
+          card.innerHTML = `
+            <img src="${el.image}" style="width:150px; height:auto; border-radius:8px; flex-shrink:0;">
+            <p style="flex:1;">${el.text}</p>
+          `;
+        } else if(el.image) {
+          card.innerHTML = `<img src="${el.image}" style="width:100%; border-radius:8px;">`;
+        } else if(el.text) {
+          card.innerHTML = `<p>${el.text}</p>`;
+        }
+        itemsDiv.appendChild(card);
       });
-    }
-    // --- IMAGE + TEXTE ---
-    else if(item.image || item.title || item.text) {
-      card.innerHTML = `
-        ${item.image ? `<img src="${item.image}" alt="${item.title||''}">` : ""}
-        ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
-        ${item.text ? `<p>${item.text}</p>` : ""}
-      `;
-    }
-    // --- TEXTE SEUL ---
-    else if(typeof item==="string") {
-      card.innerHTML = `<p>${item}</p>`;
-    }
 
-    // Ajouter à la page si ce n'est pas work (les work sont déjà ajoutés)
-    if(section!=="work") content.appendChild(card);
-  });
+      header.addEventListener("click", () => {
+        itemsDiv.style.display = itemsDiv.style.display === "none" ? "flex" : "none";
+      });
+
+      catDiv.appendChild(header);
+      catDiv.appendChild(itemsDiv);
+      content.appendChild(catDiv);
+    });
+  } else {
+    data[section].forEach(item => {
+      let card = document.createElement("div");
+      card.className = "card";
+
+      if(section==="experience" && item.image && item.text) {
+        card = document.createElement("div");
+        card.className = "experience-card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title||''}">
+          <div>
+            ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
+            <p>${item.text}</p>
+          </div>
+        `;
+      } else if(section==="expertise") {
+        card.innerHTML = `<p>${item}</p>`;
+      } else if(section==="vouches" && item.image) {
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title||''}">
+          ${item.title ? `<h3 class="vouche-title">${item.title}</h3>` : ""}
+          ${item.text ? `<p class="vouche-text">${item.text}</p>` : ""}
+        `;
+      } else if(section==="contact") {
+        if(item.type==="link") {
+          card.classList.add("clickable");
+          card.innerHTML = `<p>${item.label}</p>`;
+          card.addEventListener("click",()=>window.open(item.url,"_blank"));
+        } else if(item.text) {
+          card.innerHTML = `<p>${item.text}</p>`;
+        }
+      } else if(item.image || item.title || item.text) {
+        card.innerHTML = `
+          ${item.image ? `<img src="${item.image}" alt="${item.title||''}">` : ""}
+          ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
+          ${item.text ? `<p>${item.text}</p>` : ""}
+        `;
+      } else if(typeof item==="string") {
+        card.innerHTML = `<p>${item}</p>`;
+      }
+
+      content.appendChild(card);
+    });
+  }
 
   document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"));
   document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
