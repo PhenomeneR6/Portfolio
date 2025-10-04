@@ -318,28 +318,41 @@ function showSection(section) {
       item.forEach(category => {
         const catDiv = document.createElement("div");
         catDiv.className = "work-category";
-
+    
         const header = document.createElement("div");
         header.className = "work-category-header";
         header.textContent = category.category;
-
+    
         const itemsDiv = document.createElement("div");
         itemsDiv.className = "work-category-items";
-
+    
         category.items.forEach(el => {
           const card = document.createElement("div");
           card.className = "card";
-          card.innerHTML = `
-            ${el.image ? `<img src="${el.image}" style="width:100%; border-radius:8px;">` : ""}
-            ${el.text ? `<p>${el.text}</p>` : ""}
-          `;
+    
+          if(el.image && el.text && el.layout==="image-left") {
+            // image à gauche + texte à droite
+            card.style.display = "flex";
+            card.style.gap = "1rem";
+            card.innerHTML = `
+              <img src="${el.image}" style="width:150px; height:auto; border-radius:8px; flex-shrink:0;">
+              <p style="flex:1;">${el.text}</p>
+            `;
+          } else if(el.image) {
+            // image seule
+            card.innerHTML = `<img src="${el.image}" style="width:100%; border-radius:8px;">`;
+          } else if(el.text) {
+            // texte seul
+            card.innerHTML = `<p>${el.text}</p>`;
+          }
+    
           itemsDiv.appendChild(card);
         });
-
+    
         header.addEventListener("click", () => {
           itemsDiv.style.display = itemsDiv.style.display === "flex" ? "none" : "flex";
         });
-
+    
         catDiv.appendChild(header);
         catDiv.appendChild(itemsDiv);
         content.appendChild(catDiv);
