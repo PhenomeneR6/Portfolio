@@ -80,9 +80,7 @@ nav button.active::after { width: 100%; }
   column-gap: 2rem;
 }
 @media (max-width: 900px) {
-  #content.bio {
-    column-count: 1;
-  }
+  #content.bio { column-count: 1; }
 }
 
 /* --- EXPERIENCES --- */
@@ -101,8 +99,8 @@ nav button.active::after { width: 100%; }
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
 }
 .experience-card img {
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -132,12 +130,14 @@ nav button.active::after { width: 100%; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  text-align: center;
 }
 #content.vouches img {
-  width: 100%;
+  width: 60%; /* réduit de 40% */
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.3);
+  border-radius: 50%;
+  box-shadow: none;
+  margin: 0 auto;
 }
 
 /* --- CONTACT --- */
@@ -230,12 +230,29 @@ function showSection(section) {
       card = document.createElement("div");
       card.className = "experience-card";
       card.innerHTML = `
-        <img src="${item.image}" alt="${item.title || ''}">
+        <img src="${item.image}" alt="${item.title||''}">
         <div>
-          ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
+          ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
           <p>${item.text}</p>
         </div>
       `;
+    }
+    // --- VOUCHES ---
+    else if(section==="vouches" && item.image) {
+      card.innerHTML = `
+        <h3>${item.title||""}</h3>
+        <img src="${item.image}" alt="${item.title||''}">
+      `;
+    }
+    // --- CONTACT ---
+    else if(section==="contact") {
+      if(item.type==="link") {
+        card.classList.add("clickable");
+        card.innerHTML = `<p>${item.label}</p>`;
+        card.addEventListener("click",()=>window.open(item.url,"_blank"));
+      } else if(item.text) {
+        card.innerHTML = `<p>${item.text}</p>`;
+      }
     }
     // --- IMAGE + TEXTE ---
     else if(item.image || item.title || item.text) {
@@ -248,11 +265,6 @@ function showSection(section) {
     // --- TEXTE SEUL ---
     else if(typeof item==="string") {
       card.innerHTML = `<p>${item}</p>`;
-    }
-    // --- LIEN ---
-    if(item.link) {
-      card.classList.add("clickable");
-      card.addEventListener("click",()=>window.open(item.link,"_blank"));
     }
 
     content.appendChild(card);
