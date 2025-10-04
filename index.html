@@ -75,7 +75,11 @@ nav button.active::after { width: 100%; }
 }
 
 /* --- BIO --- */
-#content.bio { display: block; column-count: 2; column-gap: 2rem; }
+#content.bio {
+  display: block;
+  column-count: 2;
+  column-gap: 2rem;
+}
 @media (max-width: 900px) { #content.bio { column-count: 1; } }
 
 /* --- EXPERIENCES --- */
@@ -89,24 +93,48 @@ nav button.active::after { width: 100%; }
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
 }
-.experience-card img { width: 160px; height: 160px; object-fit: cover; border-radius: 8px; }
-.experience-card p { white-space: pre-line; margin: 0; color: #ddd; }
+.experience-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.experience-card p {
+  white-space: pre-line;
+  margin: 0;
+  color: #ddd;
+}
 
 /* --- EXPERTISE --- */
-#content.expertise { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+#content.expertise {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
 #content.expertise p { text-align: left !important; color: #ddd; margin:0; white-space: pre-line; }
 @media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
 /* --- WORK EXAMPLES --- */
-#content.work { display: flex; flex-wrap: wrap; gap: 1.5rem; }
-.work-category { width: 100%; margin-bottom: 1rem; }
-@media (min-width: 1001px) { .work-category { width: calc(25% - 1rem); } }
+#content.work { display: flex; flex-wrap: wrap; gap: 1rem; }
+.work-category {
+  width: 100%;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+@media (min-width: 1001px) {
+  .work-category { width: calc(25% - 0.75rem); }
+}
 .work-category-header { cursor:pointer; font-weight:600; font-size:1.2rem; margin-bottom:0.5rem; }
-.work-category-items { display:flex; flex-direction:column; gap:1rem; }
+.work-category-items { display: none; flex-direction: column; gap:1rem; }
 .work-category .card { width:100%; }
 
 /* --- VOUCHES --- */
-#content.vouches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; text-align: center; }
+#content.vouches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
 #content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
 .vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
 .vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
@@ -200,7 +228,7 @@ function showSection(section) {
       });
 
       header.addEventListener("click", () => {
-        itemsDiv.style.display = itemsDiv.style.display === "none" ? "flex" : "none";
+        itemsDiv.style.display = itemsDiv.style.display === "flex" ? "none" : "flex";
       });
 
       catDiv.appendChild(header);
@@ -211,7 +239,6 @@ function showSection(section) {
     data[section].forEach(item => {
       let card = document.createElement("div");
       card.className = "card";
-
       if(section==="experience" && item.image && item.text) {
         card = document.createElement("div");
         card.className = "experience-card";
