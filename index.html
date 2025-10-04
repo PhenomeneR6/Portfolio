@@ -99,11 +99,7 @@ nav button.active::after { width: 100%; }
   object-fit: cover;
   border-radius: 8px;
 }
-.experience-card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-}
+.experience-card p { white-space: pre-line; margin:0; color:#ddd; }
 
 /* --- EXPERTISE --- */
 #content.expertise {
@@ -115,17 +111,29 @@ nav button.active::after { width: 100%; }
 @media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
 /* --- WORK EXAMPLES --- */
-#content.work { display: flex; flex-wrap: wrap; gap: 1rem; }
+#content.work {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
 .work-category {
   width: 100%;
   margin-bottom: 1rem;
-  box-sizing: border-box;
 }
 @media (min-width: 1001px) {
-  .work-category { width: calc(25% - 0.75rem); }
+  .work-category { width: calc(25% - 1rem); } /* 4 colonnes */
 }
-.work-category-header { cursor:pointer; font-weight:600; font-size:1.2rem; margin-bottom:0.5rem; }
-.work-category-items { display: none; flex-direction: column; gap:1rem; }
+.work-category-header {
+  cursor:pointer;
+  font-weight:600;
+  font-size:1.2rem;
+  margin-bottom:0.5rem;
+}
+.work-category-items {
+  display:none; /* fermées par défaut */
+  flex-direction:column;
+  gap:1rem;
+}
 .work-category .card { width:100%; }
 
 /* --- VOUCHES --- */
@@ -201,7 +209,7 @@ function showSection(section) {
     data.work.forEach(category => {
       const catDiv = document.createElement("div");
       catDiv.className = "work-category";
-      
+
       const header = document.createElement("div");
       header.className = "work-category-header";
       header.textContent = category.category;
@@ -212,6 +220,7 @@ function showSection(section) {
       category.items.forEach(el => {
         const card = document.createElement("div");
         card.className = "card";
+
         if(el.image && el.text) {
           card.style.display="flex";
           card.style.gap="1rem";
@@ -224,6 +233,7 @@ function showSection(section) {
         } else if(el.text) {
           card.innerHTML = `<p>${el.text}</p>`;
         }
+
         itemsDiv.appendChild(card);
       });
 
@@ -239,6 +249,7 @@ function showSection(section) {
     data[section].forEach(item => {
       let card = document.createElement("div");
       card.className = "card";
+
       if(section==="experience" && item.image && item.text) {
         card = document.createElement("div");
         card.className = "experience-card";
