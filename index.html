@@ -76,16 +76,14 @@ nav button.active::after { width: 100%; }
 }
 
 /* --- BIO --- */
-#content.bio {
-  display: block;
-}
+#content.bio { display: block; }
 
 /* --- EXPERIENCES --- */
 #content.experience{ 
   display:flex;
   flex-direction:column;
   gap:1rem;
-  align-items:center; /* center cards horizontally */
+  align-items:center;
 }
 .experience-card {
   display:flex;
@@ -105,6 +103,7 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
+/* Isoler uniquement les cards Expertise */
 #content.expertise .card {
   display:flex;
   flex-direction:column;
@@ -124,7 +123,8 @@ nav button.active::after { width: 100%; }
   white-space: pre-line;
   margin:0;
   color:#ddd;
-  text-align:justify;
+  text-align:left; /* texte à gauche */
+  width:100%;
 }
 @media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
@@ -230,18 +230,18 @@ function showSection(section){
 
   if(section==="experience"){
     let maxWidth=0;
-    const tempCards=data.experience.map(item=>{
-      const div=document.createElement("div");
-      div.className="experience-card";
-      div.style.visibility="hidden";
-      div.style.position="absolute";
-      div.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
-      document.body.appendChild(div);
-      const w=div.offsetWidth;
+    data.experience.forEach(item=>{
+      const tempDiv=document.createElement("div");
+      tempDiv.className="experience-card";
+      tempDiv.style.visibility="hidden";
+      tempDiv.style.position="absolute";
+      tempDiv.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
+      document.body.appendChild(tempDiv);
+      const w=tempDiv.offsetWidth;
       if(w>maxWidth) maxWidth=w;
-      document.body.removeChild(div);
-      return div;
+      document.body.removeChild(tempDiv);
     });
+
     data.experience.forEach(item=>{
       const card=document.createElement("div");
       card.className="experience-card";
@@ -249,6 +249,7 @@ function showSection(section){
       card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
       content.appendChild(card);
     });
+
   } else if(section==="expertise"){
     data.expertise.forEach(item=>{
       const card=document.createElement("div");
@@ -256,6 +257,7 @@ function showSection(section){
       card.innerHTML=`<h3>${item.title}</h3><p>${item.text}</p>`;
       content.appendChild(card);
     });
+
   } else if(section==="work"){
     const catContainer=document.createElement("div");
     catContainer.className="work-categories";
@@ -297,6 +299,7 @@ function showSection(section){
 
     content.appendChild(catContainer);
     content.appendChild(itemsContainer);
+
   } else {
     data[section].forEach(item=>{
       let card=document.createElement("div");
