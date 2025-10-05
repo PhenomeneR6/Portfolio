@@ -1,202 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Phenomene - Siege X Coach</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --accent:#0097a7;
-    --accent-strong:#00acc1;
-    --muted:#b2ebf2;
-    --bg1:#0a0f0f;
-    --bg2:#0d1b1e;
-  }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, #0a0f0f, #0d1b1e);
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  width: 100%;
+  height: 40vh;
+  background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
+  position: relative;
+}
+header h1 {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.3);
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(0,151,167,0.15);
+  padding: 1rem;
+  width: 100%;
+  backdrop-filter: blur(8px);
+  flex-wrap: wrap;
+}
+nav button {
+  background: none;
+  border: none;
+  color: #b2ebf2;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+}
+nav button::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #0097a7;
+  transition: width 0.3s;
+  margin-top: 5px;
+}
+nav button:hover::after,
+nav button.active::after { width: 100%; }
 
-  html,body{height:100%; margin:0;}
-  body{
-    margin:0;
-    font-family:'Montserrat',sans-serif;
-    background: linear-gradient(180deg,var(--bg1),var(--bg2));
-    color:#f5f5f5;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
+#content {
+  max-width: 1000px;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  gap: 1.5rem;
+}
 
-  header{
-    width:100%;
-    height:40vh;
-    background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
-    position:relative;
-  }
-  header h1{
-    position:absolute;
-    top:20px;
-    left:30px;
-    font-size:2rem;
-    font-weight:700;
-    color:#fff;
-    text-shadow:0 0 10px rgba(0,0,0,0.7);
-    background: rgba(0,0,0,0.3);
-    padding:10px 20px;
-    border-radius:6px;
-  }
+/* --- BIO --- */
+#content.bio {
+  display: block;
+  column-count: 2;
+  column-gap: 2rem;
+}
+@media (max-width: 900px) { #content.bio { column-count: 1; } }
 
-  nav{
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    background: rgba(0,151,167,0.15);
-    padding:1rem;
-    width:100%;
-    backdrop-filter: blur(8px);
-    flex-wrap:wrap;
-  }
-  nav button{
-    background:none;
-    border:none;
-    color:var(--muted);
-    font-weight:600;
-    font-size:1rem;
-    cursor:pointer;
-    position:relative;
-    transition:0.25s;
-    padding:4px 8px;
-  }
-  nav button::after{
-    content:"";
-    display:block;
-    width:0;
-    height:2px;
-    background:var(--accent);
-    transition: width 0.25s;
-    margin-top:5px;
-  }
-  nav button:hover::after,
-  nav button.active::after{ width:100%; }
+/* --- EXPERIENCES --- */
+#content.experience { display: flex; flex-direction: column; gap: 1rem; }
+.experience-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,151,167,0.2);
+}
+.experience-card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.experience-card p {
+  white-space: pre-line;
+  margin: 0;
+  color: #ddd;
+}
 
-  main { width:100%; display:flex; justify-content:center; }
-  #content{
-    max-width:1000px;
-    padding:2rem;
-    width:100%;
-    box-sizing:border-box;
-    display:grid;
-    gap:1.5rem;
-  }
+/* --- EXPERTISE --- */
+#content.expertise {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+#content.expertise p { text-align: left !important; color: #ddd; margin:0; white-space: pre-line; }
+@media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
-  /* --- BIO --- */
-  #content.bio { display:block; column-count:2; column-gap:2rem; }
-  @media (max-width:900px){ #content.bio{ column-count:1; } }
+/* --- WORK EXAMPLES --- */
+#content.work {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.work-category {
+  width: calc(25% - 1rem);
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,151,167,0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.work-category-header {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem;
+  background: rgba(0,151,167,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #00acc1;
+  text-align: center;
+  transition: background 0.3s;
+}
+.work-category-header:hover {
+  background: rgba(0,151,167,0.2);
+}
+.work-category.active {
+  width: 100%;
+}
+.work-category-items {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.work-category.active .work-category-items {
+  display: flex;
+}
+.work-category .card {
+  width: 100%;
+}
+.work-category .card img {
+  width: 100%;
+  border-radius: 8px;
+}
 
-  /* --- EXPERIENCES --- (inchangé) */
-  #content.experience { display:flex; flex-direction:column; gap:1rem; }
-  .experience-card{
-    display:flex;
-    gap:1rem;
-    align-items:center;
-    background: rgba(255,255,255,0.05);
-    padding:1rem;
-    border-radius:10px;
-    box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  }
-  .experience-card img{
-    width:160px; height:160px; object-fit:cover; border-radius:8px;
-  }
-  .experience-card p{ white-space:pre-line; margin:0; color:#ddd; }
+/* --- VOUCHES --- */
+#content.vouches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+#content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
+.vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
+.vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
 
-  /* --- EXPERTISE --- (inchangé, texte non justifié) */
-  #content.expertise { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
-  #content.expertise p { text-align:left !important; color:#ddd; margin:0; white-space:pre-line; }
-  @media (max-width:900px){ #content.expertise{ grid-template-columns:1fr; } }
+/* --- CONTACT --- */
+#content.contact .card p { text-align:center !important; }
+#content.contact { display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+#content.contact .card { width:fit-content; min-width:300px; }
 
-  /* --- WORK EXAMPLES --- (nouveau comportement : menu + zone d'affichage) */
-  #content.work {
-    display:flex;
-    flex-direction:column;
-    gap:1.5rem;
-    align-items:stretch;
-  }
+/* --- CARTES --- */
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,151,167,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease;
+  cursor: default;
+}
+.card p { white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
+.card:hover { transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
+.card.clickable { cursor:pointer; }
+.card.clickable:hover { transform: translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
 
-  /* menu des catégories (boutons) */
-  .work-menu {
-    display:flex;
-    gap:1rem;
-    width:100%;
-    justify-content:space-between;
-    flex-wrap:wrap;
-  }
-  .work-menu button {
-    flex:1 1 0;
-    background:none;
-    border:none;
-    color:var(--muted);
-    font-weight:600;
-    padding:0.6rem 0.8rem;
-    cursor:pointer;
-    transition:0.22s;
-    position:relative;
-    text-align:center;
-  }
-  .work-menu button.active { color:var(--accent-strong); }
-  .work-menu button::after{
-    content:"";
-    display:block;
-    width:0;
-    height:2px;
-    background:var(--accent);
-    margin-top:6px;
-    transition:width .22s;
-  }
-  .work-menu button:hover::after,
-  .work-menu button.active::after { width:100%; }
+footer { text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; color:#aaa; width:100%; }
 
-  /* zone où on affiche les cards de la catégorie sélectionnée */
-  .work-items {
-    display:none; /* fermé par défaut */
-    width:100%;
-    gap:1.5rem;
-    flex-direction:column;
-  }
-  .work-items.active { display:flex; }
-
-  /* s'assurer que chaque card occupe toute la largeur disponible */
-  .work-items .card { width:100%; }
-
-  /* --- VOUCHES --- (inchangé mais précis) */
-  #content.vouches { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; text-align:center; }
-  #content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
-  .vouche-title { color:var(--accent-strong); margin-top:0.5rem; font-weight:600; }
-  .vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
-
-  /* --- CONTACT --- */
-  #content.contact { display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
-  #content.contact .card { width:fit-content; min-width:300px; }
-  #content.contact .card p { text-align:center !important; }
-
-  /* --- CARTES GLOBALES --- */
-  .card {
-    background: rgba(255,255,255,0.05);
-    padding:1.5rem;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,151,167,0.2);
-    transition: transform .25s, box-shadow .25s;
-  }
-  .card p { white-space:pre-line; margin:0; color:#ddd; text-align:justify; }
-  .card:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
-  .card.clickable { cursor:pointer; }
-  .card.clickable:hover { transform:translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
-
-  footer { text-align:center; padding:2rem; background:#0a1416; font-size:.9rem; color:#aaa; width:100%; }
-
-  @media (max-width:1000px){
-    /* petits écrans : s'assurer que le menu se wrap proprement */
-    .work-menu button{ flex-basis: 48%; }
-    .work-menu{ gap:.6rem; }
-  }
-
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
 </style>
 </head>
 <body>
@@ -214,209 +213,119 @@
   <button data-section="contact">Contact</button>
 </nav>
 
-<main>
-  <div id="content" class="bio"></div>
-</main>
+<main id="content" class="bio"></main>
 
 <footer>© 2025 Phenomene - Siege X Coach</footer>
 
 <script>
-/*
-  Comportement :
-  - data.json contient les sections : bio, experience, expertise, work, vouches, contact
-  - work : array de catégories { category, items:[{image?, text?}] }
-  - menu work: fermé par défaut (aucune catégorie active). Au clic, on active la catégorie et on affiche ses cards.
-*/
-
 let data = {};
 
-async function loadData(){
-  try{
-    const res = await fetch('data.json');
-    data = await res.json();
-  }catch(e){
-    data = {}; // en dev, évite crash
-    console.error('Impossible de charger data.json', e);
-  }
-  showSection('bio');
+async function loadData() {
+  const res = await fetch("data.json");
+  data = await res.json();
+  showSection("bio");
 }
 
-function clearContent(content){
-  while(content.firstChild) content.removeChild(content.firstChild);
-}
-
-function showSection(section){
-  const content = document.getElementById('content');
-  clearContent(content);
+function showSection(section) {
+  const content = document.getElementById("content");
+  content.innerHTML = "";
   content.className = section;
 
-  // --- WORK (menu + affichage) ---
-  if(section === 'work'){
-    // menu
-    const menu = document.createElement('div');
-    menu.className = 'work-menu';
+  if (section === "work") {
+    data.work.forEach(category => {
+      const catDiv = document.createElement("div");
+      catDiv.className = "work-category";
 
-    const itemsContainer = document.createElement('div');
-    itemsContainer.className = 'work-items'; // area where we put cards for the active category
+      const header = document.createElement("div");
+      header.className = "work-category-header";
+      header.textContent = category.category;
 
-    // If no categories, nothing to do
-    if(!data.work || !Array.isArray(data.work) || data.work.length===0){
-      const note = document.createElement('div');
-      note.className = 'card';
-      note.innerHTML = '<p>No work examples configured.</p>';
-      content.appendChild(menu);
-      content.appendChild(itemsContainer);
-      return;
-    }
+      const itemsDiv = document.createElement("div");
+      itemsDiv.className = "work-category-items";
 
-    data.work.forEach((cat, idx) => {
-      const btn = document.createElement('button');
-      btn.textContent = cat.category || `Category ${idx+1}`;
-      btn.type = 'button';
-
-      btn.addEventListener('click', () => {
-        // toggle active on buttons
-        document.querySelectorAll('.work-menu button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // populate itemsContainer with this category items (replace previous)
-        while(itemsContainer.firstChild) itemsContainer.removeChild(itemsContainer.firstChild);
-
-        // create cards for each item
-        (cat.items || []).forEach(it => {
-          const card = document.createElement('div');
-          card.className = 'card';
-
-          // image + text -> image left, text right
-          if(it.image && it.text){
-            card.style.display = 'flex';
-            card.style.gap = '1rem';
-            // left image (fixed width), right text (flex)
-            card.innerHTML = `
-              <img src="${it.image}" alt="${it.title||''}" style="width:150px; height:auto; border-radius:8px; object-fit:cover; flex-shrink:0;">
-              <div style="flex:1">
-                ${it.title?`<h3 style="margin:0 0 .5rem 0; color:var(--accent-strong);">${it.title}</h3>`:''}
-                <p style="margin:0;">${it.text}</p>
-              </div>
-            `;
-          }
-          // image only
-          else if(it.image){
-            card.innerHTML = `<img src="${it.image}" alt="${it.title||''}" style="width:100%; height:auto; border-radius:8px; object-fit:cover;">`;
-          }
-          // text only
-          else if(it.text){
-            card.innerHTML = `${it.title?`<h3 style="margin:0 0 .5rem 0; color:var(--accent-strong);">${it.title}</h3>`:''}<p>${it.text}</p>`;
-          }
-
-          itemsContainer.appendChild(card);
-        });
-
-        // show container
-        document.querySelectorAll('.work-items').forEach(div => div.classList.remove('active'));
-        itemsContainer.classList.add('active');
+      category.items.forEach(el => {
+        const card = document.createElement("div");
+        card.className = "card";
+        if (el.image && el.text) {
+          card.style.display = "flex";
+          card.style.gap = "1rem";
+          card.innerHTML = `
+            <img src="${el.image}" style="width:150px; height:auto; border-radius:8px; flex-shrink:0;">
+            <p style="flex:1;">${el.text}</p>
+          `;
+        } else if (el.image) {
+          card.innerHTML = `<img src="${el.image}" style="width:100%; border-radius:8px;">`;
+        } else if (el.text) {
+          card.innerHTML = `<p>${el.text}</p>`;
+        }
+        itemsDiv.appendChild(card);
       });
 
-      menu.appendChild(btn);
-    });
+      header.addEventListener("click", () => {
+        document.querySelectorAll(".work-category").forEach(cat => {
+          if (cat !== catDiv) cat.classList.remove("active");
+        });
+        catDiv.classList.toggle("active");
+      });
 
-    content.appendChild(menu);
-    content.appendChild(itemsContainer);
-    return;
+      catDiv.appendChild(header);
+      catDiv.appendChild(itemsDiv);
+      content.appendChild(catDiv);
+    });
+  } else {
+    data[section].forEach(item => {
+      let card = document.createElement("div");
+      card.className = "card";
+
+      if(section==="experience" && item.image && item.text) {
+        card = document.createElement("div");
+        card.className = "experience-card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title||''}">
+          <div>
+            ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
+            <p>${item.text}</p>
+          </div>
+        `;
+      } else if(section==="expertise") {
+        card.innerHTML = `<p>${item}</p>`;
+      } else if(section==="vouches" && item.image) {
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title||''}">
+          ${item.title ? `<h3 class="vouche-title">${item.title}</h3>` : ""}
+          ${item.text ? `<p class="vouche-text">${item.text}</p>` : ""}
+        `;
+      } else if(section==="contact") {
+        if(item.type==="link") {
+          card.classList.add("clickable");
+          card.innerHTML = `<p>${item.label}</p>`;
+          card.addEventListener("click",()=>window.open(item.url,"_blank"));
+        } else if(item.text) {
+          card.innerHTML = `<p>${item.text}</p>`;
+        }
+      } else if(item.image || item.title || item.text) {
+        card.innerHTML = `
+          ${item.image ? `<img src="${item.image}" alt="${item.title||''}">` : ""}
+          ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
+          ${item.text ? `<p>${item.text}</p>` : ""}
+        `;
+      } else if(typeof item==="string") {
+        card.innerHTML = `<p>${item}</p>`;
+      }
+
+      content.appendChild(card);
+    });
   }
 
-  // --- AUTRES SECTIONS : conserver le comportement précédent pour ne rien casser ---
-  const sectionData = data[section] || [];
+  document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+  document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
 
-  // Certaines sections sont des arrays de strings (expertise, bio) ou d'objets.
-  sectionData.forEach(item => {
-    // build card depending on section and item structure
-    // experience: item.image + item.text => experience-card (image left, text right, image doubled size earlier -> 160)
-    if(section === 'experience' && item && item.image && item.text){
-      const exp = document.createElement('div');
-      exp.className = 'experience-card';
-      exp.innerHTML = `
-        <img src="${item.image}" alt="${item.title||''}">
-        <div>
-          ${item.title?`<h3 style="margin:0 0 .5rem 0; color:var(--accent-strong);">${item.title}</h3>`:''}
-          <p>${item.text}</p>
-        </div>
-      `;
-      content.appendChild(exp);
-      return;
-    }
-
-    // vouches: image rounded, title under image centered, text justified under title
-    if(section === 'vouches' && item && item.image){
-      const v = document.createElement('div');
-      v.className = 'card';
-      v.innerHTML = `
-        <img src="${item.image}" alt="${item.title||''}">
-        ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:''}
-        ${item.text?`<p class="vouche-text">${item.text}</p>`:''}
-      `;
-      content.appendChild(v);
-      return;
-    }
-
-    // contact: allow type link to make whole card clickable
-    if(section === 'contact'){
-      const c = document.createElement('div');
-      c.className = 'card';
-      if(item && item.type === 'link'){
-        c.classList.add('clickable');
-        c.innerHTML = `<p>${item.label}</p>`;
-        c.addEventListener('click', ()=> window.open(item.url, '_blank'));
-      } else if(item && item.text){
-        c.innerHTML = `<p>${item.text}</p>`;
-      }
-      content.appendChild(c);
-      return;
-    }
-
-    // expertise or simple strings (bio)
-    if(typeof item === 'string'){
-      const s = document.createElement('div');
-      s.className = 'card';
-      s.innerHTML = `<p>${item}</p>`;
-      content.appendChild(s);
-      return;
-    }
-
-    // generic object (image/title/text) fallback
-    if(item && (item.image || item.title || item.text)){
-      const g = document.createElement('div');
-      g.className = 'card';
-      g.innerHTML = `
-        ${item.image?`<img src="${item.image}" alt="${item.title||''}" style="width:100%; border-radius:8px;">`:''}
-        ${item.title?`<h3 style="margin:0 0 .5rem 0; color:var(--accent-strong);">${item.title}</h3>`:''}
-        ${item.text?`<p>${item.text}</p>`: ''}
-      `;
-      content.appendChild(g);
-      return;
-    }
-  });
-
-  // highlight main nav active
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-  const mainBtn = document.querySelector(`nav button[data-section="${section}"]`);
-  if(mainBtn) mainBtn.classList.add('active');
-
-  // (Ensure nav active if we programmatically switched)
-  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-  const activeMain = document.querySelector(`nav button[data-section="${section}"]`);
-  if(activeMain) activeMain.classList.add('active');
+  // ✅ Empêche le "disparition" du header
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// main nav clicks
-document.querySelectorAll('nav button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const section = btn.getAttribute('data-section');
-    // highlight nav
-    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    showSection(section);
-  });
+document.querySelectorAll("nav button").forEach(btn => {
+  btn.addEventListener("click", () => showSection(btn.getAttribute("data-section")));
 });
 
 loadData();
