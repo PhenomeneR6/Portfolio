@@ -6,10 +6,6 @@
 <title>Phenomene - Siege X Coach</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* ✅ Ajout global pour corriger l’overflow et les paddings */
-* { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
-
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -18,6 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
 header {
   width: 100%;
@@ -97,17 +94,8 @@ nav button.active::after { width: 100%; }
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
 }
-.experience-card img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.experience-card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-}
+.experience-card img { width: 160px; height: 160px; object-fit: cover; border-radius: 8px; }
+.experience-card p { white-space: pre-line; margin:0; color:#ddd; }
 
 /* --- EXPERTISE --- */
 #content.expertise {
@@ -122,21 +110,40 @@ nav button.active::after { width: 100%; }
 #content.work {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+}
+.work-categories {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
-.work-category-header {
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: #00acc1;
+.work-category {
+  flex: 1 1 calc(25% - 1rem);
   cursor: pointer;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(0,151,167,0.3);
+  font-weight:600;
+  font-size:1.1rem;
+  text-align:center;
+  padding:0.5rem 0;
+  border-radius:6px;
+  background: rgba(0,151,167,0.1);
+  transition:0.3s;
 }
-.work-category-items {
+.work-category.active {
+  background: rgba(0,151,167,0.25);
+}
+.work-items {
   display: none;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap:1rem;
+}
+.work-items .card {
+  width:100%;
+  display:flex;
+  gap:1rem;
+}
+.work-items .card img {
+  border-radius:8px;
+  flex-shrink:0;
 }
 
 /* --- VOUCHES --- */
@@ -151,17 +158,9 @@ nav button.active::after { width: 100%; }
 .vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
 
 /* --- CONTACT --- */
-#content.contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-#content.contact .card {
-  width: 400px; /* ✅ largeur fixe uniforme */
-  min-width: 400px;
-  text-align: center;
-}
+#content.contact .card p { text-align:center !important; }
+#content.contact { display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+#content.contact .card { width:fit-content; min-width:300px; }
 
 /* --- CARTES --- */
 .card {
@@ -217,81 +216,72 @@ function showSection(section) {
   content.className = section;
 
   if(section==="work") {
-    data.work.forEach(category => {
-      const header = document.createElement("div");
-      header.className = "work-category-header";
-      header.textContent = category.category;
+    const catContainer = document.createElement("div");
+    catContainer.className="work-categories";
+
+    const itemsContainer = document.createElement("div");
+    itemsContainer.className="work-items-container";
+
+    data.work.forEach((cat, idx)=>{
+      const catDiv = document.createElement("div");
+      catDiv.className="work-category";
+      catDiv.textContent = cat.category;
 
       const itemsDiv = document.createElement("div");
-      itemsDiv.className = "work-category-items";
+      itemsDiv.className="work-items";
 
-      category.items.forEach(el => {
+      cat.items.forEach(el=>{
         const card = document.createElement("div");
-        card.className = "card";
-        if(el.image && el.text) {
+        card.className="card";
+        if(el.image && el.text){
           card.style.display="flex";
-          card.style.gap="1rem";
-          card.innerHTML = `
-            <img src="${el.image}" style="width:150px; height:auto; border-radius:8px; flex-shrink:0;">
-            <p style="flex:1;">${el.text}</p>
-          `;
-        } else if(el.image) {
-          card.innerHTML = `<img src="${el.image}" style="width:100%; border-radius:8px;">`;
-        } else if(el.text) {
-          card.innerHTML = `<p>${el.text}</p>`;
+          card.innerHTML=`<img src="${el.image}" style="width:150px;"><p style="flex:1;">${el.text}</p>`;
+        } else if(el.image){
+          card.innerHTML=`<img src="${el.image}" style="width:100%;">`;
+        } else if(el.text){
+          card.innerHTML=`<p>${el.text}</p>`;
         }
         itemsDiv.appendChild(card);
       });
 
-      header.addEventListener("click", () => {
-        const isVisible = itemsDiv.style.display === "flex";
-        document.querySelectorAll(".work-category-items").forEach(div => div.style.display = "none");
-        itemsDiv.style.display = isVisible ? "none" : "flex";
+      catDiv.addEventListener("click", ()=>{
+        document.querySelectorAll(".work-category").forEach(c=>c.classList.remove("active"));
+        document.querySelectorAll(".work-items").forEach(i=>i.style.display="none");
+        catDiv.classList.add("active");
+        itemsDiv.style.display="flex";
       });
 
-      content.appendChild(header);
-      content.appendChild(itemsDiv);
+      catContainer.appendChild(catDiv);
+      itemsContainer.appendChild(itemsDiv);
     });
-  } 
-  else {
-    data[section].forEach(item => {
-      let card = document.createElement("div");
-      card.className = "card";
 
-      if(section==="experience" && item.image && item.text) {
+    content.appendChild(catContainer);
+    content.appendChild(itemsContainer);
+  } else {
+    data[section].forEach(item=>{
+      let card = document.createElement("div");
+      card.className="card";
+
+      if(section==="experience" && item.image && item.text){
         card = document.createElement("div");
-        card.className = "experience-card";
-        card.innerHTML = `
-          <img src="${item.image}" alt="${item.title||''}">
-          <div>
-            ${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}
-            <p>${item.text}</p>
-          </div>
-        `;
-      } else if(section==="expertise") {
-        card.innerHTML = `<p>${item}</p>`;
-      } else if(section==="vouches" && item.image) {
-        card.innerHTML = `
-          <img src="${item.image}" alt="${item.title||''}">
-          ${item.title ? `<h3 class="vouche-title">${item.title}</h3>` : ""}
-          ${item.text ? `<p class="vouche-text">${item.text}</p>` : ""}
-        `;
-      } else if(section==="contact") {
-        if(item.type==="link") {
+        card.className="experience-card";
+        card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
+      } else if(section==="expertise"){
+        card.innerHTML=`<p>${item}</p>`;
+      } else if(section==="vouches" && item.image){
+        card.innerHTML=`<img src="${item.image}" alt="${item.title||''}">${item.title ? `<h3 class="vouche-title">${item.title}</h3>`:""}${item.text ? `<p class="vouche-text">${item.text}</p>`:""}`;
+      } else if(section==="contact"){
+        if(item.type==="link"){
           card.classList.add("clickable");
-          card.innerHTML = `<p>${item.label}</p>`;
+          card.innerHTML=`<p>${item.label}</p>`;
           card.addEventListener("click",()=>window.open(item.url,"_blank"));
-        } else if(item.text) {
-          card.innerHTML = `<p>${item.text}</p>`;
+        } else if(item.text){
+          card.innerHTML=`<p>${item.text}</p>`;
         }
-      } else if(item.image || item.title || item.text) {
-        card.innerHTML = `
-          ${item.image ? `<img src="${item.image}" alt="${item.title||''}">` : ""}
-          ${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>` : ""}
-          ${item.text ? `<p>${item.text}</p>` : ""}
-        `;
-      } else if(typeof item==="string") {
-        card.innerHTML = `<p>${item}</p>`;
+      } else if(item.image || item.title || item.text){
+        card.innerHTML=`${item.image ? `<img src="${item.image}" alt="${item.title||''}">`:""}${item.title ? `<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}${item.text ? `<p>${item.text}</p>`:""}`;
+      } else if(typeof item==="string"){
+        card.innerHTML=`<p>${item}</p>`;
       }
 
       content.appendChild(card);
@@ -308,6 +298,5 @@ document.querySelectorAll("nav button").forEach(btn=>{
 
 loadData();
 </script>
-
 </body>
 </html>
