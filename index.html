@@ -105,7 +105,27 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
-#content.expertise p { text-align: left !important; color: #ddd; margin:0; white-space: pre-line; }
+#content.expertise .card {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background: rgba(255,255,255,0.05);
+  padding:1.5rem;
+  border-radius:10px;
+  box-shadow:0 0 15px rgba(0,151,167,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#content.expertise .card h3 {
+  margin:0 0 0.5rem 0;
+  color:#00acc1;
+  text-align:center !important;
+}
+#content.expertise .card p {
+  white-space: pre-line;
+  margin:0;
+  color:#ddd;
+  text-align:justify;
+}
 @media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
 /* --- WORK EXAMPLES --- */
@@ -229,6 +249,13 @@ function showSection(section){
       card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
       content.appendChild(card);
     });
+  } else if(section==="expertise"){
+    data.expertise.forEach(item=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML=`<h3>${item.title}</h3><p>${item.text}</p>`;
+      content.appendChild(card);
+    });
   } else if(section==="work"){
     const catContainer=document.createElement("div");
     catContainer.className="work-categories";
@@ -275,9 +302,7 @@ function showSection(section){
       let card=document.createElement("div");
       card.className="card";
 
-      if(section==="expertise"){
-        card.innerHTML=`<p>${item}</p>`;
-      } else if(section==="vouches" && item.image){
+      if(section==="vouches" && item.image){
         card.innerHTML=`<img src="${item.image}" alt="${item.title||''}">${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}${item.text?`<p class="vouche-text">${item.text}</p>`:""}`;
       } else if(section==="contact"){
         if(item.type==="link"){
