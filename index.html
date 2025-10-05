@@ -75,35 +75,19 @@ nav button.active::after { width: 100%; }
 }
 
 /* --- BIO --- */
-#content.bio {
-  display: block;
-  column-count: 2;
-  column-gap: 2rem;
-}
+#content.bio { display: block; column-count: 2; column-gap: 2rem; }
 @media (max-width: 900px) { #content.bio { column-count: 1; } }
 
 /* --- EXPERIENCES --- */
 #content.experience { display: flex; flex-direction: column; gap: 1rem; }
 .experience-card {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  display: flex; gap: 1rem; align-items: center;
   background: rgba(255,255,255,0.05);
-  padding: 1rem;
-  border-radius: 10px;
+  padding: 1rem; border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
 }
-.experience-card img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-.experience-card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-}
+.experience-card img { width: 160px; height: 160px; object-fit: cover; border-radius: 8px; }
+.experience-card p { white-space: pre-line; margin: 0; color: #ddd; }
 
 /* --- EXPERTISE --- */
 #content.expertise {
@@ -117,47 +101,47 @@ nav button.active::after { width: 100%; }
 /* --- WORK EXAMPLES --- */
 #content.work {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1.5rem;
+  position: relative;
 }
-.work-category {
-  width: calc(25% - 1rem);
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  overflow: hidden;
-  transition: all 0.3s ease;
+.work-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 .work-category-header {
   cursor: pointer;
   font-weight: 600;
   font-size: 1.1rem;
-  padding: 1rem;
-  background: rgba(0,151,167,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
   color: #00acc1;
   text-align: center;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,151,167,0.2);
 }
-.work-category-header:hover {
-  background: rgba(0,151,167,0.2);
+.work-category-header:hover,
+.work-category-header.active {
+  background: rgba(0,151,167,0.3);
+  transform: translateY(-3px);
 }
-.work-category.active {
-  width: 100%;
-}
+
 .work-category-items {
   display: none;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  animation: fadeIn 0.4s ease;
 }
-.work-category.active .work-category-items {
+.work-category-items.active {
   display: flex;
 }
-.work-category .card {
-  width: 100%;
-}
-.work-category .card img {
+.work-category-items .card img {
   width: 100%;
   border-radius: 8px;
 }
@@ -169,14 +153,14 @@ nav button.active::after { width: 100%; }
   gap: 1.5rem;
   text-align: center;
 }
-#content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
+#content.vouches img { width:60%; height:auto; border-radius:50%; margin:0 auto; }
 .vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
 .vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
 
 /* --- CONTACT --- */
-#content.contact .card p { text-align:center !important; }
 #content.contact { display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
 #content.contact .card { width:fit-content; min-width:300px; }
+#content.contact .card p { text-align:center !important; }
 
 /* --- CARTES --- */
 .card {
@@ -186,7 +170,6 @@ nav button.active::after { width: 100%; }
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 0.5s ease;
-  cursor: default;
 }
 .card p { white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
 .card:hover { transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
@@ -232,13 +215,20 @@ function showSection(section) {
   content.className = section;
 
   if (section === "work") {
-    data.work.forEach(category => {
-      const catDiv = document.createElement("div");
-      catDiv.className = "work-category";
+    // zone des onglets
+    const tabs = document.createElement("div");
+    tabs.className = "work-tabs";
+    content.appendChild(tabs);
 
+    const workContainer = document.createElement("div");
+    workContainer.className = "work-container";
+    content.appendChild(workContainer);
+
+    data.work.forEach(category => {
       const header = document.createElement("div");
       header.className = "work-category-header";
       header.textContent = category.category;
+      tabs.appendChild(header);
 
       const itemsDiv = document.createElement("div");
       itemsDiv.className = "work-category-items";
@@ -262,17 +252,16 @@ function showSection(section) {
       });
 
       header.addEventListener("click", () => {
-        document.querySelectorAll(".work-category").forEach(cat => {
-          if (cat !== catDiv) cat.classList.remove("active");
-        });
-        catDiv.classList.toggle("active");
+        document.querySelectorAll(".work-category-header").forEach(h => h.classList.remove("active"));
+        document.querySelectorAll(".work-category-items").forEach(div => div.classList.remove("active"));
+        header.classList.add("active");
+        itemsDiv.classList.add("active");
       });
 
-      catDiv.appendChild(header);
-      catDiv.appendChild(itemsDiv);
-      content.appendChild(catDiv);
+      workContainer.appendChild(itemsDiv);
     });
-  } else {
+  } 
+  else {
     data[section].forEach(item => {
       let card = document.createElement("div");
       card.className = "card";
@@ -319,8 +308,6 @@ function showSection(section) {
 
   document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
   document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
-
-  // ✅ Empêche le "disparition" du header
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
