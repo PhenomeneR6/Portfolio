@@ -113,18 +113,18 @@ nav button.active::after { width: 100%; }
   padding:1.5rem;
   border-radius:10px;
   box-shadow:0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #content.expertise .card h3 {
   margin:0 0 0.5rem 0;
   color:#00acc1;
-  text-align:center !important;
+  text-align:center;
 }
 #content.expertise .card p {
   white-space: pre-line;
   margin:0;
   color:#ddd;
-  text-align:justify;
+  text-align:left; /* texte aligné à gauche */
+  width:100%;
 }
 @media (max-width: 900px) { #content.expertise { grid-template-columns: 1fr; } }
 
@@ -177,15 +177,10 @@ nav button.active::after { width: 100%; }
 
 /* --- CARTES --- */
 .card{
-  background: rgba(255,255,255,0.05);
-  padding:1.5rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 0.5s ease;
   cursor: default;
 }
-.card p{ white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
 .card:hover{ transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
 .card.clickable{ cursor:pointer; }
 .card.clickable:hover{ transform: translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
@@ -299,7 +294,7 @@ function showSection(section){
     content.appendChild(itemsContainer);
   } else {
     data[section].forEach(item=>{
-      let card=document.createElement("div");
+      const card=document.createElement("div");
       card.className="card";
 
       if(section==="vouches" && item.image){
