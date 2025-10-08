@@ -107,34 +107,48 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  align-items: stretch; /* ✅ force toutes les cards à avoir la même hauteur */
+  align-items: stretch; /* ✅ cartes d'une même ligne alignées sur la plus haute */
 }
 
 #content.expertise .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* ✅ garde le contenu aligné en haut */
+  justify-content: flex-start; /* ✅ contenu en haut */
   background: rgba(255,255,255,0.05);
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%; /* ✅ occupe toute la hauteur du grid cell */
+  height: 100%; /* ✅ occupe la hauteur de la cellule du grid */
 }
+
+#content.expertise .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,151,167,0.4);
+}
+
 #content.expertise .card h3 {
-  margin:0 0 0.5rem 0;
-  color:#00acc1;
-  text-align:center !important;
+  margin: 0 0 0.5rem 0;
+  color: #00acc1;
+  text-align: center;
+  width: 100%;
 }
+
 #content.expertise .card p {
   white-space: pre-line;
-  margin:0;
-  color:#ddd;
-  text-align:left;
-  width:100%;
+  margin: 0;
+  color: #ddd;
+  text-align: left;
+  width: 100%;
+  flex: 1; /* ✅ pousse le texte à occuper l’espace restant pour équilibrer la hauteur */
 }
-@media (max-width: 1000px) { #content.expertise { grid-template-columns: 1fr; } }
+
+@media (max-width: 1000px) {
+  #content.expertise {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* --- WORK EXAMPLES --- */
 #content.work {
@@ -223,15 +237,61 @@ nav button.active::after { width: 100%; }
 
 /* --- VOUCHES --- */
 #content.vouches {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap:1.5rem;
-  text-align:center;
+  gap: 1.5rem;
+  text-align: center;
+  width: 100%;
+  align-items: stretch; /* ✅ chaque ligne a la hauteur de la plus grande carte */
+}
+
+#content.vouches .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* ✅ contenu aligné en haut */
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,151,167,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* ✅ la carte s'étire dans sa cellule */
+}
+
+#content.vouches .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,151,167,0.4);
+}
+
+#content.vouches img {
+  width: 60%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: none;
+  margin: 0 auto;
+}
+
+.vouche-title {
+  color: #00acc1;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  text-align: center;
   width: 100%;
 }
-#content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
-.vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
-.vouche-text { text-align:justify; margin-top:0.5rem; color:#ddd; }
+
+.vouche-text {
+  text-align: justify;
+  margin-top: 0.5rem;
+  color: #ddd;
+  width: 100%;
+  flex: 1; /* ✅ équilibre la hauteur quand le texte est plus court */
+}
+
+@media (max-width: 1000px) {
+  #content.vouches {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* --- CONTACT --- */
 #content.contact .card p{ text-align:center !important; }
