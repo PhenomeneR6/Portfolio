@@ -84,7 +84,7 @@
   {
     "category": "Internal Data",
     "items": [
-      { "title": "Team Data Collection", "image": "img/works/Data result.png", "text": " • General team data scrim or official" },
+      { "title": "Team Data Collection", "image": "img/works/Data result.png", "text": " • General team scrim or official game data" },
       { "title": "Team Data Collection", "image": "img/works/Data site.png", "text": " • Detailed data per bombsite and per strat to better target issues" },
       { "title": "Team Data Collection", "image": "img/works/Data individual.png", "text": " • Detailed individual data including global rating, per map, per bombsite both attack and defence" },
       { "title": "Team Data Collection", "image": "img/works/Script.png", "text": " • Script that allows me to collect data live during scrim" },
