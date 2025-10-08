@@ -56,9 +56,7 @@
   {
     "category": "Mindset & Performance",
     "items": [
-      { "image": "img/team1.jpg" },
-      { "text": "Detailed strategy analysis of our top matches" },
-      { "image": "img/team2.jpg", "text": "Player training session overview" }
+      { "image": "img/works/team goal.png", "text": "Team Goal tool\n\n  • To go over every week, set up goals and improvements focuses for the week ahead" }
     ]
   },
   {
