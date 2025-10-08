@@ -16,6 +16,8 @@ body {
   align-items: center;
   overflow-x: hidden;
 }
+
+/* --- Header --- */
 header {
   width: 100%;
   height: 40vh;
@@ -34,6 +36,8 @@ header h1 {
   padding: 10px 20px;
   border-radius: 6px;
 }
+
+/* --- Navigation --- */
 nav {
   display: flex;
   justify-content: center;
@@ -66,13 +70,16 @@ nav button::after {
 nav button:hover::after,
 nav button.active::after { width: 100%; }
 
+/* --- Main content container --- */
 #content {
   max-width: 1000px;
   padding: 2rem;
   width: 100%;
   box-sizing: border-box;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
+  align-items: center; /* centre tout horizontalement */
 }
 
 /* --- EXPERIENCE --- */
@@ -99,6 +106,7 @@ nav button.active::after { width: 100%; }
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  width: 100%;
 }
 #content.expertise .card {
   display:flex;
@@ -129,11 +137,13 @@ nav button.active::after { width: 100%; }
   display:flex;
   flex-direction:column;
   gap:2rem;
+  width: 100%;
 }
 .work-categories{
   display:flex;
   flex-wrap:wrap;
   gap:1rem;
+  justify-content: center; /* centre horizontalement les catégories */
 }
 .work-category {
   flex: 1 1 calc(25% - 1rem);
@@ -145,10 +155,10 @@ nav button.active::after { width: 100%; }
   border-radius: 6px;
   background: rgba(0,151,167,0.1);
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60px;
+  display: flex;              
+  align-items: center;        
+  justify-content: center;    
+  min-height: 60px;          
 }
 .work-category:hover {
   background: rgba(0,151,167,0.25);
@@ -156,23 +166,33 @@ nav button.active::after { width: 100%; }
   transform: translateY(-2px);
 }
 .work-category.active {
-  background: rgba(0,151,167,0.15); /* un peu plus bright que normal */
+  background: rgba(0,151,167,0.18); /* légèrement plus bright, pas trop saturé */
   border: 1px solid rgba(255,255,255,0.3);
   box-shadow: 0 0 12px rgba(255,255,255,0.3);
   transform: translateY(0);
 }
 
+.work-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;      /* centre horizontalement les cards */
+  width: 100%;
+}
+
 .work-items{
   display:none;
-  flex-direction:column;
+  flex-direction: column;
   gap:1rem;
+  align-items: center;      /* centre horizontalement */
 }
 .work-items .card{ 
-  width:100%; 
+  width: 100%;
+  max-width: 600px;
   display:flex; 
   flex-direction:column; 
   gap:0.5rem; 
-  align-items: stretch; 
+  align-items: center;      /* centre contenu interne */
 }
 .work-items .card h3 {
   margin:0 0 0.5rem 0;
@@ -183,14 +203,18 @@ nav button.active::after { width: 100%; }
 .work-items .card .content-wrapper{
   display:flex;
   gap:1rem;
-  align-items:flex-start; /* default, sera override si only-images */
-  justify-content: center; /* centre horizontalement toujours */
+  align-items:flex-start;
+  justify-content: center; /* centre horizontalement images seules */
+  flex-wrap: wrap;
 }
-.work-items .card .content-wrapper.col { 
-  flex-direction: column; 
-}
-.work-items .card .content-wrapper.only-images {
-  align-items: center; /* centre verticalement si pas de texte */
+.work-items .card .content-wrapper.row { flex-direction: row; }
+.work-items .card .content-wrapper.col { flex-direction: column; }
+.work-items .card img{ 
+  width:250px; 
+  height:auto; 
+  border-radius:8px; 
+  cursor:zoom-in; 
+  flex-shrink:0;
 }
 
 /* --- VOUCHES --- */
@@ -199,6 +223,7 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap:1.5rem;
   text-align:center;
+  width: 100%;
 }
 #content.vouches img { width:60%; height:auto; border-radius:50%; box-shadow:none; margin:0 auto; }
 .vouche-title { color:#00acc1; margin-top:0.5rem; font-weight:600; }
@@ -206,7 +231,7 @@ nav button.active::after { width: 100%; }
 
 /* --- CONTACT --- */
 #content.contact .card p{ text-align:center !important; }
-#content.contact{ display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
+#content.contact{ display:flex; flex-direction:column; align-items:center; gap:1.5rem; width: 100%; }
 #content.contact .card{ width:fit-content; min-width:300px; }
 
 /* --- CARTES --- */
@@ -363,7 +388,6 @@ function showSection(section){
         const contentWrapper=document.createElement("div");
         contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
 
-        // --- gestion images multiples ---
         if(el.images && Array.isArray(el.images)){
           const imgGroup=document.createElement("div");
           imgGroup.style.display="flex";
@@ -380,7 +404,8 @@ function showSection(section){
             imgGroup.appendChild(img);
           });
           contentWrapper.appendChild(imgGroup);
-        } else if(el.image){
+        } 
+        else if(el.image){
           const img=document.createElement("img");
           img.src=el.image;
           img.style.width="250px";
@@ -397,9 +422,6 @@ function showSection(section){
           p.textContent=el.text;
           contentWrapper.appendChild(p);
         }
-
-        // Si pas de texte, centrer verticalement
-        if(!el.text) contentWrapper.classList.add("only-images");
 
         card.appendChild(contentWrapper);
         itemsDiv.appendChild(card);
