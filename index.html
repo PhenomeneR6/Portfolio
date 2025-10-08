@@ -179,11 +179,6 @@ nav button.active::after { width: 100%; }
   cursor:zoom-in; 
   flex-shrink:0;
 }
-.multi-images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
 
 /* --- VOUCHES --- */
 #content.vouches {
@@ -295,7 +290,37 @@ function showSection(section){
   content.innerHTML="";
   content.className=section;
 
-  if(section==="work"){
+  if(section==="experience"){
+    let maxWidth=0;
+    data.experience.forEach(item=>{
+      const tempDiv=document.createElement("div");
+      tempDiv.className="experience-card";
+      tempDiv.style.visibility="hidden";
+      tempDiv.style.position="absolute";
+      tempDiv.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
+      document.body.appendChild(tempDiv);
+      const w=tempDiv.offsetWidth;
+      if(w>maxWidth) maxWidth=w;
+      document.body.removeChild(tempDiv);
+    });
+
+    data.experience.forEach(item=>{
+      const card=document.createElement("div");
+      card.className="experience-card";
+      card.style.width=maxWidth+"px";
+      card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
+      content.appendChild(card);
+    });
+
+  } else if(section==="expertise"){
+    data.expertise.forEach(item=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML=`<h3>${item.title}</h3><p>${item.text}</p>`;
+      content.appendChild(card);
+    });
+
+  } else if(section==="work"){
     const catContainer=document.createElement("div");
     catContainer.className="work-categories";
     const itemsContainer=document.createElement("div");
@@ -316,34 +341,47 @@ function showSection(section){
         if(el.title){
           const h3=document.createElement("h3");
           h3.textContent=el.title;
+          h3.style.color="#00acc1";
+          h3.style.textAlign="center";
+          h3.style.width="100%";
           card.appendChild(h3);
         }
 
         const contentWrapper=document.createElement("div");
-        contentWrapper.className="content-wrapper " + ((el.image || el.images) && el.text ? "row" : "col");
+        contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
 
-        if(el.image){
+        // --- nouvelle gestion du tableau d'images ---
+        if(el.images && Array.isArray(el.images)){
+          const imgGroup=document.createElement("div");
+          imgGroup.style.display="flex";
+          imgGroup.style.gap="1rem";
+          el.images.forEach(src=>{
+            const img=document.createElement("img");
+            img.src=src;
+            img.style.width="250px";
+            img.style.height="auto";
+            img.style.borderRadius="8px";
+            img.style.cursor="zoom-in";
+            img.addEventListener("click",()=>openLightbox(src));
+            imgGroup.appendChild(img);
+          });
+          contentWrapper.appendChild(imgGroup);
+        } 
+        // image unique
+        else if(el.image){
           const img=document.createElement("img");
           img.src=el.image;
+          img.style.width="250px";
+          img.style.height="auto";
+          img.style.borderRadius="8px";
+          img.style.cursor="zoom-in";
           img.addEventListener("click",()=>openLightbox(el.image));
           contentWrapper.appendChild(img);
         }
 
-        // 🔹 NOUVELLE PARTIE : plusieurs images côte à côte
-        if(el.images && Array.isArray(el.images)){
-          const multiDiv=document.createElement("div");
-          multiDiv.className="multi-images";
-          el.images.forEach(src=>{
-            const img=document.createElement("img");
-            img.src=src;
-            img.addEventListener("click",()=>openLightbox(src));
-            multiDiv.appendChild(img);
-          });
-          contentWrapper.appendChild(multiDiv);
-        }
-
         if(el.text){
           const p=document.createElement("p");
+          p.style.flex="1";
           p.textContent=el.text;
           contentWrapper.appendChild(p);
         }
@@ -365,29 +403,65 @@ function showSection(section){
 
     content.appendChild(catContainer);
     content.appendChild(itemsContainer);
+
+  } else {
+    if (!Array.isArray(data[section])) return;
+    data[section].forEach(item=>{
+      let card=document.createElement("div");
+      card.className="card";
+
+      if(section==="vouches" && item.image){
+        card.innerHTML=`
+          ${item.image?`<img src="${item.image}" alt="${item.title||''}" style="width:60%;border-radius:50%;display:block;margin:0 auto;">`:""}
+          ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}
+          ${item.text?`<p class="vouche-text">${item.text}</p>`:""}
+        `;
+      } else if(section==="contact"){
+        if(item.type==="link"){
+          card.classList.add("clickable");
+          card.innerHTML=`<p>${item.label}</p>`;
+          card.addEventListener("click",()=>window.open(item.url,"_blank"));
+        } else if(item.text){
+          card.innerHTML=`<p>${item.text}</p>`;
+        } else if(item.title){
+          card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
+        }
+      } else {
+        const parts=[];
+        if(item.image){
+          parts.push(`<img src="${item.image}" alt="${item.title||''}" style="width:100%;border-radius:8px;margin-bottom:8px;">`);
+        }
+        if(item.title){
+          parts.push(`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`);
+        }
+        if(item.text){
+          parts.push(`<p>${item.text}</p>`);
+        }
+        if(typeof item==="string") parts.push(`<p>${item}</p>`);
+        card.innerHTML=parts.join("");
+      }
+      content.appendChild(card);
+    });
   }
 
   document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"));
-  document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
+  const btn=document.querySelector(`nav button[data-section="${section}"]`);
+  if(btn) btn.classList.add("active");
 }
 
-/* --- Lightbox --- */
-function openLightbox(src) {
+function openLightbox(src){
   const lightbox=document.getElementById('lightbox');
   lightbox.querySelector('img').src=src;
   lightbox.style.display='flex';
 }
-
-document.getElementById('lightbox').addEventListener('click', (e)=>{
-  if(e.target.id==='lightbox' || e.target.classList.contains('close-btn')){
+document.getElementById('lightbox').addEventListener('click',e=>{
+  if(e.target.id==='lightbox'||e.target.classList.contains('close-btn')){
     document.getElementById('lightbox').style.display='none';
   }
 });
-
 document.querySelectorAll("nav button").forEach(btn=>{
   btn.addEventListener("click",()=>showSection(btn.getAttribute("data-section")));
 });
-
 loadData();
 </script>
 
