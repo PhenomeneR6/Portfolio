@@ -316,38 +316,46 @@ function showSection(section){
         const card=document.createElement("div");
         card.className="card";
 
-        // Titre au-dessus
-        if (el.title) {
+        // TITRE AU-DESSUS ET CENTRÉ
+        if(el.title){
           const h3=document.createElement("h3");
           h3.style.margin="0 0 0.5rem 0";
           h3.style.color="#00acc1";
-          h3.textContent=el.title;
+          h3.style.textAlign = "center";
+          h3.textContent = el.title;
           card.appendChild(h3);
         }
 
-        if (el.image && el.text) {
+        if(el.image && el.text){
           const img = document.createElement("img");
           img.src = el.image;
           img.style.width = "150px";
           img.addEventListener("click", () => openLightbox(el.image));
+
           const p = document.createElement("p");
           p.style.flex = "1";
           p.textContent = el.text;
-          card.style.flexDirection="row";
+
+          card.style.display = "flex";
+          card.style.flexDirection = "row";
           card.appendChild(img);
           card.appendChild(p);
 
-        } else if (el.image) {
-          const img = document.createElement("img");
-          img.src = el.image;
-          img.style.width = "100%";
-          img.addEventListener("click", () => openLightbox(el.image));
-          card.appendChild(img);
-
-        } else if (el.text) {
-          const p = document.createElement("p");
-          p.textContent = el.text;
-          card.appendChild(p);
+        } else {
+          card.style.display = "flex";
+          card.style.flexDirection = "column";
+          if(el.image){
+            const img = document.createElement("img");
+            img.src = el.image;
+            img.style.width = "100%";
+            img.addEventListener("click", () => openLightbox(el.image));
+            card.appendChild(img);
+          }
+          if(el.text){
+            const p = document.createElement("p");
+            p.textContent = el.text;
+            card.appendChild(p);
+          }
         }
 
         itemsDiv.appendChild(card);
