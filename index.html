@@ -103,20 +103,24 @@ nav button.active::after { width: 100%; }
 
 /* --- EXPERTISE --- */
 #content.expertise {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
+  align-items: stretch; /* ✅ force toutes les cards à avoir la même hauteur */
 }
+
 #content.expertise .card {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* ✅ garde le contenu aligné en haut */
   background: rgba(255,255,255,0.05);
-  padding:1.5rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* ✅ occupe toute la hauteur du grid cell */
 }
 #content.expertise .card h3 {
   margin:0 0 0.5rem 0;
