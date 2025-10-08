@@ -56,7 +56,11 @@
   {
     "category": "Mindset & Performance",
     "items": [
-      { "image": "img/works/team goal.png", "text": "Team Goal tool\n\n  • To go over every week, set up goals and improvements focuses for the week ahead" }
+      { 
+        "title": "Team Goal tool", 
+        "image": "img/works/team goal.png", 
+        "text": "  • To go over every week, set up goals and improvements focuses for the week ahead"
+      }
     ]
   },
   {
