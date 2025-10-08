@@ -318,10 +318,11 @@ function showSection(section){
 
         // TITRE AU-DESSUS ET CENTRÉ
         if(el.title){
-          const h3=document.createElement("h3");
-          h3.style.margin="0 0 0.5rem 0";
-          h3.style.color="#00acc1";
-          h3.style.textAlign = "center";
+          const h3 = document.createElement("h3");
+          h3.style.margin = "0 0 0.5rem 0";
+          h3.style.color = "#00acc1";
+          h3.style.textAlign = "center"; // centrer le texte
+          h3.style.width = "100%";       // <- important !
           h3.textContent = el.title;
           card.appendChild(h3);
         }
