@@ -56,35 +56,39 @@
   {
     "category": "Mindset & Performance",
     "items": [
-      { 
-        "title": "Team Goal tool", 
-        "image": "img/works/team goal.png", 
-        "text": "  • To go over every week, set up goals and improvements focuses for the week ahead"
-      }
+      { "title": "Team Goals tool", "image": "img/works/team goal.png", "text": " • To go over every week, set up goals and improvements focuses for the week ahead" },
+      { "title": "Player Improvement tool", "image": "img/works/Player goal.png", "text": " • To go over every week/2, set up individual goals and points of improvements" },
+      { "title": "Mental work and Stress management Part 1", "image": "img/works/Imagery.png", "text": "  • Tool to follow up imagery exercises (Internal or external) to do every day and before matches → Imagery helps anticipate a lot of highly stressful possible scenarios/situations and make your decision faster and better on gameday but also increase your focus and calm" },
+      { "title": "Mental work and Stress management Part 2", "image": "img/works/Gameday feedback.png", "text": " • Like Part 1, it is to go over during individual meetings and debrief to help player improve on his mental/stress management" }
     ]
   },
   {
     "category": "Gameplay",
     "items": [
-      { "text": "Opponent scouting and counter-strategy documentation" },
-      { "image": "img/tournament1.jpg" },
-      { "image": "img/tournament2.jpg", "text": "Match day preparation and mindset" }
+      { "title": "Strat making Bank Open area ATK", "image": "img/works/Strat open att.png", "text": "  • Work a direct take site when Ace/Hibana are banned, Use Sens to block line of view on Glaz/Blitz pushing, Ying to blind and distract deep site pushing with shotgun, Ash opening the wall (or use Ying shotgun) holding angles from copy window, Blitz either go to plant counter or if someone on kitchen wall smoke deeper into site and push him to kill him, Glaz to cover blitz with smokes, If we want to have cover for top square, we change Ying for Zero or Lion or Dokk and he plays the windows, If there is many traps or Goyos, change Ash for Flores" },
+      { "title": "Strat making Chalet Master ATK", "image": "img/works/Strat att chalet.png", "text": "  • Rush K9, Once Sens pull up the wall covering master area: Osa destroy K9 barricade and BB push, killing the guy half wall, Dokkaebi flash piano to cover K9 entrance and hold it from the boost or jump in Ivy window. Ying flash sol + master and rappel in to create chaos. During all of that, Osa plant on the door behind her shield. Sens claymore lobby door and trench" },
+      { "title": "Strat making Border Bathroom DEF", "image": "img/works/Border D tellers.png", "text": "  • 60% winrate DEF. Horizontal strat on Bathroom site. The top set up and Valkyrie reinforcing hatches late in prep phase to make enemy think we play top to make them clear it. Hide Kaid and use it for hatches to keep them closed. Valk/Mozzie play top early to shot drones and make enemy lose time then fall and play horizontal. Play the c4 kills with info we have. Late round, If enemy do east take and courtyard execute into tellers we can deny that with C4/smokes if they didnt work vertical properly and hatch not open. Or line of sight from custom and retake passeport/Top" },
+      { "title": "Strat making Bank Open area DEF", "image": "img/works/Open die on top.png", "text": "  • 75% winrate DEF. Top set up for Open area. We close meeting wall to janitor to create a more strong hold top and have good crossfires between Trump/Elevator and meeting which throw off a lot of teams. Like the strat say, we play to die. If enemy wants to clear it, Valkyrie can flank lobby or square and Azami can come up marble stairs. If enemy go for a square direct, Azami can tempo with her Kibas + Goyo canisters while Joker (means that player can play everything) and Castle can go back help holding archives + site and Goyo can pressure top square or come closer to site" }
     ]
   },
   {
     "category": "Opponent Analysis",
     "items": [
-      { "text": "Opponent scouting and counter-strategy documentation" },
-      { "image": "img/tournament1.jpg" },
-      { "image": "img/tournament2.jpg", "text": "Match day preparation and mindset" }
+      { "title": "Opponent ATK Gameplay analysis (Unrelated pictures)", "image": "img/works/Counter att.png", "image": "img/works/att counter 2.png",  "text": "  • I’m adaptable on my work, i can adapt to the team needs and their work format. I can and already worked on Google slide, Miro, Cards format or even just notes on discord. I can do counter strat, adapt our strat to the team we are facing, guide on the strats we should play and play style we should play to create a game plan" },
+      { "title": "Counter strat vs M80 mining Kafe ATK", "image": "img/works/Counter d mining.png", "text": "  • M80 knew about our Fall out strat into Kitchen to deny plant with Pulse/Valk in Kitchen but also about our “Aggressive” strat where we fight for Top floor control. So i wanted to make them think we were running the “Aggressive” strat. But i changed it so we could fall and have the plant deny option by having Valkyrie hiding in prep phase and 3 c4s line up. So the goal is to show we would fight, hold top floor for 1m or more if possible then fall back into Kitchen and play to deny the plant" },
+      { "title": "Opponent Def Gameplay analysis (Unrelated pictures)", "image": "img/works/D opp analysis.png", "image": "img/works/D analysis 2.png", "text": "" },
+      { "title": "Counter strat vs M80 Kafe reading DEF", "image": "img/works/ATT counter.png", "text": " • Here i notice that in one of M80 Reading DEF, Kaid was isolated in train, he was alone, with no gadget to help him and no dining rotate or line of sight to help him. So the goal here is to explode mining window with Blitz/Buck/Sens to kill him with Ying holding his chimney fall back and Rauora controlling top flank thanks to her gadget. Once we kill him, we flip to flood reading, Sens stays train to bait Dining plant while Blitz/Buck push Reading door, Ying flash cocktail + laundry through the drone hole and Rauora peek new hatch. This strat has to be called once we ID Kaid cause they dont run Kaid on any of their other strat" },
+      { "title": "Counter strat vs M80 Kafe Kitchen roam", "image": "img/works/Att counter 22.png", "text": " • This is a rush vs M80 Roam on Kafe Kitchen. I noticed when they had Tub/Kaid they were closing Bakery and Freezer and they were roaming heavy top with only Tub on site in Freezer and absolutely no trap reception side. So the goal was just to push fast reception into site into freezer to kill the Tub then plant holding rotation red side, VIP/Bar side and hatch drop. Horizontal strat on Bathroom site. The top set up and Valkyrie reinforcing hatches late in prep phase to " }
     ]
   },
   {
     "category": "Internal Data",
     "items": [
-      { "image": "img/content1.jpg" },
-      { "image": "img/content2.jpg" },
-      { "text": "Social media highlights and commentary" }
+      { "title": "Team Data Collection", "image": "img/works/Data result.png", "text": " • General team data scrim or official" },
+      { "title": "Team Data Collection", "image": "img/works/Data site.png", "text": " • Detailed data per bombsite and per strat to better target issues" },
+      { "title": "Team Data Collection", "image": "img/works/Data individual.png", "text": " • Detailed individual data including global rating, per map, per bombsite both attack and defence" },
+      { "title": "Team Data Collection", "image": "img/works/Script.png", "text": " • Script that allows me to collect data live during scrim" },
+      { "title": "Opponent Data collection", "image": "img/works/Enemy data.png", "text": "" }
     ]
   }
 ],
