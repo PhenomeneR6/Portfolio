@@ -3,467 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phenomene - Siege X Coach</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<title>Portfolio</title>
 <style>
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, #0a0f0f, #0d1b1e);
-  color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial, sans-serif;background:#0f0f0f;color:#fff;display:flex;flex-direction:column;align-items:center;min-height:100vh;}
+  header{padding:2rem 1rem;text-align:center;}
+  nav{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;justify-content:center;}
+  nav button{background:rgba(0,151,167,0.1);border:none;padding:0.5rem 1rem;border-radius:6px;color:#00acc1;cursor:pointer;transition:0.3s;}
+  nav button.active,nav button:hover{background:rgba(0,151,167,0.3);}
+  main{width:90%;max-width:1200px;display:flex;flex-direction:column;gap:2rem;}
 
-/* --- Header --- */
-header {
-  width: 100%;
-  height: 40vh;
-  background: url("img/Phenomene_Header.jpg") center/cover no-repeat;
-  position: relative;
-}
-header h1 {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-  background: rgba(0,0,0,0.3);
-  padding: 10px 20px;
-  border-radius: 6px;
-}
+  section{display:none;flex-direction:column;gap:1rem;align-items:center;width:100%;}
+  section.active{display:flex;}
 
-/* --- Navigation --- */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  background: rgba(0,151,167,0.15);
-  padding: 1rem;
-  width: 100%;
-  backdrop-filter: blur(8px);
-  flex-wrap: wrap;
-}
-nav button {
-  background: none;
-  border: none;
-  color: #b2ebf2;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  position: relative;
-  transition: 0.3s;
-}
-nav button::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #0097a7;
-  transition: width 0.3s;
-  margin-top: 5px;
-}
-nav button:hover::after,
-nav button.active::after { width: 100%; }
+  .card{background:rgba(255,255,255,0.05);padding:1.5rem;border-radius:10px;box-shadow:0 0 15px rgba(0,151,167,0.2);transition:transform 0.3s ease,box-shadow 0.3s ease;display:flex;flex-direction:column;align-items:center;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 0 20px rgba(0,151,167,0.4);}
 
-/* --- Main content container --- */
-#content {
-  max-width: 1000px;
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
-}
+  /* --- WORKS --- */
+  .work-categories{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;width:100%;}
+  .work-category{flex:1 1 calc(25% - 1rem);cursor:pointer;font-weight:600;font-size:1.1rem;text-align:center;padding:0.5rem 0;border-radius:6px;background:rgba(0,151,167,0.1);transition:0.3s;display:flex;justify-content:center;align-items:center;}
+  .work-category:hover{background:rgba(0,151,167,0.25);transform:scale(1.05);}
+  .work-category.active{background:rgba(255,255,255,0.1);}
+  .work-items{display:none;flex-wrap:wrap;gap:1rem;justify-content:center;width:100%;margin-top:1rem;}
+  .work-items.active{display:flex;}
+  .work-items .card{max-width:600px;flex:1 1 250px;}
+  .work-items .card h3{text-align:center;margin-bottom:0.5rem;color:#00acc1;}
+  .content-wrapper{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
 
-/* --- EXPERIENCE --- */
-#content.experience{ 
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-  align-items:center;
-}
-.experience-card {
-  display:flex;
-  gap:1rem;
-  align-items:center;
-  background: rgba(255,255,255,0.05);
-  padding:1rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
-}
-.experience-card img{ width:240px; height:160px; object-fit:contain; border-radius:8px; }
-.experience-card p{ white-space: pre-line; margin:0; color:#ddd; }
+  /* --- EXPERTISE --- */
+  #content.expertise{display:grid;grid-template-columns:repeat(2, 1fr);gap:1.5rem;width:100%;align-items:stretch;}
+  #content.expertise .card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;background:rgba(255,255,255,0.05);padding:1.5rem;border-radius:10px;box-shadow:0 0 15px rgba(0,151,167,0.2);transition:transform 0.3s ease, box-shadow 0.3s ease;height:100%;}
+  #content.expertise .card h3{margin:0 0 0.5rem 0;color:#00acc1;text-align:center !important;}
+  #content.expertise .card p{white-space:pre-line;margin:0;color:#ddd;text-align:left;width:100%;}
+  @media (max-width:1000px){#content.expertise{grid-template-columns:1fr;}}
 
-/* --- EXPERTISE --- */
-#content.expertise {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-  align-items: stretch;
-}
-#content.expertise .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-}
-#content.expertise .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.4);
-}
-#content.expertise .card h3 {
-  margin: 0 0 0.5rem 0;
-  color: #00acc1;
-  text-align: center;
-  width: 100%;
-}
-#content.expertise .card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-  text-align: left;
-  width: 100%;
-  flex: 1;
-}
-@media (max-width: 1000px) {
-  #content.expertise { grid-template-columns: 1fr; }
-}
+  /* --- VOUCHES --- */
+  #content.vouches{display:grid;grid-template-columns:repeat(2, 1fr);gap:1.5rem;text-align:center;width:100%;align-items:stretch;}
+  #content.vouches .card{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+  #content.vouches img{width:60%;height:auto;border-radius:50%;box-shadow:none;margin:0 auto;}
+  .vouche-title{color:#00acc1;margin-top:0.5rem;font-weight:600;}
+  .vouche-text{text-align:justify;margin-top:0.5rem;color:#ddd;}
+  @media (max-width:1000px){#content.vouches{grid-template-columns:1fr;}}
 
-/* --- WORK EXAMPLES --- */
-#content.work {
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
-  width: 100%;
-}
-.work-categories{
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
-  justify-content: center;
-}
-.work-category {
-  flex: 1 1 calc(25% - 1rem);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-  padding: 0.5rem 0;
-  border-radius: 6px;
-  background: rgba(0,151,167,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60px;
-}
-.work-category:hover {
-  background: rgba(0,151,167,0.25);
-  box-shadow: 0 0 10px rgba(0,151,167,0.4);
-  transform: translateY(-2px);
-}
-.work-category.active {
-  background: rgba(0,151,167,0.18);
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 0 12px rgba(255,255,255,0.3);
-  transform: translateY(0);
-}
-.work-items-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-}
-.work-items{
-  display:none;
-  flex-direction: column;
-  gap:1rem;
-  align-items: center;
-}
-.work-items .card{ 
-  width: 100%;
-  max-width: 1000px;
-  display:flex; 
-  flex-direction:column; 
-  gap:0.5rem; 
-  align-items: center;
-}
-.work-items .card h3 {
-  margin:0 0 0.5rem 0;
-  color:#00acc1;
-  text-align:center;
-  width:100%;
-}
-.work-items .card .content-wrapper {
-  display:flex;
-  gap:1rem;
-  align-items:center;
-  width:100%;
-}
-.work-items .card .content-wrapper.row { 
-  flex-direction: row; 
-  justify-content: flex-start;
-}
-.work-items .card .content-wrapper.row img {
-  margin-right: 1rem;
-}
-.work-items .card .content-wrapper.row p {
-  flex: 1;
-  text-align: justify;
-}
-.work-items .card .content-wrapper.col { 
-  flex-direction: column; 
-}
-.work-items .card img{ 
-  width:250px; 
-  height:auto; 
-  border-radius:8px; 
-  cursor:zoom-in; 
-  flex-shrink:0;
-}
-
-/* --- VOUCHES --- */
-#content.vouches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  text-align: center;
-  width: 100%;
-  align-items: stretch;
-}
-#content.vouches .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-}
-#content.vouches .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.4);
-}
-#content.vouches img {
-  width: 40%;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: none;
-  margin: 0 auto;
-}
-.vouche-title {
-  color: #00acc1;
-  margin-top: 0.5rem;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-}
-.vouche-text {
-  text-align: justify;
-  margin-top: 0.5rem;
-  color: #ddd;
-  width: 100%;
-  flex: 1;
-}
-@media (max-width: 1000px) {
-  #content.vouches { grid-template-columns: 1fr; }
-}
-
-/* --- CONTACT --- */
-#content.contact .card p{ text-align:center !important; }
-#content.contact{ display:flex; flex-direction:column; align-items:center; gap:1.5rem; width: 100%; }
-#content.contact .card{ width:fit-content; min-width:300px; }
-
-/* --- CARTES --- */
-.card{
-  background: rgba(255,255,255,0.05);
-  padding:1.5rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeIn 0.5s ease;
-  cursor: default;
-}
-.card p{ white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
-.card:hover{ transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
-.card.clickable{ cursor:pointer; }
-.card.clickable:hover{ transform: translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
-
-footer{ text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; color:#aaa; width:100%; }
-
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
-}
-#lightbox .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  background: rgba(0,0,0,0.4);
-  padding: 5px 15px;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-#lightbox .close-btn:hover {
-  background: rgba(0,0,0,0.7);
-}
-
-@keyframes fadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  /* --- LIGHTBOX --- */
+  #lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:1000;}
+  #lightbox img{max-width:90%;max-height:90%;object-fit:contain;}
+  #lightbox .close-btn{position:absolute;top:20px;right:30px;font-size:2rem;color:#fff;cursor:pointer;}
 </style>
 </head>
 <body>
-<header>
-  <h1>Phenomene - Siege X Coach</h1>
-</header>
+  <header>
+    <h1>Portfolio</h1>
+  </header>
 
-<nav>
-  <button data-section="bio" class="active">Bio</button>
-  <button data-section="experience">Experiences</button>
-  <button data-section="expertise">Expertise</button>
-  <button data-section="work">Work Examples</button>
-  <button data-section="vouches">Vouches</button>
-  <button data-section="contact">Contact</button>
-</nav>
+  <nav>
+    <button class="active" data-section="bio">Bio</button>
+    <button data-section="experience">Experience</button>
+    <button data-section="works">Works</button>
+    <button data-section="expertise">Expertise</button>
+    <button data-section="vouches">Vouches</button>
+    <button data-section="contact">Contact</button>
+  </nav>
 
-<main id="content" class="bio"></main>
+  <main>
+    <section id="bio" class="active"></section>
+    <section id="experience"></section>
+    <section id="works"></section>
+    <section id="expertise"></section>
+    <section id="vouches"></section>
+    <section id="contact"></section>
+  </main>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close-btn">&times;</span>
-  <img src="" alt="Preview">
-</div>
-
-<footer>© 2025 Phenomene - Siege X Coach</footer>
+  <div id="lightbox"><span class="close-btn">&times;</span><img src="" alt=""></div>
 
 <script>
-let data={};
-
 async function loadData(){
-  const res = await fetch("data.json");
-  data = await res.json();
-  showSection("bio");
+  const res=await fetch('data.json');
+  const data=await res.json();
+  renderSection('bio', data);
+  renderSection('experience', data);
+  renderWorks(data);
+  renderSection('expertise', data);
+  renderSection('vouches', data);
+  renderSection('contact', data);
 }
 
-function showSection(section){
-  const content=document.getElementById("content");
-  content.innerHTML="";
-  content.className=section;
+function renderWorks(data){
+  const section=document.getElementById('works');
+  const catContainer=document.createElement('div');
+  catContainer.className='work-categories';
+  const itemsContainer=document.createElement('div');
+  itemsContainer.className='work-items-container';
 
-  if(section==="experience"){
-    let maxWidth=0;
-    data.experience.forEach(item=>{
-      const tempDiv=document.createElement("div");
-      tempDiv.className="experience-card";
-      tempDiv.style.visibility="hidden";
-      tempDiv.style.position="absolute";
-      tempDiv.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
-      document.body.appendChild(tempDiv);
-      const w=tempDiv.offsetWidth;
-      if(w>maxWidth) maxWidth=w;
-      document.body.removeChild(tempDiv);
-    });
+  data.work.forEach((cat, index)=>{
+    const catDiv=document.createElement('div');
+    catDiv.className='work-category';
+    catDiv.textContent=cat.category;
+    if(index===0)catDiv.classList.add('active');
 
-    data.experience.forEach(item=>{
-      const card=document.createElement("div");
-      card.className="experience-card";
-      card.style.width=maxWidth+"px";
-      card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
-      content.appendChild(card);
-    });
+    const itemsDiv=document.createElement('div');
+    itemsDiv.className='work-items';
+    if(index===0)itemsDiv.classList.add('active');
 
-  } else if(section==="expertise"){
-    data.expertise.forEach(item=>{
-      const card=document.createElement("div");
-      card.className="card";
-      card.innerHTML=`<h3>${item.title}</h3><p>${item.text}</p>`;
-      content.appendChild(card);
-    });
+    cat.items.forEach(el=>{
+      const card=document.createElement('div');
+      card.className='card';
 
-  } else if(section==="work"){
-    const catContainer=document.createElement("div");
-    catContainer.className="work-categories";
-    const itemsContainer=document.createElement("div");
-    itemsContainer.className="work-items-container";
+      if(el.title){
+        const h3=document.createElement('h3');
+        h3.textContent=el.title;
+        card.appendChild(h3);
+      }
 
-    data.work.forEach(cat=>{
-      const catDiv=document.createElement("div");
-      catDiv.className="work-category";
-      catDiv.textContent=cat.category;
+      const contentWrapper=document.createElement('div');
+      contentWrapper.className='content-wrapper '+((el.image||el.images)&&el.text?"row":"col");
 
-      const itemsDiv=document.createElement("div");
-      itemsDiv.className="work-items";
-
-      cat.items.forEach(el=>{
-        const card=document.createElement("div");
-        card.className="card";
-
-        if(el.title){
-          const h3=document.createElement("h3");
-          h3.textContent=el.title;
-          h3.style.color="#00acc1";
-          h3.style.textAlign="center";
-          h3.style.width="100%";
-          card.appendChild(h3);
-        }
-
-        const contentWrapper=document.createElement("div");
-        contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
-
-        // ✅ Modification : afficher plusieurs images en grille de 2 colonnes
-        if(el.images && Array.isArray(el.images)){
+      // ✅ Multi-images en grille 2 colonnes sans gros gap
+      if(el.images && Array.isArray(el.images)){
         const imgGroup=document.createElement("div");
-      
+
         if(el.images.length > 1){
           imgGroup.style.display = "grid";
           imgGroup.style.gridTemplateColumns = "repeat(2, 1fr)";
-          imgGroup.style.gap = "0.5rem"; // réduire l'espacement
+          imgGroup.style.gap = "0.5rem";
           imgGroup.style.width = "100%";
           imgGroup.style.justifyItems = "center";
         } else {
           imgGroup.style.display = "flex";
           imgGroup.style.justifyContent = "center";
         }
-      
+
         el.images.forEach(src=>{
           const img=document.createElement("img");
           img.src=src;
-          img.style.width="100%"; // ✅ occuper la colonne entière
-          img.style.maxWidth="250px"; // pas dépasser 250px
+          img.style.width="100%";
+          img.style.maxWidth="250px";
           img.style.height="auto";
           img.style.borderRadius="8px";
           img.style.cursor="zoom-in";
@@ -471,74 +145,83 @@ function showSection(section){
           imgGroup.appendChild(img);
         });
         contentWrapper.appendChild(imgGroup);
+
+      } else if(el.image){
+        const img=document.createElement("img");
+        img.src=el.image;
+        img.style.width="250px";
+        img.style.height="auto";
+        img.style.borderRadius="8px";
+        img.style.cursor="zoom-in";
+        img.style.marginRight="1rem";
+        img.addEventListener("click",()=>openLightbox(el.image));
+        contentWrapper.appendChild(img);
       }
 
-        } else if(el.image){
-          const img=document.createElement("img");
-          img.src=el.image;
-          img.style.width="250px";
-          img.style.height="auto";
-          img.style.borderRadius="8px";
-          img.style.cursor="zoom-in";
-          img.style.marginRight="1rem";
-          img.addEventListener("click",()=>openLightbox(el.image));
-          contentWrapper.appendChild(img);
-        }
-
-        if(el.text){
-          const p=document.createElement("p");
-          p.style.flex="1";
-          p.textContent=el.text;
-          contentWrapper.appendChild(p);
-        }
-
-        card.appendChild(contentWrapper);
-        itemsDiv.appendChild(card);
-      });
-
-      catDiv.addEventListener("click",()=>{
-        document.querySelectorAll(".work-category").forEach(c=>c.classList.remove("active"));
-        document.querySelectorAll(".work-items").forEach(i=>i.style.display="none");
-        catDiv.classList.add("active");
-        itemsDiv.style.display="flex";
-      });
-
-      catContainer.appendChild(catDiv);
-      itemsContainer.appendChild(itemsDiv);
-    });
-
-    content.appendChild(catContainer);
-    content.appendChild(itemsContainer);
-
-  } else {
-    if (!Array.isArray(data[section])) return;
-    data[section].forEach(item=>{
-      let card=document.createElement("div");
-      card.className="card";
-
-      if(section==="vouches" && item.image){
-        card.innerHTML=`
-          ${item.image?`<img src="${item.image}" alt="${item.title||''}" style="width:60%;border-radius:50%;display:block;margin:0 auto;">`:""}
-          ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}
-          ${item.text?`<p class="vouche-text">${item.text}</p>`:""}
-        `;
-      } else if(section==="contact"){
-        if(item.type==="link"){
-          card.classList.add("clickable");
-          card.innerHTML=`<p>${item.label}</p>`;
-          card.addEventListener("click",()=>window.open(item.url,"_blank"));
-        } else if(item.text){
-          card.innerHTML=`<p>${item.text}</p>`;
-        } else if(item.title){
-          card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
-        }
-      } else {
-        card.innerHTML=`<p>${item}</p>`;
+      if(el.text){
+        const p=document.createElement("p");
+        p.textContent=el.text;
+        p.style.whiteSpace="pre-line";
+        p.style.flex="1";
+        contentWrapper.appendChild(p);
       }
-      content.appendChild(card);
+
+      card.appendChild(contentWrapper);
+      itemsDiv.appendChild(card);
     });
+
+    catDiv.addEventListener("click",()=>{
+      document.querySelectorAll(".work-category").forEach(c=>c.classList.remove("active"));
+      document.querySelectorAll(".work-items").forEach(i=>i.classList.remove("active"));
+      catDiv.classList.add("active");
+      itemsDiv.classList.add("active");
+    });
+
+    catContainer.appendChild(catDiv);
+    itemsContainer.appendChild(itemsDiv);
+  });
+
+  section.appendChild(catContainer);
+  section.appendChild(itemsContainer);
+}
+
+function renderSection(section,data){
+  const content=document.getElementById(section);
+  content.innerHTML='';
+  if(section==="bio"){
+    content.innerHTML=`<div class="card"><p>${data.bio.join("\n\n")}</p></div>`;
+    return;
   }
 
+  if (!Array.isArray(data[section])) return;
+
+  data[section].forEach(item=>{
+    const card=document.createElement("div");
+    card.className="card";
+
+    if(section==="vouches" && item.image){
+      card.innerHTML=`
+        ${item.image?`<img src="${item.image}" alt="${item.title||''}">`:""}
+        ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}
+        ${item.text?`<p class="vouche-text">${item.text}</p>`:""}
+      `;
+    } else if(section==="contact"){
+      if(item.type==="link"){
+        card.classList.add("clickable");
+        card.innerHTML=`<p>${item.label}</p>`;
+        card.addEventListener("click",()=>window.open(item.url,"_blank"));
+      } else if(item.text){
+        card.innerHTML=`<p>${item.text}</p>`;
+      } else if(item.title){
+        card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
+      }
+    } else {
+      card.innerHTML=`<p>${item}</p>`;
+    }
+    content.appendChild(card);
+  });
+
+  // ✅ égalisation des hauteurs Expertise & Vouches
   if(section==="expertise"||section==="vouches"){
     const equalize = ()=>{
       const cards = content.querySelectorAll('.card');
@@ -546,7 +229,7 @@ function showSection(section){
       cards.forEach(c=>{ c.style.height='auto'; max = Math.max(max, c.offsetHeight); });
       cards.forEach(c=>c.style.height=max+'px');
     };
-    setTimeout(equalize, 200);
+    setTimeout(equalize, 400);
     window.addEventListener('resize', equalize);
   }
 }
@@ -555,7 +238,8 @@ document.querySelectorAll("nav button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    showSection(btn.dataset.section);
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(btn.dataset.section).classList.add("active");
   });
 });
 
