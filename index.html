@@ -446,30 +446,32 @@ function showSection(section){
 
         // ✅ Modification : afficher plusieurs images en grille de 2 colonnes
         if(el.images && Array.isArray(el.images)){
-          const imgGroup=document.createElement("div");
-
-          if(el.images.length > 1){
-            imgGroup.style.display = "grid";
-            imgGroup.style.gridTemplateColumns = "repeat(2, 1fr)";
-            imgGroup.style.gap = "0.25rem";
-            imgGroup.style.width = "100%";
-            imgGroup.style.justifyItems = "center";
-          } else {
-            imgGroup.style.display = "flex";
-            imgGroup.style.justifyContent = "center";
-          }
-
-          el.images.forEach(src=>{
-            const img=document.createElement("img");
-            img.src=src;
-            img.style.width="250px";
-            img.style.height="auto";
-            img.style.borderRadius="8px";
-            img.style.cursor="zoom-in";
-            img.addEventListener("click",()=>openLightbox(src));
-            imgGroup.appendChild(img);
-          });
-          contentWrapper.appendChild(imgGroup);
+        const imgGroup=document.createElement("div");
+      
+        if(el.images.length > 1){
+          imgGroup.style.display = "grid";
+          imgGroup.style.gridTemplateColumns = "repeat(2, 1fr)";
+          imgGroup.style.gap = "0.5rem"; // réduire l'espacement
+          imgGroup.style.width = "100%";
+          imgGroup.style.justifyItems = "center";
+        } else {
+          imgGroup.style.display = "flex";
+          imgGroup.style.justifyContent = "center";
+        }
+      
+        el.images.forEach(src=>{
+          const img=document.createElement("img");
+          img.src=src;
+          img.style.width="100%"; // ✅ occuper la colonne entière
+          img.style.maxWidth="250px"; // pas dépasser 250px
+          img.style.height="auto";
+          img.style.borderRadius="8px";
+          img.style.cursor="zoom-in";
+          img.addEventListener("click",()=>openLightbox(src));
+          imgGroup.appendChild(img);
+        });
+        contentWrapper.appendChild(imgGroup);
+      }
 
         } else if(el.image){
           const img=document.createElement("img");
