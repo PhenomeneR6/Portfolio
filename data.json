@@ -85,7 +85,7 @@
     "category": "Internal & External Data",
     "items": [
       { "title": "Team Data Collection", "image": "img/works/Data result.png", "text": "• Scrim Data\n• Official games data\n• Combined data\n• Every maps with overall, ATK & DEF winrates" },
-      { "title": "Team Data Collection", "image": "img/works/Data site.png", "text": "• Detailed data on a specific map\n• Every bombsites detailed (W%, Entry, TTFK, etc...)\n•Specific strategies data to better target issues" },
+      { "title": "Team Data Collection", "image": "img/works/Data site.png", "text": "• Detailed data on a specific map\n• Detailed data per strat\n• Every bombsites detailed (W%, Entry, TTFK, etc...)\n• Specific strategies data helps to better target issues" },
       { "title": "Team Data Collection", "image": "img/works/Data individual.png", "text": "• Detailed individual data\n• Custom global rating (with a possibility to change factors)\nPer map\nPer bombsite\nBoth ATK & DEF" },
       { "title": "Team Data Collection", "image": "img/works/Script.png", "text": "• Automated workflow\n• Allowing me to collect data live during scrims\n• Data is available as soon as practices end" },
       { "title": "Opponent Data collection", "image": "img/works/Enemy data.png", "text": "• Automated Opponent data collection base on Liquipedia's data\n Custom timespan to get only useful data\n• (GRID data could also be accessible via API if given access to the org)" }
