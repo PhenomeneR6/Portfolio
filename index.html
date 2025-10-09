@@ -107,7 +107,7 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  align-items: start; /* ✅ cartes alignées en haut */
+  align-items: stretch; /* ✅ cartes d'une même ligne alignées sur la plus haute */
 }
 
 #content.expertise .card {
@@ -120,7 +120,7 @@ nav button.active::after { width: 100%; }
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: auto; /* ✅ hauteur naturelle pour éviter chevauchement */
+  height: 100%; /* ✅ occupe la hauteur de la cellule du grid */
 }
 
 #content.expertise .card:hover {
@@ -242,20 +242,20 @@ nav button.active::after { width: 100%; }
   gap: 1.5rem;
   text-align: center;
   width: 100%;
-  align-items: start; /* ✅ cartes alignées en haut */
+  align-items: stretch;
 }
 
 #content.vouches .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   background: rgba(255,255,255,0.05);
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: auto; /* ✅ hauteur naturelle pour éviter chevauchement */
+  height: 100%;
 }
 
 #content.vouches .card:hover {
@@ -564,6 +564,43 @@ document.querySelectorAll("nav button").forEach(btn=>{
   btn.addEventListener("click",()=>showSection(btn.getAttribute("data-section")));
 });
 loadData();
+
+// --- FIX: égaliser hauteur des cartes par ligne ---
+function equalizeHeights(selector) {
+  const container = document.getElementById('content');
+  const cards = Array.from(container.querySelectorAll(selector));
+  if (!cards.length) return;
+
+  // Reset heights
+  cards.forEach(card => card.style.height = 'auto');
+
+  // Group cards par ligne
+  const lines = {};
+  cards.forEach(card => {
+    const top = card.offsetTop;
+    if (!lines[top]) lines[top] = [];
+    lines[top].push(card);
+  });
+
+  Object.values(lines).forEach(lineCards => {
+    let maxHeight = 0;
+    lineCards.forEach(c => { if(c.offsetHeight > maxHeight) maxHeight = c.offsetHeight; });
+    lineCards.forEach(c => c.style.height = maxHeight + 'px');
+  });
+}
+
+// Appliquer après affichage de section et au resize
+const originalShowSection = showSection;
+showSection = function(section) {
+  originalShowSection(section);
+  if(section === "expertise") equalizeHeights('#content.expertise .card');
+  if(section === "vouches") equalizeHeights('#content.vouches .card');
+};
+window.addEventListener('resize', () => {
+  const section = document.getElementById('content').className;
+  if(section === "expertise") equalizeHeights('#content.expertise .card');
+  if(section === "vouches") equalizeHeights('#content.vouches .card');
+});
 </script>
 
 </body>
