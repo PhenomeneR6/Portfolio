@@ -56,10 +56,10 @@
   {
     "category": "Team & Players Performance",
     "items": [
-      { "title": "Team Goals tool", "image": "img/works/team goal.png", "text": "• Weekly planning\n• Setting up individual and/or collective goals\n Improvements focuses for the week ahead" },
+      { "title": "Team Goals tool", "image": "img/works/team goal.png", "text": "• Weekly planning\n• Setting up individual and/or collective goals\n• Improvements focused on the week ahead" },
       { "title": "Player Improvement tool", "image": "img/works/Player goal.png", "text": " • Bi-weekly review \n• Setting up individual goals and points of improvement" },
       { "title": "Mental work & Stress management - Part 1", "image": "img/works/Imagery.png", "text": "• Tool to follow up imagery exercises (Internal or external)\n• Every day and before matches\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm" },
-      { "title": "Mental work & Stress management - Part 2", "image": "img/works/Gameday feedback.png", "text": "• Review individual meetings\n• Debrief to help the player improve on his mental/stress management" }
+      { "title": "Mental work & Stress management - Part 2", "image": "img/works/Gameday feedback.png", "text": "• Review during individual meetings\n• Debrief to help the player improve on his mental/stress management" }
     ]
   },
   {
