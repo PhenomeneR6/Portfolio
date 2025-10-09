@@ -79,7 +79,7 @@ nav button.active::after { width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: center; /* centre tout horizontalement */
+  align-items: center;
 }
 
 /* --- EXPERIENCE --- */
@@ -107,20 +107,20 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  align-items: stretch; /* ✅ cartes d'une même ligne alignées sur la plus haute */
+  align-items: stretch;
 }
 
 #content.expertise .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* ✅ contenu en haut */
+  justify-content: flex-start;
   background: rgba(255,255,255,0.05);
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%; /* ✅ occupe la hauteur de la cellule du grid */
+  height: 100%;
 }
 
 #content.expertise .card:hover {
@@ -141,7 +141,7 @@ nav button.active::after { width: 100%; }
   color: #ddd;
   text-align: left;
   width: 100%;
-  flex: 1; /* ✅ pousse le texte à occuper l’espace restant pour équilibrer la hauteur */
+  flex: 1;
 }
 
 @media (max-width: 1000px) {
@@ -161,7 +161,7 @@ nav button.active::after { width: 100%; }
   display:flex;
   flex-wrap:wrap;
   gap:1rem;
-  justify-content: center; /* centre horizontalement les catégories */
+  justify-content: center;
 }
 .work-category {
   flex: 1 1 calc(25% - 1rem);
@@ -173,10 +173,10 @@ nav button.active::after { width: 100%; }
   border-radius: 6px;
   background: rgba(0,151,167,0.1);
   transition: all 0.3s ease;
-  display: flex;              
-  align-items: center;        
-  justify-content: center;    
-  min-height: 60px;          
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
 }
 .work-category:hover {
   background: rgba(0,151,167,0.25);
@@ -392,16 +392,7 @@ function showSection(section){
   content.innerHTML="";
   content.className=section;
 
-  if(section==="bio"){
-    if(Array.isArray(data.bio)){
-      data.bio.forEach(item=>{
-        const card=document.createElement("div");
-        card.className="card";
-        card.innerHTML=`<p>${item}</p>`;
-        content.appendChild(card);
-      });
-    }
-  } else if(section==="experience"){
+  if(section==="experience"){
     let maxWidth=0;
     data.experience.forEach(item=>{
       const tempDiv=document.createElement("div");
@@ -557,6 +548,22 @@ function showSection(section){
   document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"));
   const btn=document.querySelector(`nav button[data-section="${section}"]`);
   if(btn) btn.classList.add("active");
+
+  // --- Equalize heights after images loaded
+  if(section==="expertise" || section==="vouches"){
+    const container = document.getElementById('content');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    let images = Array.from(container.querySelectorAll('img'));
+    if(images.length){
+      let loadedCount = 0;
+      images.forEach(img=>{
+        if(img.complete) loadedCount++;
+        else img.addEventListener('load', ()=>{ loadedCount++; if(loadedCount===images.length) equalizeHeights('.card'); });
+        img.addEventListener('error', ()=>{ loadedCount++; if(loadedCount===images.length) equalizeHeights('.card'); });
+      });
+      if(loadedCount===images.length) equalizeHeights('.card');
+    } else equalizeHeights('.card');
+  }
 }
 
 function openLightbox(src){
@@ -598,13 +605,6 @@ function equalizeHeights(selector) {
   });
 }
 
-// Appliquer après affichage de section et au resize
-const originalShowSection = showSection;
-showSection = function(section) {
-  originalShowSection(section);
-  if(section === "expertise") equalizeHeights('#content.expertise .card');
-  if(section === "vouches") equalizeHeights('#content.vouches .card');
-};
 window.addEventListener('resize', () => {
   const section = document.getElementById('content').className;
   if(section === "expertise") equalizeHeights('#content.expertise .card');
