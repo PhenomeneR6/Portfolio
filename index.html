@@ -109,7 +109,6 @@ nav button.active::after { width: 100%; }
   width: 100%;
   align-items: stretch;
 }
-
 #content.expertise .card {
   display: flex;
   flex-direction: column;
@@ -122,19 +121,16 @@ nav button.active::after { width: 100%; }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
-
 #content.expertise .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 25px rgba(0,151,167,0.4);
 }
-
 #content.expertise .card h3 {
   margin: 0 0 0.5rem 0;
   color: #00acc1;
   text-align: center;
   width: 100%;
 }
-
 #content.expertise .card p {
   white-space: pre-line;
   margin: 0;
@@ -143,11 +139,8 @@ nav button.active::after { width: 100%; }
   width: 100%;
   flex: 1;
 }
-
 @media (max-width: 1000px) {
-  #content.expertise {
-    grid-template-columns: 1fr;
-  }
+  #content.expertise { grid-template-columns: 1fr; }
 }
 
 /* --- WORK EXAMPLES --- */
@@ -189,7 +182,6 @@ nav button.active::after { width: 100%; }
   box-shadow: 0 0 12px rgba(255,255,255,0.3);
   transform: translateY(0);
 }
-
 .work-items-container {
   display: flex;
   flex-direction: column;
@@ -197,7 +189,6 @@ nav button.active::after { width: 100%; }
   align-items: center;
   width: 100%;
 }
-
 .work-items{
   display:none;
   flex-direction: column;
@@ -218,12 +209,10 @@ nav button.active::after { width: 100%; }
   text-align:center;
   width:100%;
 }
-
-/* --- MODIFIÉ ICI --- */
 .work-items .card .content-wrapper {
   display:flex;
   gap:1rem;
-  align-items:flex-start;
+  align-items:center; /* ✅ centrer verticalement image + texte */
   width:100%;
 }
 .work-items .card .content-wrapper.row { 
@@ -240,7 +229,6 @@ nav button.active::after { width: 100%; }
 .work-items .card .content-wrapper.col { 
   flex-direction: column; 
 }
-
 .work-items .card img{ 
   width:250px; 
   height:auto; 
@@ -258,7 +246,6 @@ nav button.active::after { width: 100%; }
   width: 100%;
   align-items: stretch;
 }
-
 #content.vouches .card {
   display: flex;
   flex-direction: column;
@@ -271,12 +258,10 @@ nav button.active::after { width: 100%; }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
-
 #content.vouches .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 25px rgba(0,151,167,0.4);
 }
-
 #content.vouches img {
   width: 60%;
   height: auto;
@@ -284,7 +269,6 @@ nav button.active::after { width: 100%; }
   box-shadow: none;
   margin: 0 auto;
 }
-
 .vouche-title {
   color: #00acc1;
   margin-top: 0.5rem;
@@ -292,7 +276,6 @@ nav button.active::after { width: 100%; }
   text-align: center;
   width: 100%;
 }
-
 .vouche-text {
   text-align: justify;
   margin-top: 0.5rem;
@@ -300,11 +283,8 @@ nav button.active::after { width: 100%; }
   width: 100%;
   flex: 1;
 }
-
 @media (max-width: 1000px) {
-  #content.vouches {
-    grid-template-columns: 1fr;
-  }
+  #content.vouches { grid-template-columns: 1fr; }
 }
 
 /* --- CONTACT --- */
@@ -329,7 +309,6 @@ nav button.active::after { width: 100%; }
 
 footer{ text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; color:#aaa; width:100%; }
 
-/* --- LIGHTBOX --- */
 #lightbox {
   position: fixed;
   top: 0;
@@ -368,7 +347,6 @@ footer{ text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; c
 </style>
 </head>
 <body>
-
 <header>
   <h1>Phenomene - Siege X Coach</h1>
 </header>
@@ -490,6 +468,7 @@ function showSection(section){
           img.style.height="auto";
           img.style.borderRadius="8px";
           img.style.cursor="zoom-in";
+          img.style.marginRight="1rem"; // ✅ espacement image/texte
           img.addEventListener("click",()=>openLightbox(el.image));
           contentWrapper.appendChild(img);
         }
@@ -542,29 +521,24 @@ function showSection(section){
           card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
         }
       } else {
-        const parts=[];
-        if(item.title) parts.push(`<h3>${item.title}</h3>`);
-        if(item.text) parts.push(`<p>${item.text}</p>`);
-        card.innerHTML=parts.join("");
+        card.innerHTML=`<p>${item}</p>`;
       }
-
       content.appendChild(card);
     });
   }
-}
 
-function openLightbox(src){
-  const lightbox=document.getElementById("lightbox");
-  const img=lightbox.querySelector("img");
-  img.src=src;
-  lightbox.style.display="flex";
+  // ✅ alignement des hauteurs expertise / vouches après rendu images
+  if(section==="expertise"||section==="vouches"){
+    const equalize = ()=>{
+      const cards = content.querySelectorAll('.card');
+      let max = 0;
+      cards.forEach(c=>{ c.style.height='auto'; max = Math.max(max, c.offsetHeight); });
+      cards.forEach(c=>c.style.height=max+'px');
+    };
+    setTimeout(equalize, 200);
+    window.addEventListener('resize', equalize);
+  }
 }
-document.querySelector("#lightbox .close-btn").addEventListener("click",()=>{
-  document.getElementById("lightbox").style.display="none";
-});
-document.getElementById("lightbox").addEventListener("click",(e)=>{
-  if(e.target===e.currentTarget) e.currentTarget.style.display="none";
-});
 
 document.querySelectorAll("nav button").forEach(btn=>{
   btn.addEventListener("click",()=>{
@@ -572,6 +546,17 @@ document.querySelectorAll("nav button").forEach(btn=>{
     btn.classList.add("active");
     showSection(btn.dataset.section);
   });
+});
+
+function openLightbox(src){
+  const lightbox=document.getElementById("lightbox");
+  const img=lightbox.querySelector("img");
+  img.src=src;
+  lightbox.style.display="flex";
+}
+
+document.querySelector("#lightbox .close-btn").addEventListener("click",()=>{
+  document.getElementById("lightbox").style.display="none";
 });
 
 loadData();
