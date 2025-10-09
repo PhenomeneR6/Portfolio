@@ -444,36 +444,33 @@ function showSection(section){
         const contentWrapper=document.createElement("div");
         contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
 
-        // ✅ FIX GRILLE D'IMAGES
-        if (el.images && Array.isArray(el.images)) {
-          const imgGroup = document.createElement("div");
+        // ✅ Modification : afficher plusieurs images en grille de 2 colonnes
+        if(el.images && Array.isArray(el.images)){
+          const imgGroup=document.createElement("div");
 
-          if (el.images.length > 1) {
+          if(el.images.length > 1){
             imgGroup.style.display = "grid";
             imgGroup.style.gridTemplateColumns = "repeat(2, 1fr)";
-            imgGroup.style.gap = "0.5rem";
+            imgGroup.style.gap = "1rem";
             imgGroup.style.width = "100%";
             imgGroup.style.justifyItems = "center";
-            imgGroup.style.alignItems = "start";
           } else {
             imgGroup.style.display = "flex";
             imgGroup.style.justifyContent = "center";
           }
 
-          el.images.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.style.width = "100%";
-            img.style.height = "auto";
-            img.style.borderRadius = "8px";
-            img.style.cursor = "zoom-in";
-            img.style.objectFit = "cover";
-            img.style.aspectRatio = "16 / 9";
-            img.addEventListener("click", () => openLightbox(src));
+          el.images.forEach(src=>{
+            const img=document.createElement("img");
+            img.src=src;
+            img.style.width="250px";
+            img.style.height="auto";
+            img.style.borderRadius="8px";
+            img.style.cursor="zoom-in";
+            img.addEventListener("click",()=>openLightbox(src));
             imgGroup.appendChild(img);
           });
-
           contentWrapper.appendChild(imgGroup);
+
         } else if(el.image){
           const img=document.createElement("img");
           img.src=el.image;
@@ -528,28 +525,45 @@ function showSection(section){
           card.classList.add("clickable");
           card.innerHTML=`<p>${item.label}</p>`;
           card.addEventListener("click",()=>window.open(item.url,"_blank"));
-        } else {
+        } else if(item.text){
           card.innerHTML=`<p>${item.text}</p>`;
+        } else if(item.title){
+          card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
         }
       } else {
-        card.innerHTML=`
-          ${item.title?`<h3 style="color:#00acc1;text-align:center;">${item.title}</h3>`:""}
-          ${item.text?`<p>${item.text}</p>`:""}
-        `;
+        card.innerHTML=`<p>${item}</p>`;
       }
-
       content.appendChild(card);
     });
   }
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-  document.querySelector(`nav button[data-section="${section}"]`).classList.add("active");
+
+  if(section==="expertise"||section==="vouches"){
+    const equalize = ()=>{
+      const cards = content.querySelectorAll('.card');
+      let max = 0;
+      cards.forEach(c=>{ c.style.height='auto'; max = Math.max(max, c.offsetHeight); });
+      cards.forEach(c=>c.style.height=max+'px');
+    };
+    setTimeout(equalize, 200);
+    window.addEventListener('resize', equalize);
+  }
 }
 
+document.querySelectorAll("nav button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    showSection(btn.dataset.section);
+  });
+});
+
 function openLightbox(src){
-  const lb=document.getElementById("lightbox");
-  lb.querySelector("img").src=src;
-  lb.style.display="flex";
+  const lightbox=document.getElementById("lightbox");
+  const img=lightbox.querySelector("img");
+  img.src=src;
+  lightbox.style.display="flex";
 }
+
 document.querySelector("#lightbox .close-btn").addEventListener("click",()=>{
   document.getElementById("lightbox").style.display="none";
 });
