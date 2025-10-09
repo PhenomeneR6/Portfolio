@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,7 +213,7 @@ nav button.active::after { width: 100%; }
 .work-items .card .content-wrapper {
   display:flex;
   gap:1rem;
-  align-items:center;
+  align-items:center; /* ✅ centrer verticalement image + texte */
   width:100%;
 }
 .work-items .card .content-wrapper.row { 
@@ -444,43 +445,31 @@ function showSection(section){
         const contentWrapper=document.createElement("div");
         contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
 
-        // ✅ Modification : afficher plusieurs images en grille de 2 colonnes
         if(el.images && Array.isArray(el.images)){
-        const imgGroup=document.createElement("div");
-      
-        if(el.images.length > 1){
-          imgGroup.style.display = "grid";
-          imgGroup.style.gridTemplateColumns = "repeat(2, 1fr)";
-          imgGroup.style.gap = "0.5rem"; // réduire l'espacement
-          imgGroup.style.width = "100%";
-          imgGroup.style.justifyItems = "center";
-        } else {
-          imgGroup.style.display = "flex";
-          imgGroup.style.justifyContent = "center";
-        }
-      
-        el.images.forEach(src=>{
-          const img=document.createElement("img");
-          img.src=src;
-          img.style.width="100%"; // ✅ occuper la colonne entière
-          img.style.maxWidth="250px"; // pas dépasser 250px
-          img.style.height="auto";
-          img.style.borderRadius="8px";
-          img.style.cursor="zoom-in";
-          img.addEventListener("click",()=>openLightbox(src));
-          imgGroup.appendChild(img);
-        });
-        contentWrapper.appendChild(imgGroup);
-      }
-
-        } else if(el.image){
+          const imgGroup=document.createElement("div");
+          imgGroup.style.display="flex";
+          imgGroup.style.gap="1rem";
+          imgGroup.style.justifyContent="center";
+          el.images.forEach(src=>{
+            const img=document.createElement("img");
+            img.src=src;
+            img.style.width="250px";
+            img.style.height="auto";
+            img.style.borderRadius="8px";
+            img.style.cursor="zoom-in";
+            img.addEventListener("click",()=>openLightbox(src));
+            imgGroup.appendChild(img);
+          });
+          contentWrapper.appendChild(imgGroup);
+        } 
+        else if(el.image){
           const img=document.createElement("img");
           img.src=el.image;
           img.style.width="250px";
           img.style.height="auto";
           img.style.borderRadius="8px";
           img.style.cursor="zoom-in";
-          img.style.marginRight="1rem";
+          img.style.marginRight="1rem"; // ✅ espacement image/texte
           img.addEventListener("click",()=>openLightbox(el.image));
           contentWrapper.appendChild(img);
         }
@@ -539,6 +528,7 @@ function showSection(section){
     });
   }
 
+  // ✅ alignement des hauteurs expertise / vouches après rendu images
   if(section==="expertise"||section==="vouches"){
     const equalize = ()=>{
       const cards = content.querySelectorAll('.card');
