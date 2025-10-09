@@ -79,7 +79,7 @@ nav button.active::after { width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  align-items: center;
+  align-items: center; /* centre tout horizontalement */
 }
 
 /* --- EXPERIENCE --- */
@@ -107,22 +107,20 @@ nav button.active::after { width: 100%; }
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   width: 100%;
-  align-items: stretch;
+  align-items: stretch; /* ✅ cartes d'une même ligne alignées sur la plus haute */
 }
 
 #content.expertise .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; /* ✅ contenu en haut */
   background: rgba(255,255,255,0.05);
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
-  box-sizing: border-box; /* ✅ empêche tout débordement */
-  overflow-wrap: anywhere; /* ✅ texte long cassé proprement */
+  height: 100%; /* ✅ occupe la hauteur de la cellule du grid */
 }
 
 #content.expertise .card:hover {
@@ -143,7 +141,7 @@ nav button.active::after { width: 100%; }
   color: #ddd;
   text-align: left;
   width: 100%;
-  flex: 1;
+  flex: 1; /* ✅ pousse le texte à occuper l’espace restant pour équilibrer la hauteur */
 }
 
 @media (max-width: 1000px) {
@@ -163,7 +161,7 @@ nav button.active::after { width: 100%; }
   display:flex;
   flex-wrap:wrap;
   gap:1rem;
-  justify-content: center;
+  justify-content: center; /* centre horizontalement les catégories */
 }
 .work-category {
   flex: 1 1 calc(25% - 1rem);
@@ -189,6 +187,7 @@ nav button.active::after { width: 100%; }
   background: rgba(0,151,167,0.18);
   border: 1px solid rgba(255,255,255,0.3);
   box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  transform: translateY(0);
 }
 
 .work-items-container {
@@ -257,8 +256,6 @@ nav button.active::after { width: 100%; }
   box-shadow: 0 0 15px rgba(0,151,167,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
-  box-sizing: border-box; /* ✅ corrige le débordement */
-  overflow-wrap: anywhere;
 }
 
 #content.vouches .card:hover {
@@ -268,11 +265,9 @@ nav button.active::after { width: 100%; }
 
 #content.vouches img {
   width: 60%;
-  max-width: 180px; /* ✅ évite les débordements verticaux */
   height: auto;
-  aspect-ratio: 1/1; /* ✅ garde un rond parfait */
   border-radius: 50%;
-  object-fit: cover;
+  box-shadow: none;
   margin: 0 auto;
 }
 
@@ -290,7 +285,6 @@ nav button.active::after { width: 100%; }
   color: #ddd;
   width: 100%;
   flex: 1;
-  overflow-wrap: anywhere;
 }
 
 @media (max-width: 1000px) {
@@ -398,7 +392,16 @@ function showSection(section){
   content.innerHTML="";
   content.className=section;
 
-  if(section==="experience"){
+  if(section==="bio"){
+    if(Array.isArray(data.bio)){
+      data.bio.forEach(item=>{
+        const card=document.createElement("div");
+        card.className="card";
+        card.innerHTML=`<p>${item}</p>`;
+        content.appendChild(card);
+      });
+    }
+  } else if(section==="experience"){
     let maxWidth=0;
     data.experience.forEach(item=>{
       const tempDiv=document.createElement("div");
@@ -519,7 +522,7 @@ function showSection(section){
 
       if(section==="vouches" && item.image){
         card.innerHTML=`
-          ${item.image?`<img src="${item.image}" alt="${item.title||''}" class="vouche-img">`:""}
+          ${item.image?`<img src="${item.image}" alt="${item.title||''}" style="width:60%;border-radius:50%;display:block;margin:0 auto;">`:""}
           ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}
           ${item.text?`<p class="vouche-text">${item.text}</p>`:""}
         `;
@@ -531,47 +534,82 @@ function showSection(section){
         } else if(item.text){
           card.innerHTML=`<p>${item.text}</p>`;
         } else if(item.title){
-          card.innerHTML=`<h3>${item.title}</h3>`;
+          card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
         }
       } else {
-        if(item.title) card.innerHTML+=`<h3>${item.title}</h3>`;
-        if(item.text) card.innerHTML+=`<p>${item.text}</p>`;
+        const parts=[];
+        if(item.image){
+          parts.push(`<img src="${item.image}" alt="${item.title||''}" style="width:100%;border-radius:8px;margin-bottom:8px;">`);
+        }
+        if(item.title){
+          parts.push(`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`);
+        }
+        if(item.text){
+          parts.push(`<p>${item.text}</p>`);
+        }
+        if(typeof item==="string") parts.push(`<p>${item}</p>`);
+        card.innerHTML=parts.join("");
       }
       content.appendChild(card);
     });
   }
 
-  // ✅ Correction hauteur automatique par ligne
-  const grids = document.querySelectorAll('#content.expertise, #content.vouches');
-  grids.forEach(grid=>{
-    const cards = Array.from(grid.querySelectorAll('.card'));
-    for(let i=0;i<cards.length;i+=2){
-      const pair = cards.slice(i,i+2);
-      const maxH = Math.max(...pair.map(c=>c.offsetHeight));
-      pair.forEach(c=>c.style.height=maxH+'px');
-    }
-  });
+  document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"));
+  const btn=document.querySelector(`nav button[data-section="${section}"]`);
+  if(btn) btn.classList.add("active");
 }
 
 function openLightbox(src){
-  const lb=document.getElementById("lightbox");
-  lb.style.display="flex";
-  lb.querySelector("img").src=src;
+  const lightbox=document.getElementById('lightbox');
+  lightbox.querySelector('img').src=src;
+  lightbox.style.display='flex';
+}
+document.getElementById('lightbox').addEventListener('click',e=>{
+  if(e.target.id==='lightbox'||e.target.classList.contains('close-btn')){
+    document.getElementById('lightbox').style.display='none';
+  }
+});
+document.querySelectorAll("nav button").forEach(btn=>{
+  btn.addEventListener("click",()=>showSection(btn.getAttribute("data-section")));
+});
+loadData();
+
+// --- FIX: égaliser hauteur des cartes par ligne ---
+function equalizeHeights(selector) {
+  const container = document.getElementById('content');
+  const cards = Array.from(container.querySelectorAll(selector));
+  if (!cards.length) return;
+
+  // Reset heights
+  cards.forEach(card => card.style.height = 'auto');
+
+  // Group cards par ligne
+  const lines = {};
+  cards.forEach(card => {
+    const top = card.offsetTop;
+    if (!lines[top]) lines[top] = [];
+    lines[top].push(card);
+  });
+
+  Object.values(lines).forEach(lineCards => {
+    let maxHeight = 0;
+    lineCards.forEach(c => { if(c.offsetHeight > maxHeight) maxHeight = c.offsetHeight; });
+    lineCards.forEach(c => c.style.height = maxHeight + 'px');
+  });
 }
 
-document.querySelectorAll("nav button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    showSection(btn.dataset.section);
-  });
+// Appliquer après affichage de section et au resize
+const originalShowSection = showSection;
+showSection = function(section) {
+  originalShowSection(section);
+  if(section === "expertise") equalizeHeights('#content.expertise .card');
+  if(section === "vouches") equalizeHeights('#content.vouches .card');
+};
+window.addEventListener('resize', () => {
+  const section = document.getElementById('content').className;
+  if(section === "expertise") equalizeHeights('#content.expertise .card');
+  if(section === "vouches") equalizeHeights('#content.vouches .card');
 });
-
-document.getElementById("lightbox").querySelector(".close-btn").addEventListener("click",()=>{
-  document.getElementById("lightbox").style.display="none";
-});
-
-loadData();
 </script>
 
 </body>
