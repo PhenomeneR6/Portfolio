@@ -218,15 +218,29 @@ nav button.active::after { width: 100%; }
   text-align:center;
   width:100%;
 }
-.work-items .card .content-wrapper{
+
+/* --- MODIFIÉ ICI --- */
+.work-items .card .content-wrapper {
   display:flex;
   gap:1rem;
   align-items:flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
+  width:100%;
 }
-.work-items .card .content-wrapper.row { flex-direction: row; }
-.work-items .card .content-wrapper.col { flex-direction: column; }
+.work-items .card .content-wrapper.row { 
+  flex-direction: row; 
+  justify-content: flex-start;
+}
+.work-items .card .content-wrapper.row img {
+  margin-right: 1rem;
+}
+.work-items .card .content-wrapper.row p {
+  flex: 1;
+  text-align: justify;
+}
+.work-items .card .content-wrapper.col { 
+  flex-direction: column; 
+}
+
 .work-items .card img{ 
   width:250px; 
   height:auto; 
@@ -529,88 +543,38 @@ function showSection(section){
         }
       } else {
         const parts=[];
-        if(item.image){
-          parts.push(`<img src="${item.image}" alt="${item.title||''}" style="width:100%;border-radius:8px;margin-bottom:8px;">`);
-        }
-        if(item.title){
-          parts.push(`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`);
-        }
-        if(item.text){
-          parts.push(`<p>${item.text}</p>`);
-        }
-        if(typeof item==="string") parts.push(`<p>${item}</p>`);
+        if(item.title) parts.push(`<h3>${item.title}</h3>`);
+        if(item.text) parts.push(`<p>${item.text}</p>`);
         card.innerHTML=parts.join("");
       }
+
       content.appendChild(card);
     });
-  }
-
-  document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"));
-  const btn=document.querySelector(`nav button[data-section="${section}"]`);
-  if(btn) btn.classList.add("active");
-
-  // --- Equalize heights after images loaded
-  if(section==="expertise" || section==="vouches"){
-    const container = document.getElementById('content');
-    const cards = Array.from(container.querySelectorAll('.card'));
-    let images = Array.from(container.querySelectorAll('img'));
-    if(images.length){
-      let loadedCount = 0;
-      images.forEach(img=>{
-        if(img.complete) loadedCount++;
-        else img.addEventListener('load', ()=>{ loadedCount++; if(loadedCount===images.length) equalizeHeights('.card'); });
-        img.addEventListener('error', ()=>{ loadedCount++; if(loadedCount===images.length) equalizeHeights('.card'); });
-      });
-      if(loadedCount===images.length) equalizeHeights('.card');
-    } else equalizeHeights('.card');
   }
 }
 
 function openLightbox(src){
-  const lightbox=document.getElementById('lightbox');
-  lightbox.querySelector('img').src=src;
-  lightbox.style.display='flex';
+  const lightbox=document.getElementById("lightbox");
+  const img=lightbox.querySelector("img");
+  img.src=src;
+  lightbox.style.display="flex";
 }
-document.getElementById('lightbox').addEventListener('click',e=>{
-  if(e.target.id==='lightbox'||e.target.classList.contains('close-btn')){
-    document.getElementById('lightbox').style.display='none';
-  }
+document.querySelector("#lightbox .close-btn").addEventListener("click",()=>{
+  document.getElementById("lightbox").style.display="none";
 });
+document.getElementById("lightbox").addEventListener("click",(e)=>{
+  if(e.target===e.currentTarget) e.currentTarget.style.display="none";
+});
+
 document.querySelectorAll("nav button").forEach(btn=>{
-  btn.addEventListener("click",()=>showSection(btn.getAttribute("data-section")));
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    showSection(btn.dataset.section);
+  });
 });
+
 loadData();
-
-// --- FIX: égaliser hauteur des cartes par ligne ---
-function equalizeHeights(selector) {
-  const container = document.getElementById('content');
-  const cards = Array.from(container.querySelectorAll(selector));
-  if (!cards.length) return;
-
-  // Reset heights
-  cards.forEach(card => card.style.height = 'auto');
-
-  // Group cards par ligne
-  const lines = {};
-  cards.forEach(card => {
-    const top = card.offsetTop;
-    if (!lines[top]) lines[top] = [];
-    lines[top].push(card);
-  });
-
-  Object.values(lines).forEach(lineCards => {
-    let maxHeight = 0;
-    lineCards.forEach(c => { if(c.offsetHeight > maxHeight) maxHeight = c.offsetHeight; });
-    lineCards.forEach(c => c.style.height = maxHeight + 'px');
-  });
-}
-
-window.addEventListener('resize', () => {
-  const section = document.getElementById('content').className;
-  if(section === "expertise") equalizeHeights('#content.expertise .card');
-  if(section === "vouches") equalizeHeights('#content.vouches .card');
-});
 </script>
-
 </body>
 </html>
