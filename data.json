@@ -54,7 +54,7 @@
   ],
   "work": [
   {
-    "category": "TEAM & PLAYERS PERFORMANCE",
+    "category": "Team & Players Performance",
     "items": [
       { "title": "TEAM GOALS TOOL", "image": "img/works/team goal.png", "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead" },
       { "title": "PLAYER IMPROVEMENT TOOL", "image": "img/works/Player goal.png", "text": " • Weekly or bi-weekly review \n• Setting up individual goals and points of improvement" },
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "category": "GAMEPLAY",
+    "category": "Gameplay",
     "items": [
       { "title": "STRAT MAKING BANK OPEN AREA ATK", "image": "img/works/Strat open att.png", "text": "  • Work a direct take site when Ace/Hibana are banned, Use Sens to block line of view on Glaz/Blitz pushing, Ying to blind and distract deep site pushing with shotgun, Ash opening the wall (or use Ying shotgun) holding angles from copy window, Blitz either go to plant counter or if someone on kitchen wall smoke deeper into site and push him to kill him, Glaz to cover blitz with smokes, If we want to have cover for top square, we change Ying for Zero or Lion or Dokk and he plays the windows, If there is many traps or Goyos, change Ash for Flores" },
       { "title": "STRAT MAKING CHALET MASTER ATK", "image": "img/works/Strat att chalet.png", "text": "  • Rush K9, Once Sens pull up the wall covering master area: Osa destroy K9 barricade and BB push, killing the guy half wall, Dokkaebi flash piano to cover K9 entrance and hold it from the boost or jump in Ivy window. Ying flash sol + master and rappel in to create chaos. During all of that, Osa plant on the door behind her shield. Sens claymore lobby door and trench" },
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "category": "OPPONENT ANALYSIS",
+    "category": "Opponent Analysis",
     "items": [
       { "title": "OPPONENT ATK GAMEPLAY ANALYSIS (UNRELATED PICTURES)", "images":["img/works/Counter att.png", "img/works/att counter 2.png"],  "text": "  • I’m adaptable on my work, i can adapt to the team needs and their work format. I can and already worked on Google slide, Miro, Cards format or even just notes on discord. I can do counter strat, adapt our strat to the team we are facing, guide on the strats we should play and play style we should play to create a game plan" },
       { "title": "COUNTER STRAT VS M80 MINING KAFE ATK", "image": "img/works/Counter d mining.png", "text": "  • M80 knew about our Fall out strat into Kitchen to deny plant with Pulse/Valk in Kitchen but also about our “Aggressive” strat where we fight for Top floor control. So i wanted to make them think we were running the “Aggressive” strat. But i changed it so we could fall and have the plant deny option by having Valkyrie hiding in prep phase and 3 c4s line up. So the goal is to show we would fight, hold top floor for 1m or more if possible then fall back into Kitchen and play to deny the plant" },
@@ -82,7 +82,7 @@
     ]
   },
   {
-    "category": "INTERNAL & EXTERNAL DATA",
+    "category": "Internal & External Data",
     "items": [
       { "title": "GENERAL TEAM DATA", "image": "img/works/Data result.png", "text": "• Scrim Data\n• Official games data\n• Combined data\n• Every maps with overall, ATK & DEF winrates" },
       { "title": "DETAILED MAPS DATA", "image": "img/works/Data site.png", "text": "• Detailed data on a specific map\n• Detailed data per strat\n• Every bombsites detailed (W%, Entry, TTFK, etc...)\n• Specific strategies data helps to better target issues" },
