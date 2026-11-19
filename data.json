@@ -134,22 +134,22 @@
       "category": "Counter Strats",
       "items": [
         {
-          "title": "TRAIN TARGET & EXEC / DINING BAIT - ATK",
+          "title": "KAFE - READING - ATK / TRAIN TARGET",
           "date": "vs M80",
           "image": "img/works/ATT Counter.png",
-          "text": "• Counter-strat built against one opponent in particular, straight out of their own analysis\n\n• The target is their habit, not the map: we attack the read they always make\n\n• Bait layer on Exec / Dining first, so their utility and their rotations commit\n\n• Each phase of the take is drawn on its own blueprint - positions, utility, order of entry\n\n• Operator line-up listed above the strat so every player knows his pick before the round starts"
+          "text": "• Counter built from their own VODs: in one of their Reading defences, Kaid was isolated in Train - alone, no gadget to help him, no Dining rotate and no line of sight to support him\n\n• So we explode mining window with Blitz/Buck/Sens to kill him there, Ying holding his chimney fall back, Rauora controlling the top flank with her gadget\n\n• Once he is down we flip and flood Reading: Sens stays Train to bait the Dining plant, Blitz/Buck push Reading door, Ying flashes cocktail + laundry through the drone hole, Rauora peeks new hatch\n\n• Called only once we ID Kaid - they do not run him on any of their other defences\n\n• Every phase of the take is drawn on its own blueprint, with the operator line-up above the strat"
         },
         {
-          "title": "HORI RUSH - ATK",
+          "title": "KAFE - KITCHEN - ATK / HORI RUSH",
           "date": "vs M80",
           "image": "img/works/Att counter 22.png",
-          "text": "• Fast horizontal rush designed against their standard setup\n\n• One blueprint with every player's path, entry point and the order they go in\n\n• Called when their default leaves us a window to take the site before their utility is placed"
+          "text": "• Rush designed against their roam setup on Kitchen\n\n• I noticed that with Tub/Kaid they close Bakery and Freezer and roam heavy top, leaving only the Tub on site in Freezer and absolutely no trap on the reception side\n\n• So we push fast reception into site, into Freezer, and kill the Tub before the roamers can come back\n\n• Then plant and hold the rotations: red side, VIP/Bar side and the hatch drop\n\n• One blueprint with every player's path and entry point, so the rush stays coordinated instead of being a coin flip"
         },
         {
-          "title": "MINING - FAKE AGGRO - DEF",
+          "title": "KAFE - MINING - DEF / FAKE AGGRO",
           "date": "vs M80",
           "image": "img/works/Counter d mining.png",
-          "text": "• Defensive counter built for the way they attack Mining\n\n• Fake aggro early: we show pressure, take the time, then play to falloff instead of holding the fight\n\n• Valkyrie is hidden and kept for late-round info rather than burned at the start\n\n• Three blueprints, one per phase of the round, with the operator line-up underneath\n\n• The point is to break their timing: they prepare against our usual defence, not against this one"
+          "text": "• M80 knew both of our Mining defences: the fall out into Kitchen to deny the plant with Pulse/Valk, and the aggressive one where we fight for top floor control\n\n• So I wanted to make them think we were running the aggressive strat\n\n• We show the fight and hold top floor for a minute or more, then fall back into Kitchen and play to deny the plant\n\n• Valkyrie hides during prep phase and three C4s are lined up for the plant deny\n\n• A counter-strat in the real sense: they prepared against our habits, so the strat is built on what they expect to see"
         }
       ]
     },
