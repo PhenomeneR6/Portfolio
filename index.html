@@ -22,7 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/banner.webp" imagesrcset="img/banner-900.webp 900w, img/banner.webp 1600w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="img/banner.webp" imagesrcset="img/banner-900.webp 900w, img/banner.webp 1600w" imagesizes="100vw" fetchpriority="high" media="(min-width:761px)">
+<link rel="preload" as="image" href="img/banner-mobile.webp" fetchpriority="high" media="(max-width:760px)">
 
 <style>
 /* ============================================================
@@ -208,7 +209,9 @@ nav button[aria-selected="true"]::after{ transform:scaleX(1); }
      the eyebrow gap to leave an actual strip of photo above the name. */
   .hero-inner{ padding-block:1.15rem .9rem; }
   .eyebrow{ margin-bottom:.55rem; }
-  .hero picture,.hero img{ object-position:60% 26%; }
+  /* Tuned for the mobile crop: keeps his head in frame from a 1.5 ratio box
+     right through to a wide landscape strip. */
+  .hero picture,.hero img{ object-position:50% 18%; }
   .hero::after{
     background:linear-gradient(180deg,
       rgba(11,10,10,.55) 0%,rgba(11,10,10,.25) 28%,
@@ -523,6 +526,10 @@ body.no-scroll{ overflow:hidden; }
 
 <section class="hero">
   <picture>
+    <!-- Phone: a tighter crop crafted around the subject, so his face reads at
+         a 170px-tall banner and the event credits stay out of frame. -->
+    <source media="(max-width:760px)" type="image/webp" srcset="img/banner-mobile.webp">
+    <source media="(max-width:760px)" srcset="img/banner-mobile.jpg">
     <source type="image/webp" srcset="img/banner-900.webp 900w, img/banner.webp 1600w" sizes="100vw">
     <img src="img/banner.jpg" alt="Phenomene on stage with All Gamers at a Rainbow Six Siege LAN"
          width="1600" height="1067" fetchpriority="high" decoding="async">
