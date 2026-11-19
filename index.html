@@ -58,6 +58,12 @@ html{ -webkit-text-size-adjust:100%; scroll-padding-top:76px; }
 
 body{
   margin:0;
+  /* Sticky footer: on a tall viewport with a short section (Bio on an iPad),
+     main takes the slack so the footer still sits at the bottom. */
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
   background:var(--bg);
   color:var(--text);
   font-family:var(--font-body);
@@ -238,7 +244,8 @@ nav button[aria-selected="true"]::after{ transform:scaleX(1); }
 /* ============================================================
    Section scaffolding
    ============================================================ */
-main{ padding-block:clamp(1.5rem,3vh,2.5rem) clamp(4rem,10vh,7rem); }
+main{ flex:1 0 auto; padding-block:clamp(1.5rem,3vh,2.5rem) clamp(4rem,10vh,7rem); }
+.topbar,.hero,footer{ flex:none; }
 
 .section-head{
   display:flex; align-items:baseline; gap:1rem;
