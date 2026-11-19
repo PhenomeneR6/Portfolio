@@ -227,7 +227,7 @@ nav button[aria-selected="true"]::after{ transform:scaleX(1); }
 /* ============================================================
    Section scaffolding
    ============================================================ */
-main{ padding-block:clamp(3rem,8vh,5.5rem) clamp(4rem,10vh,7rem); }
+main{ padding-block:clamp(1.5rem,3vh,2.5rem) clamp(4rem,10vh,7rem); }
 
 .section-head{
   display:flex; align-items:baseline; gap:1rem;
@@ -249,13 +249,19 @@ main{ padding-block:clamp(3rem,8vh,5.5rem) clamp(4rem,10vh,7rem); }
 /* ============================================================
    Bio
    ============================================================ */
-/* No measure cap: the bio fills the content column. The type scales up on wide
-   screens so the line count stays sane rather than stretching to ~100ch. */
+/* The bio fills the full column but sets in two columns on wide screens: that
+   keeps the type the same size as the rest of the site instead of inflating it,
+   without running 110-character lines. */
 .prose p{
-  margin:0 0 1.25rem;
-  font-size:clamp(1rem,.92rem + .45vw,1.35rem);
+  margin:0 0 1.15rem;
+  font-size:clamp(.95rem,.92rem + .15vw,1.0625rem);
   color:var(--text-dim);
   text-wrap:pretty;
+}
+@media (min-width:900px){
+  .prose{ columns:2; column-gap:clamp(2rem,4vw,3.5rem); }
+  .prose p{ break-inside:avoid; }
+  .prose p:last-child{ margin-bottom:0; }
 }
 /* The opening line of the bio is a one-line greeting, not a lede, so it gets
    brightness for hierarchy but not a larger size — blown up it just looked
