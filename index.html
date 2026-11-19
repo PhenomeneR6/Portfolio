@@ -209,9 +209,9 @@ nav button[aria-selected="true"]::after{ transform:scaleX(1); }
      the eyebrow gap to leave an actual strip of photo above the name. */
   .hero-inner{ padding-block:1.15rem .9rem; }
   .eyebrow{ margin-bottom:.55rem; }
-  /* Tuned for the mobile crop: keeps his head in frame from a 1.5 ratio box
-     right through to a wide landscape strip. */
-  .hero picture,.hero img{ object-position:50% 18%; }
+  /* The mobile crop starts just below the credits, so his head sits near its
+     top edge: anchor to the top or it gets clipped. */
+  .hero picture,.hero img{ object-position:50% 0%; }
   .hero::after{
     background:linear-gradient(180deg,
       rgba(11,10,10,.55) 0%,rgba(11,10,10,.25) 28%,
