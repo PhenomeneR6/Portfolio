@@ -142,7 +142,11 @@ nav button[aria-selected="true"]::after{ transform:scaleX(1); }
   .topbar .shell{ padding-inline:0; min-height:52px; gap:0; }
   .brand{ display:none; }
   nav{
+    /* "safe" matters here: plain `center` on a scroll container pushes the
+       overflow off the left edge where it can never be reached. The first
+       declaration is the fallback for browsers without the keyword. */
     justify-content:flex-start;
+    justify-content:safe center;
     gap:0;
     width:100%;
     overflow-x:auto;
