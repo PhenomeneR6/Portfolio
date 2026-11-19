@@ -1,12 +1,12 @@
 {
   "bio": [
-    "Hello and welcome to my portfolio !\n\nMy name is Théo 'Phenomene' Hentgen. 29 years old and currently living in France.\n\nMy past experiences in China, Europe, Asia and North America have led me to work in four different languages and work with different cultures. I am currently applying for the ENC China R6 coach position .\n\nI have a degree in Sports with Physical, Mental, and Psychological courses. I also have a master in Esports Communication.\n\nI have been playing football (or soccer, if you're from North America) for 20 years. I have been the captain of all my teams and this is where I started to build a strong leadership and develop my will to become a coach.\n\nI have now been a Siege coach for 6 years, you'll find all my past experiences in said category.\n\nDo not hesitate to contact me if you want to know more or if you have any questions !"
+    "Hello and welcome to my portfolio !\n\nMy name is Théo 'Phenomene' Hentgen. 30 years old and currently living in France.\n\nMy past experiences in China, Europe, Asia and North America have led me to work in four different languages and work with different cultures. I am currently applying for the ENC China R6 coach position .\n\nI have a degree in Sports with Physical, Mental, and Psychological courses. I also have a master in Esports Communication.\n\nI have been playing football (or soccer, if you're from North America) for 20 years. I have been the captain of all my teams and this is where I started to build a strong leadership and develop my will to become a coach.\n\nI have now been a Siege coach for 6 years, you'll find all my past experiences in said category.\n\nDo not hesitate to contact me if you want to know more or if you have any questions !"
   ],
   "experience": [
     {
       "image": "img/All_Gamers_full_allmode.png",
-      "title": "ALL GAMERS",
-      "text": "<b>Head Coach</b>\n<i>October 2025 - Present</i>\n\n • CNL - Kickoff - Top 1\n  • SLC Major - Top 12-14\n • GVC Autumn - Top 1\n  • GVC Winter - Top 1"
+      "title": "ALL GAMERS - <i>October 2025 - Present</i>",
+      "text": "<b>Head Coach</b>\n<i>October 2025 - Present</i>\n\n  • GVC Autumn 2025 - Top 1\n  • GVC Winter 2025 - Top 1\n  • CNL Kick off 2026 - Top 1\n  • CNL Stage 1 2026 - Top 2\n  • CNL Stage 2 2026 - Top 2\n  • Salt Lake City Major 2026 - Top 12-14\n  • Esport World Cup 2026 - Top 13-16\n  • Osaka Major 2026 - Top 17-18"
     },
     {
       "image": "img/OXYGEN ESPORTS.png",
@@ -58,45 +58,108 @@
     }
   ],
   "work": [
-  {
-    "category": "Team & Players Performance",
-    "items": [
-      { "title": "TEAM GOALS TOOL", "image": "img/works/team goal.png", "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead" },
-      { "title": "PLAYER IMPROVEMENT TOOL", "image": "img/works/Player goal.png", "text": " • Weekly or bi-weekly review \n• Setting up individual goals and points of improvement" },
-      { "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1", "image": "img/works/Imagery.png", "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Every day and before matches\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm" },
-      { "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2", "image": "img/works/Gameday feedback.png", "text": "• Feedback filled by players after official games\n• Review with the coach\n• Debrief to help the player improve on his mental/stress management" }
-    ]
-  },
-  {
-    "category": "Strategies",
-    "items": [
-      { "title": "BANK - OPEN AREA/STAFF - ATK", "image": "img/works/Strat open att.png", "text": "• Work a direct take site when Ace/Hibana are banned\n\n• Use Sens to block line of view on Glaz/Blitz pushing\n\n• Ying to blind and distract deep site pushing with shotgun\n\n• Ash opening the wall (or use Ying shotgun) holding angles from copy window\n\n• Blitz either go to plant counter or if someone on kitchen wall smoke deeper into site and push him to kill him\n\n• Glaz to cover blitz with smokes\n\n• If we want to have cover for top square, we change Ying for Zero/Lion/Dokkabi and play the windows\n\n• If there are lots of traps, change Ash for Flores" },
-      { "title": "CHALET - MASTER/OFFICE - ATK", "image": "img/works/Strat att chalet.png", "text": "• Rush K9\n\n• Once Sens pulls up the wall covering master area: Osa destroys K9 barricade and BB push, killing the guy half wall\n\n• Dokkaebi flashes piano to cover K9 entrance and holds it from the boost or jump in Ivy window\n\n• Ying flash sol & master, then rappels in to create chaos\n\n• During all of that, Osa plants on the door behind her shield\n\n• Sens puts claymores on lobby door and trench" },
-      { "title": "BORDER - BATHROOM/TELLERS - DEF", "image": "img/works/Border D tellers.png", "text": "• 60% winrate DEF\n\n• Horizontal strat on Bathroom site\n\n• The top setup and Valkyrie reinforcing hatches late in prep phase to make the enemy think we play top to force them clearing it\n\n• Hide Kaid and use it for hatches to keep them closed\n\n• Valkyrie/Mozzie play top early to shoot drones and make enemy lose time then fallback and play horizontal\n\n• Play the c4 kills with info we have\n\n• Late round, If enemy does an East take and courtyard execute into tellers we can deny that with C4/smokes if they didnt work vertical properly and hatch not open\n\n• We can also have a line of sight from custom and retake Passport/Top" },
-      { "title": "BANK - OPEN AREA/STAFF - DEF", "image": "img/works/die on top 2.png", "text": "• 75% winrate DEF\n\n• Top setup for Open area\n\n• We close meeting wall to janitor to create a stronger hold top and have good crossfires between Trump/Elevator & Meeting, which throws off a lot of teams\n\n• Like the strat says, we play to die\n\n• If enemy wants to clear it, Valkyrie can flank lobby or square and Azami can come up marble stairs\n\n• If enemy goes directly for the square, Azami can delay with her Kibas & Goyo canisters\n\n• Meanwhile, Joker (means that player can play everything) and Castle can come back help holding archives and site\n\n• Goyo can pressure top square or come closer to site" }
-    ]
-  },
-  {
-    "category": "Opponent Analysis",
-    "items": [
-      { "title": "OPPONENT GAMEPLAY ANALYSIS - ATTACK (UNRELATED PICTURES)", "images":["img/works/Counter att.png", "img/works/att counter 2.png"],  "text": "• Adaptation to any work format\n\n• Google slide, Miro, Cards format or even just notes on Discord\n\n• Counter strat or adapting strats to the opponent team\n\n• Guide on the strats we should play and playstyle we should adopt to create a game plan" },
-      { "title": "OPPONENT GAMEPLAY ANALYSIS - DEFENCE (UNRELATED PICTURES)", "images":["img/works/D opp analysis.png", "img/works/D analysis 2.png"],  "text": "• Same principle as above, but for Defence" },
-      { "title": "COUNTER STRAT - M80 - KAFE - MINING ATTACK", "image": "img/works/Counter d mining.png", "text": "• M80 knew about our Fall out strat into Kitchen to deny plant with Pulse/Valk but also about our “Aggressive” strat where we fight for Top floor control\n\n• Wanted to make them think we were running the “Aggressive” strat\n\n• I changed it so we could fall and have the plant deny option by having Valkyrie hiding in prep phase and a 3 C4's lineup\n\n• The goal is to show we would fight, hold top floor for one minute or more if possible, then fall back into Kitchen and play to deny the plant" },
-      { "title": "COUNTER STRAT - M80 - KAFE - READING DEFENCE", "image": "img/works/ATT Counter.png", "text": "• Here, I noticed that in one of M80 Reading DEF, Kaid was isolated in train, alone, with no gadgets to help him, no dining rotate nor line of sight to have support\n\n• The goal is to explode mining window with Blitz/Buck/Sens to kill him with Ying holding his chimney fallback\n\n• Rauora controlling top flank thanks to her gadget, if an enemy is on Train hatch, she can activate her panel to contest/surprise him\n\n• Once we kill him, we flip to flood reading\n\n• Sens stays train to bait a Dining plant while Blitz/Buck push Reading door\n\n• Ying flashes cocktail & laundry through the drone hole and Rauora peeks new hatch\n\n• This strat has to be called once we ID Kaid cause they dont run Kaid on any of their other strats" },
-      { "title": "COUNTER STRAT - M80 - KAFE - KITCHEN ROAM", "image": "img/works/Att counter 22.png", "text": "• This is a rush against M80 Roam on Kafe Kitchen\n\n• I noticed that when they run Tubarao/Kaid, they were closing Bakery and Freezer and were roaming heavily top with only Tubarao on site in Freezer and absolutely no trap reception side\n\n• The goal was just to push fast reception into site, then freezer to kill the Tub and plant holding rotation red side, VIP/Bar side and hatch drop" }
-    ]
-  },
-  {
-    "category": "Internal & External Data",
-    "items": [
-      { "title": "GENERAL TEAM DATA", "image": "img/works/Data result.png", "text": "• Scrim Data\n• Official games data\n• Combined data\n• Every maps with overall, ATK & DEF winrates" },
-      { "title": "DETAILED MAPS DATA", "image": "img/works/Data site.png", "text": "• Detailed data on a specific map\n• Detailed data per strat\n• Every bombsites detailed (W%, Entry, TTFK, etc...)\n• Specific strategies data helps to better target issues" },
-      { "title": "PLAYERS INDIVIDUAL DATA", "image": "img/works/Data individual.png", "text": "• Detailed individual data\n• Custom global rating (with a possibility to change factors)\n• Per map\n• Per bombsite\n• Both ATK & DEF" },
-      { "title": "LIVE DATA WORKFLOW", "image": "img/works/Script.png", "text": "• Automated process\n• Allowing me to collect data live during scrims\n• Data is available as soon as practices end" },
-      { "title": "OPPONENT DATA COLLECTION", "image": "img/works/Enemy data.png", "text": "• Automated Opponent data collection base on Liquipedia's data\n• Custom timespan to get only useful data\n• GRID data could also be accessible via API if given access to the org" }
-    ]
-  }
-],
+    {
+      "category": "Team & Players Performance",
+      "items": [
+        {
+          "title": "TEAM GOALS TOOL",
+          "image": "img/works/team goal.png",
+          "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead"
+        },
+        {
+          "title": "PLAYER IMPROVEMENT TOOL",
+          "image": "img/works/Player goal.png",
+          "text": " • Weekly or bi-weekly review \n• Setting up individual goals and points of improvement"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1",
+          "image": "img/works/Imagery.png",
+          "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Every day and before matches\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2",
+          "image": "img/works/Gameday feedback.png",
+          "text": "• Feedback filled by players after official games\n• Review with the coach\n• Debrief to help the player improve on his mental/stress management"
+        }
+      ]
+    },
+    {
+      "category": "Strategies",
+      "items": [
+        {
+          "title": "BANK - BASEMENT SPLIT - ATK",
+          "images": [
+            "img/works/Bank basement split 1.png",
+            "img/works/Bank basement split 2.png"
+          ],
+          "text": "• Called when the enemy roams\n\n• Players take their positions, drone their own area and count: everyone calls what they see and what they do NOT see (enemies, utility, traps)\n\n• REACTIONS - from those calls we pick the entry where the enemy is weakest in numbers and/or utility, so we always play a man advantage (2v1, 3v1, 3v2)\n\n• Site hit: if one player is blue stairs alone, or alone on site\n\n• Top clear: if there is a strong Hori roam with traps\n\n• Mid hit Archives: if nobody is archives, or one player with little trap coverage\n\n• Mid hit Open: same read as Archives, but in Open"
+        },
+        {
+          "title": "BANK - CEO DEFAULTS - ATK",
+          "image": "img/works/Bank CEO defaults.png",
+          "text": "• Three default ways to attack Top\n\n• Open trump windows\n\n• KILL - focus the Trump player, kill him and keep flooding. If Ace/Hibana are banned, take an execute operator (Ying/Grim/Sens)\n\n• PLANT - create chaos with Sens/Rauora. Once Sens pulls the wall, Rauora jumps in through the door to plant while Glaz pushes jani door to deny a C4 or a smoke on the plant. Ace/Hibana clears stock hallway, or Flores/Ying if banned. Flash Soda and push, Dokkaebi backstab or spiderman\n\n• STOCK OPENING KILL - cheese play for the opening kill on the stock player: when he falls back because the wall is open, or Capitao fires him, rappel upside down on main skylight to kill him\n\n• If no Ace/Hibana: RL goes Stock, Mcie rappel"
+        },
+        {
+          "title": "CHALET - MASTER/OFFICE - ATK",
+          "image": "img/works/Strat att chalet.png",
+          "text": "• Rush K9\n\n• Once Sens pulls up the wall covering master area: Osa destroys K9 barricade and BB push, killing the guy half wall\n\n• Dokkaebi flashes piano to cover K9 entrance and holds it from the boost or jump in Ivy window\n\n• Ying flash sol & master, then rappels in to create chaos\n\n• During all of that, Osa plants on the door behind her shield\n\n• Sens puts claymores on lobby door and trench"
+        },
+        {
+          "title": "BORDER - BATHROOM/TELLERS - DEF",
+          "image": "img/works/Border D tellers.png",
+          "text": "• 60% winrate DEF\n\n• Horizontal strat on Bathroom site\n\n• The top setup and Valkyrie reinforcing hatches late in prep phase to make the enemy think we play top to force them clearing it\n\n• Hide Kaid and use it for hatches to keep them closed\n\n• Valkyrie/Mozzie play top early to shoot drones and make enemy lose time then fallback and play horizontal\n\n• Play the c4 kills with info we have\n\n• Late round, If enemy does an East take and courtyard execute into tellers we can deny that with C4/smokes if they didnt work vertical properly and hatch not open\n\n• We can also have a line of sight from custom and retake Passport/Top"
+        },
+        {
+          "title": "BANK - OPEN AREA/STAFF - DEF",
+          "image": "img/works/die on top 2.png",
+          "text": "• 75% winrate DEF\n\n• Top setup for Open area\n\n• We close meeting wall to janitor to create a stronger hold top and have good crossfires between Trump/Elevator & Meeting, which throws off a lot of teams\n\n• Like the strat says, we play to die\n\n• If enemy wants to clear it, Valkyrie can flank lobby or square and Azami can come up marble stairs\n\n• If enemy goes directly for the square, Azami can delay with her Kibas & Goyo canisters\n\n• Meanwhile, Joker (means that player can play everything) and Castle can come back help holding archives and site\n\n• Goyo can pressure top square or come closer to site"
+        }
+      ]
+    },
+    {
+      "category": "Opponent Analysis",
+      "items": [
+        {
+          "title": "OPPONENT ANALYSIS & GAME PLAN - LAIR",
+          "images": [
+            "img/works/Lair opponent analysis.png",
+            "img/works/Lair game plan.png"
+          ],
+          "text": "• One prep sheet per map: their attack and defence bans, our own, and the bans we expect them to use against us\n\n• Attack and defence notes broken down per bombsite, built from their recent games - the source matches are referenced so every read stays traceable\n\n• A summary that boils the detail down to two usable lines for the players: how they attack, how they defend\n\n• From that analysis, the game plan: the exact strat to call on each bombsite, in order\n\n• Each call carries its operator swaps per player, plus the fallback if a key operator gets banned"
+        }
+      ]
+    },
+    {
+      "category": "Internal & External Data",
+      "items": [
+        {
+          "title": "GENERAL TEAM DATA",
+          "image": "img/works/Data result.png",
+          "text": "• Scrim Data\n• Official games data\n• Combined data\n• Every maps with overall, ATK & DEF winrates"
+        },
+        {
+          "title": "DETAILED MAPS DATA",
+          "image": "img/works/Data site.png",
+          "text": "• Detailed data on a specific map\n• Detailed data per strat\n• Every bombsites detailed (W%, Entry, TTFK, etc...)\n• Specific strategies data helps to better target issues"
+        },
+        {
+          "title": "PLAYERS INDIVIDUAL DATA",
+          "image": "img/works/Data individual.png",
+          "text": "• Detailed individual data\n• Custom global rating (with a possibility to change factors)\n• Per map\n• Per bombsite\n• Both ATK & DEF"
+        },
+        {
+          "title": "LIVE DATA WORKFLOW",
+          "image": "img/works/Script.png",
+          "text": "• Automated process\n• Allowing me to collect data live during scrims\n• Data is available as soon as practices end"
+        },
+        {
+          "title": "OPPONENT DATA COLLECTION",
+          "image": "img/works/Enemy data.png",
+          "text": "• Automated Opponent data collection base on Liquipedia's data\n• Custom timespan to get only useful data\n• GRID data could also be accessible via API if given access to the org"
+        }
+      ]
+    }
+  ],
   "vouches": [
     {
       "image": "img/DEAPEK.png",
@@ -120,9 +183,21 @@
     }
   ],
   "contact": [
-    { "text": "You can reach out via mail, X or Discord.\n\nI usually answer within 24 hours."},
-    { "type": "link", "label": "Email : hentgentheo@gmail.com", "url": "mailto:hentgentheo@gmail.com" },
-    { "type": "link", "label": "X", "url": "https://twitter.com/Phenomene_05" },
-    { "text": "Discord : phenomene"}
+    {
+      "text": "You can reach out via mail, X or Discord.\n\nI usually answer within 24 hours."
+    },
+    {
+      "type": "link",
+      "label": "Email : hentgentheo@gmail.com",
+      "url": "mailto:hentgentheo@gmail.com"
+    },
+    {
+      "type": "link",
+      "label": "X",
+      "url": "https://twitter.com/Phenomene_05"
+    },
+    {
+      "text": "Discord : phenomene"
+    }
   ]
 }

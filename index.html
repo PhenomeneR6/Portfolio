@@ -1,566 +1,957 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phenomene - Siege X Coach</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<title>Phenomene — Rainbow Six Siege Coach</title>
+
+<meta name="description" content="Théo &quot;Phenomene&quot; Hentgen — Rainbow Six Siege head coach. 6 years of tier-1 experience across Europe, Japan, North America and China. Currently Head Coach at All Gamers.">
+<meta name="author" content="Théo Hentgen">
+<meta name="theme-color" content="#0b0a0a">
+<link rel="canonical" href="./">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Phenomene — Rainbow Six Siege Coach">
+<meta property="og:description" content="6 years coaching tier-1 Rainbow Six Siege across Europe, Japan, North America and China.">
+<meta property="og:image" content="img/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@Phenomene_05">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23e02b32'/><text x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%23fff' text-anchor='middle'>P</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/banner.webp" imagesrcset="img/banner-900.webp 900w, img/banner.webp 1600w" imagesizes="100vw" fetchpriority="high">
+
 <style>
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(180deg, #0a0f0f, #0d1b1e);
-  color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root{
+  --bg:#0b0a0a;
+  --bg-elev:#131212;
+  --bg-sunk:#070707;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+  --text:#f4f3f2;
+  --text-dim:#a6a3a1;
+  --text-faint:#75716f;
+  --accent:#e4343c;
+  --accent-bright:#ff5a60;
+  --accent-wash:rgba(228,52,60,.12);
+
+  --font-display:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --font-body:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+
+  --maxw:1120px;
+  --maxw-wide:1440px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --radius:4px;
+  --ease:cubic-bezier(.2,.7,.3,1);
 }
 
-/* --- Header --- */
-header {
-  width: 100%;
-  height: 40vh;
-  background: url("img/Phenomene_Header.png") center/cover no-repeat;
-  position: relative;
-}
-header h1 {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-  background: rgba(0,0,0,0.3);
-  padding: 10px 20px;
-  border-radius: 6px;
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; scroll-padding-top:76px; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:clamp(.95rem,.9rem + .2vw,1.0625rem);
+  line-height:1.65;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 
-/* --- Navigation --- */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  background: rgba(0,151,167,0.15);
-  padding: 1rem;
-  width: 100%;
-  backdrop-filter: blur(8px);
-  flex-wrap: wrap;
-}
-nav button {
-  background: none;
-  border: none;
-  color: #b2ebf2;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  position: relative;
-  transition: 0.3s;
-}
-nav button::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background: #0097a7;
-  transition: width 0.3s;
-  margin-top: 5px;
-}
-nav button:hover::after,
-nav button.active::after { width: 100%; }
-
-/* --- Main content container --- */
-#content {
-  max-width: 1000px;
-  padding: 2rem;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
+h1,h2,h3,.display{
+  font-family:var(--font-display);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-.03em;
+  margin:0;
 }
 
-/* --- EXPERIENCE --- */
-#content.experience{ 
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-  align-items:center;
-}
-.experience-card {
-  display:flex;
-  gap:1rem;
-  align-items:center;
-  background: rgba(255,255,255,0.05);
-  padding:1rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
-}
-.experience-card img{ width:240px; height:160px; object-fit:contain; border-radius:8px; }
-.experience-card p{ white-space: pre-line; margin:0; color:#ddd; }
+a{ color:inherit; }
 
-/* --- EXPERTISE --- */
-#content.expertise {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-  align-items: stretch;
+:focus-visible{ outline:2px solid var(--accent-bright); outline-offset:3px; }
+
+.shell{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+/* The masthead and hero run wider than the reading column. At 1920px a 1120px
+   hero leaves the headline floating ~450px in from the edge, which reads as
+   timid over a full-bleed photo; body text stays narrow so lines stay short. */
+.topbar .shell,
+.hero-inner{ max-width:var(--maxw-wide); }
+
+.skip-link{
+  position:fixed; left:-9999px; top:0; z-index:300;
+  background:var(--accent); color:#fff; padding:.8rem 1.4rem; font-weight:600;
 }
-#content.expertise .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+.skip-link:focus{ left:0; }
+
+/* ============================================================
+   Top bar
+   ============================================================ */
+.topbar{
+  position:sticky; top:0; z-index:200;
+  background:rgba(11,10,10,.72);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid var(--line);
 }
-#content.expertise .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.4);
+.topbar .shell{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1.5rem; min-height:60px;
 }
-#content.expertise .card h3 {
-  margin: 0 0 0.5rem 0;
-  color: #00acc1;
-  text-align: center;
-  width: 100%;
+.brand{
+  display:flex; align-items:baseline; gap:.6rem;
+  font-family:var(--font-display); font-weight:700; font-size:.95rem;
+  letter-spacing:.04em; text-transform:uppercase; white-space:nowrap;
 }
-#content.expertise .card p {
-  white-space: pre-line;
-  margin: 0;
-  color: #ddd;
-  text-align: left;
-  width: 100%;
-  flex: 1;
+.brand span{
+  font-family:var(--font-body); font-weight:500; font-size:.72rem;
+  letter-spacing:.12em; color:var(--text-faint);
 }
-@media (max-width: 1000px) {
-  #content.expertise { grid-template-columns: 1fr; }
+.brand::before{
+  content:""; width:7px; height:7px; border-radius:50%;
+  background:var(--accent); align-self:center; flex:none;
 }
 
-/* --- WORK EXAMPLES --- */
-#content.work {
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
-  width: 100%;
+nav{ display:flex; gap:clamp(1rem,2.5vw,2rem); justify-content:flex-end; flex:1; min-width:0; }
+nav button{
+  appearance:none; background:none; border:0; padding:.35rem 0;
+  font:inherit; font-size:.82rem; font-weight:500; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--text-faint);
+  cursor:pointer; position:relative; white-space:nowrap; flex:none;
+  transition:color .2s var(--ease);
 }
-.work-categories{
-  display:flex;
-  flex-wrap:wrap;
-  gap:1rem;
-  justify-content: center;
+nav button[aria-selected="true"]{ color:var(--text); }
+nav button::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:var(--accent); transform:scaleX(0); transform-origin:left;
+  transition:transform .3s var(--ease);
 }
-.work-category {
-  flex: 1 1 calc(25% - 1rem);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-  padding: 0.5rem 0;
-  border-radius: 6px;
-  background: rgba(0,151,167,0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60px;
-}
-.work-category:hover {
-  background: rgba(0,151,167,0.25);
-  box-shadow: 0 0 10px rgba(0,151,167,0.4);
-  transform: translateY(-2px);
-}
-.work-category.active {
-  background: rgba(0,151,167,0.18);
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 0 12px rgba(255,255,255,0.3);
-  transform: translateY(0);
-}
-.work-items-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-  width: 100%;
-}
-.work-items{
-  display:none;
-  flex-direction: column;
-  gap:1rem;
-  align-items: center;
-}
-.work-items .card{ 
-  width: 100%;
-  max-width: 1000px;
-  display:flex; 
-  flex-direction:column; 
-  gap:0.5rem; 
-  align-items: center;
-}
-.work-items .card h3 {
-  margin:0 0 0.5rem 0;
-  color:#00acc1;
-  text-align:center;
-  width:100%;
-}
-.work-items .card .content-wrapper {
-  display:flex;
-  gap:1rem;
-  align-items:center; /* ✅ centrer verticalement image + texte */
-  width:100%;
-}
-.work-items .card .content-wrapper.row { 
-  flex-direction: row; 
-  justify-content: flex-start;
-}
-.work-items .card .content-wrapper.row img {
-  margin-right: 1rem;
-}
-.work-items .card .content-wrapper.row p {
-  flex: 1;
-  text-align: justify;
-}
-.work-items .card .content-wrapper.col { 
-  flex-direction: column; 
-}
-.work-items .card img{ 
-  width:250px; 
-  height:auto; 
-  border-radius:8px; 
-  cursor:zoom-in; 
-  flex-shrink:0;
+nav button[aria-selected="true"]::after{ transform:scaleX(1); }
+
+/* Narrow screens: the brand duplicates the hero headline, so drop it and give
+   the nav the full width as one scrollable row instead of a wrapped block. */
+@media (max-width:760px){
+  .topbar .shell{ padding-inline:0; min-height:52px; gap:0; }
+  .brand{ display:none; }
+  nav{
+    justify-content:flex-start;
+    gap:0;
+    width:100%;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    scroll-padding-inline:var(--gutter);
+  }
+  nav::-webkit-scrollbar{ display:none; }
+  /* Tightened so the five tabs fit without scrolling on most phones; the
+     fades below cover the cases where they still don't. */
+  nav button{ padding:.95rem .5rem; font-size:.7rem; letter-spacing:.04em; }
+  nav button:first-child{ margin-left:calc(var(--gutter) - .5rem); }
+  nav button:last-child{ margin-right:calc(var(--gutter) - .5rem); }
+  nav button::after{ left:.5rem; right:.5rem; }
+
+  /* Edge fades: shown only on the side that actually has more to scroll, so a
+     cut-off tab reads as "there is more" instead of as a broken layout. */
+  .topbar .shell{ position:relative; }
+  .topbar .shell::before,
+  .topbar .shell::after{
+    content:""; position:absolute; top:0; bottom:0; width:32px; z-index:2;
+    pointer-events:none; opacity:0; transition:opacity .2s var(--ease);
+  }
+  .topbar .shell::before{ left:0;  background:linear-gradient(90deg,var(--bg),rgba(11,10,10,0)); }
+  .topbar .shell::after{ right:0; background:linear-gradient(270deg,var(--bg),rgba(11,10,10,0)); }
+  .topbar.can-left  .shell::before{ opacity:1; }
+  .topbar.can-right .shell::after{ opacity:1; }
 }
 
-/* --- VOUCHES --- */
-#content.vouches {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  text-align: center;
-  width: 100%;
-  align-items: stretch;
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:clamp(280px,38vh,400px);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  overflow:hidden;
+  background:var(--bg-sunk);
+  border-bottom:1px solid var(--line);
 }
-#content.vouches .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: rgba(255,255,255,0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%;
+.hero picture,.hero img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:62% 28%; display:block;
 }
-#content.vouches .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(0,151,167,0.4);
+.hero::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(11,10,10,.62) 0%,rgba(11,10,10,.18) 35%,rgba(11,10,10,.86) 78%,var(--bg) 100%),
+    linear-gradient(90deg,rgba(11,10,10,.80) 0%,rgba(11,10,10,.25) 55%,transparent 100%);
 }
-#content.vouches img {
-  width: 40%;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: none;
-  margin: 0 auto;
-}
-.vouche-title {
-  color: #00acc1;
-  margin-top: 0.5rem;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-}
-.vouche-text {
-  text-align: justify;
-  margin-top: 0.5rem;
-  color: #ddd;
-  width: 100%;
-  flex: 1;
-}
-@media (max-width: 1000px) {
-  #content.vouches { grid-template-columns: 1fr; }
+.hero-inner{ position:relative; z-index:1; padding-block:clamp(2rem,5vh,3rem) clamp(1.5rem,3.5vh,2.25rem); }
+
+/* Portrait: shorter hero (svh, so the collapsing URL bar can't resize it),
+   and drop the left-to-right scrim — it only makes sense beside the subject. */
+@media (max-width:760px){
+  .hero{ min-height:clamp(240px,35svh,320px); }
+  .hero picture,.hero img{ object-position:60% 26%; }
+  .hero::after{
+    background:linear-gradient(180deg,
+      rgba(11,10,10,.55) 0%,rgba(11,10,10,.25) 28%,
+      rgba(11,10,10,.88) 70%,var(--bg) 100%);
+  }
 }
 
-/* --- CONTACT --- */
-#content.contact .card p{ text-align:center !important; }
-#content.contact{ display:flex; flex-direction:column; align-items:center; gap:1.5rem; width: 100%; }
-#content.contact .card{ width:fit-content; min-width:300px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.65rem;
+  font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent-bright); margin-bottom:1.1rem;
+}
+.eyebrow::before{ content:""; width:28px; height:1px; background:var(--accent); }
 
-/* --- CARTES --- */
-.card{
-  background: rgba(255,255,255,0.05);
-  padding:1.5rem;
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(0,151,167,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeIn 0.5s ease;
-  cursor: default;
+.hero h1{
+  /* Sized to keep the full 24-character name on one line down to ~540px wide;
+     below that it wraps to two balanced lines rather than shrinking further. */
+  font-size:clamp(2rem,5vw,4.25rem);
+  text-wrap:balance;
 }
-.card p{ white-space: pre-line; margin:0; color:#ddd; text-align:justify; }
-.card:hover{ transform: translateY(-5px); box-shadow:0 0 25px rgba(0,151,167,0.4); }
-.card.clickable{ cursor:pointer; }
-.card.clickable:hover{ transform: translateY(-4px); box-shadow:0 0 25px rgba(0,151,167,0.5); }
+.hero h1 em{ font-style:normal; color:var(--accent-bright); }
 
-footer{ text-align:center; padding:2rem; background:#0a1416; font-size:0.9rem; color:#aaa; width:100%; }
 
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+/* ============================================================
+   Section scaffolding
+   ============================================================ */
+main{ padding-block:clamp(3rem,8vh,5.5rem) clamp(4rem,10vh,7rem); }
+
+.section-head{
+  display:flex; align-items:baseline; gap:1rem;
+  padding-bottom:1.25rem; margin-bottom:clamp(2rem,4vh,3rem);
+  border-bottom:1px solid var(--line);
 }
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+.section-head .num{
+  font-family:var(--font-display); font-weight:500; font-size:.8rem;
+  letter-spacing:.1em; color:var(--accent);
 }
-#lightbox .close-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  background: rgba(0,0,0,0.4);
-  padding: 5px 15px;
-  border-radius: 6px;
-  transition: 0.3s;
+.section-head h2{ font-size:clamp(1.5rem,3.5vw,2.1rem); }
+
+.panel{ animation:rise .45s var(--ease) both; }
+@keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+
+.status{ color:var(--text-dim); padding:3rem 0; }
+.status a{ color:var(--accent-bright); }
+
+/* ============================================================
+   Bio
+   ============================================================ */
+/* No measure cap: the bio fills the content column. The type scales up on wide
+   screens so the line count stays sane rather than stretching to ~100ch. */
+.prose p{
+  margin:0 0 1.25rem;
+  font-size:clamp(1rem,.92rem + .45vw,1.35rem);
+  color:var(--text-dim);
+  text-wrap:pretty;
 }
-#lightbox .close-btn:hover {
-  background: rgba(0,0,0,0.7);
+/* The opening line of the bio is a one-line greeting, not a lede, so it gets
+   brightness for hierarchy but not a larger size — blown up it just looked
+   like a mistake next to the paragraphs under it. */
+.prose p:first-of-type{ color:var(--text); }
+.prose p:last-child{ margin-bottom:0; }
+
+/* ============================================================
+   Experience — CV timeline
+   ============================================================ */
+.timeline{ display:flex; flex-direction:column; }
+.entry{
+  display:grid;
+  grid-template-columns:76px minmax(0,1fr);
+  gap:clamp(1.25rem,3vw,2.5rem);
+  padding-block:clamp(1.75rem,3.5vh,2.5rem);
+  border-top:1px solid var(--line);
+}
+.entry:first-child{ border-top:0; padding-top:0; }
+.entry-logo{
+  width:76px; height:76px; border-radius:var(--radius);
+  background:var(--bg-elev); border:1px solid var(--line);
+  padding:.5rem;
+}
+/* <picture> is inline by default, which leaves the img's height:100% with no
+   definite height to resolve against — it then falls back to its intrinsic
+   size and gets clipped. Give the picture a real box so contain can work. */
+.entry-logo picture{ display:block; width:100%; height:100%; }
+.entry-logo img{
+  width:100%; height:100%;
+  object-fit:contain; object-position:center;
+  display:block;
+}
+.entry-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap; margin-bottom:.9rem;
+}
+.entry-head h3{ font-size:clamp(1.1rem,2.4vw,1.45rem); letter-spacing:-.02em; }
+.entry-head .period{
+  font-size:.74rem; font-weight:500; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--text-faint); white-space:nowrap;
+}
+.role{ margin-bottom:.9rem; }
+.role + .role{ margin-top:1.4rem; }
+.role-title{
+  display:flex; align-items:baseline; gap:.75rem; flex-wrap:wrap;
+  margin-bottom:.55rem;
+}
+.role-title b{ font-size:.95rem; font-weight:600; letter-spacing:.01em; }
+.role-title i{
+  font-style:normal; font-size:.72rem; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint);
+}
+ul.bullets{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.4rem; max-width:92ch; }
+ul.bullets li{
+  position:relative; padding-left:1.1rem;
+  font-size:.925rem; color:var(--text-dim);
+}
+ul.bullets li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:5px; height:5px; background:var(--accent); border-radius:1px;
+}
+ul.bullets li.win{ color:var(--text); font-weight:500; }
+@media (max-width:620px){
+  .entry{ grid-template-columns:1fr; gap:1.1rem; }
+  .entry-logo{ width:60px; height:60px; }
 }
 
-@keyframes fadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+/* ============================================================
+   Expertise — numbered grid
+   ============================================================ */
+.grid-2{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+.grid-2 > *{ background:var(--bg); padding:clamp(1.5rem,3vw,2.25rem); }
+@media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
+
+.skill-num{
+  font-family:var(--font-display); font-size:.78rem; font-weight:500;
+  letter-spacing:.1em; color:var(--accent); display:block; margin-bottom:.9rem;
+}
+.skill h3{ font-size:1.15rem; letter-spacing:.02em; margin-bottom:1rem; }
+
+/* ============================================================
+   Work examples
+   ============================================================ */
+.filters{
+  display:flex; flex-wrap:wrap; gap:.5rem;
+  margin-bottom:clamp(2rem,4vh,2.75rem);
+}
+.filters button{
+  appearance:none; font:inherit; cursor:pointer;
+  font-size:.78rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase;
+  padding:.6rem 1rem; border-radius:100px;
+  border:1px solid var(--line-strong); background:transparent; color:var(--text-dim);
+  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease);
+}
+.filters button[aria-selected="true"]{
+  background:var(--accent); border-color:var(--accent); color:#fff;
+}
+@media (max-width:560px){
+  .filters{ gap:.4rem; }
+  .filters button{ font-size:.72rem; padding:.55rem .8rem; letter-spacing:.05em; }
+}
+
+.work-list{ display:flex; flex-direction:column; }
+.work-list[hidden]{ display:none; }
+.work-item{
+  display:grid;
+  grid-template-columns:minmax(0,300px) minmax(0,1fr);
+  gap:clamp(1.5rem,3.5vw,3rem);
+  align-items:start;
+  padding-block:clamp(1.75rem,4vh,2.75rem);
+  border-top:1px solid var(--line);
+}
+.work-item:first-child{ border-top:0; padding-top:0; }
+.work-item.no-media{ grid-template-columns:1fr; }
+.work-item h3{
+  font-size:clamp(1rem,2vw,1.2rem); letter-spacing:.01em;
+  margin-bottom:1rem; text-wrap:balance;
+}
+.shots{ display:flex; flex-direction:column; gap:.75rem; }
+.shot{
+  display:block; width:100%; padding:0; border:1px solid var(--line);
+  border-radius:var(--radius); background:var(--bg-elev);
+  cursor:zoom-in; overflow:hidden; line-height:0;
+  transition:border-color .25s var(--ease),transform .25s var(--ease);
+}
+.shot picture{ display:block; }
+.shot img{ width:100%; height:auto; display:block; }
+@media (max-width:820px){
+  .work-item{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   Vouches (kept styled in case the tab comes back)
+   ============================================================ */
+.vouch{ display:flex; flex-direction:column; gap:1rem; }
+.vouch blockquote{
+  margin:0; font-size:1.05rem; color:var(--text); line-height:1.6;
+  white-space:pre-line; text-wrap:pretty;
+}
+.vouch figcaption{ display:flex; align-items:center; gap:.9rem; }
+.vouch picture{ display:block; flex:none; }
+.vouch img{ width:48px; height:48px; border-radius:50%; object-fit:cover; display:block; }
+.vouch cite{
+  font-style:normal; font-size:.74rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint);
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact-lead{ font-size:clamp(1.1rem,1rem + .6vw,1.6rem); line-height:1.4; letter-spacing:-.02em; margin:0 0 2.5rem; text-wrap:pretty; }
+.contact-lead + .contact-lead{ font-size:1rem; color:var(--text-dim); letter-spacing:0; line-height:1.6; margin-top:-1.75rem; }
+.channels{ display:flex; flex-direction:column; border-top:1px solid var(--line); }
+.channel{
+  display:flex; align-items:center; gap:1.1rem;
+  padding:1.15rem .25rem; border-bottom:1px solid var(--line);
+  text-decoration:none; color:inherit;
+  transition:padding-left .25s var(--ease),color .2s var(--ease);
+}
+.channel svg{ width:19px; height:19px; flex:none; opacity:.65; }
+.channel .label{
+  font-size:.7rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--text-faint); width:72px; flex:none;
+}
+.channel .value{ font-size:1rem; font-weight:500; }
+.channel .arrow{ margin-left:auto; color:var(--text-faint); font-size:1rem; }
+@media (max-width:560px){
+  .channel{ flex-wrap:wrap; gap:.5rem 1rem; }
+  .channel .label{ width:auto; }
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer{
+  border-top:1px solid var(--line);
+  background:var(--bg-sunk);
+  padding-block:2.25rem;
+}
+footer .shell{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:1rem; flex-wrap:wrap;
+  font-size:.78rem; letter-spacing:.04em; color:var(--text-faint);
+}
+
+/* ============================================================
+   Lightbox
+   ============================================================ */
+#lightbox{
+  position:fixed; inset:0; z-index:400; display:none;
+  background:rgba(5,5,5,.94);
+  padding:clamp(1rem,4vw,3rem);
+  place-items:center;
+}
+#lightbox.is-open{ display:grid; }
+#lightbox img{
+  max-width:100%; max-height:100%; width:auto; height:auto;
+  object-fit:contain; border-radius:var(--radius);
+  animation:pop .22s var(--ease) both;
+}
+@keyframes pop{ from{opacity:0; transform:scale(.985);} to{opacity:1; transform:none;} }
+#lightbox .close-btn{
+  position:absolute; top:clamp(.75rem,2vw,1.5rem); right:clamp(.75rem,2vw,1.5rem);
+  appearance:none; cursor:pointer;
+  width:42px; height:42px; border-radius:50%;
+  border:1px solid var(--line-strong); background:rgba(255,255,255,.06); color:#fff;
+  font-size:1.25rem; line-height:1;
+  transition:background .2s var(--ease),border-color .2s var(--ease);
+}
+#lightbox .close-btn:hover{ background:var(--accent); border-color:var(--accent); }
+body.no-scroll{ overflow:hidden; }
+
+/* ============================================================
+   Hover — pointer devices only. On touch, :hover latches after a tap
+   and leaves elements stuck in their highlighted state.
+   ============================================================ */
+@media (hover:hover) and (pointer:fine){
+  nav button:hover{ color:var(--text); }
+  .filters button:hover{ color:var(--text); border-color:var(--text-faint); }
+  .shot:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  a.channel:hover{ padding-left:1rem; color:var(--accent-bright); }
+  a.channel:hover svg{ opacity:1; }
+  a.channel:hover .arrow{ color:inherit; }
+}
+@media (hover:none){
+  .shot:active{ border-color:var(--accent); }
+  a.channel:active{ color:var(--accent-bright); }
+}
+
+/* ============================================================
+   Preferences / print
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important; animation-iteration-count:1 !important;
+    transition-duration:.01ms !important; scroll-behavior:auto !important;
+  }
+}
+@media print{
+  .topbar,#lightbox,.skip-link,.filters,.hero::after{ display:none !important; }
+  body{ background:#fff; color:#000; }
+  .hero{ min-height:auto; }
+  .entry,.work-item{ break-inside:avoid; }
+}
 </style>
 </head>
 <body>
-<header>
-  <h1>Phenomene - Siege X Coach</h1>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell">
+    <div class="brand">Phenomene <span>Siege Coach</span></div>
+    <nav id="nav" role="tablist" aria-label="Sections"></nav>
+  </div>
 </header>
 
-<nav>
-  <button data-section="bio" class="active">Bio</button>
-  <button data-section="experience">Experiences</button>
-  <button data-section="expertise">Expertise</button>
-  <button data-section="work">Work Examples</button>
-  <button data-section="vouches">Vouches</button>
-  <button data-section="contact">Contact</button>
-</nav>
+<section class="hero">
+  <picture>
+    <source type="image/webp" srcset="img/banner-900.webp 900w, img/banner.webp 1600w" sizes="100vw">
+    <img src="img/banner.jpg" alt="Phenomene on stage with All Gamers at a Rainbow Six Siege LAN"
+         width="1600" height="1067" fetchpriority="high" decoding="async">
+  </picture>
 
-<main id="content" class="bio"></main>
+  <div class="hero-inner shell">
+    <p class="eyebrow">Rainbow Six Siege · Coaching</p>
+    <h1>Théo <em>“Phenomene”</em> Hentgen</h1>
+  </div>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close-btn">&times;</span>
-  <img src="" alt="Preview">
+</section>
+
+<main id="content" tabindex="-1">
+  <div class="shell">
+    <p class="status">Loading…</p>
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <span>© <span id="year">2025</span> Théo Hentgen</span>
+    <span>Rainbow Six Siege · Coaching portfolio</span>
+  </div>
+</footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" class="close-btn" aria-label="Close preview">&times;</button>
+  <img src="" alt="">
 </div>
 
-<footer>© 2025 Phenomene - Siege X Coach</footer>
+<noscript>
+  <div class="shell"><p class="status">This portfolio needs JavaScript. You can still reach me at
+  <a href="mailto:hentgentheo@gmail.com">hentgentheo@gmail.com</a>.</p></div>
+</noscript>
 
 <script>
-let data={};
+(() => {
+  "use strict";
 
-async function loadData(){
-  const res = await fetch("data.json");
-  data = await res.json();
-  showSection("bio");
-}
+  /* ---- Edit this block to change the nav ---- */
 
-function showSection(section){
-  const content=document.getElementById("content");
-  content.innerHTML="";
-  content.className=section;
+  // Order of the tabs. Delete a line to hide a section — its data stays in
+  // data.json untouched. "vouches" is parked for now; add it back with:
+  //   { id: "vouches", label: "Vouches", num: "05" }
+  const SECTIONS = [
+    { id: "bio",        label: "Bio",           num: "01", heading: "Bio" },
+    { id: "experience", label: "Experience",    num: "02", heading: "Experience" },
+    { id: "expertise",  label: "Expertise",     num: "03", heading: "Expertise" },
+    { id: "work",       label: "Work",          num: "04", heading: "Work Examples" },
+    { id: "contact",    label: "Contact",       num: "05", heading: "Get in touch" }
+  ];
 
-  if(section==="experience"){
-    let maxWidth=0;
-    data.experience.forEach(item=>{
-      const tempDiv=document.createElement("div");
-      tempDiv.className="experience-card";
-      tempDiv.style.visibility="hidden";
-      tempDiv.style.position="absolute";
-      tempDiv.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
-      document.body.appendChild(tempDiv);
-      const w=tempDiv.offsetWidth;
-      if(w>maxWidth) maxWidth=w;
-      document.body.removeChild(tempDiv);
-    });
+  /* ---- Setup ---- */
 
-    data.experience.forEach(item=>{
-      const card=document.createElement("div");
-      card.className="experience-card";
-      card.style.width=maxWidth+"px";
-      card.innerHTML=`<img src="${item.image}" alt="${item.title||''}"><div>${item.title?`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`:""}<p>${item.text}</p></div>`;
-      content.appendChild(card);
-    });
+  const nav     = document.getElementById("nav");
+  const content = document.getElementById("content");
+  let data = null;
+  let booted = false;
 
-  } else if(section==="expertise"){
-    data.expertise.forEach(item=>{
-      const card=document.createElement("div");
-      card.className="card";
-      card.innerHTML=`<h3>${item.title}</h3><p>${item.text}</p>`;
-      content.appendChild(card);
-    });
+  const el = (tag, props = {}, html) => {
+    const n = Object.assign(document.createElement(tag), props);
+    if (html != null) n.innerHTML = html;
+    return n;
+  };
+  const webp  = s => s.replace(/\.(png|jpe?g)$/i, ".webp");
+  const thumb = s => s.replace(/\.(png|jpe?g)$/i, "-thumb.webp");
 
-  } else if(section==="work"){
-    const catContainer=document.createElement("div");
-    catContainer.className="work-categories";
-    const itemsContainer=document.createElement("div");
-    itemsContainer.className="work-items-container";
-
-    data.work.forEach(cat=>{
-      const catDiv=document.createElement("div");
-      catDiv.className="work-category";
-      catDiv.textContent=cat.category;
-
-      const itemsDiv=document.createElement("div");
-      itemsDiv.className="work-items";
-
-      cat.items.forEach(el=>{
-        const card=document.createElement("div");
-        card.className="card";
-
-        if(el.title){
-          const h3=document.createElement("h3");
-          h3.textContent=el.title;
-          h3.style.color="#00acc1";
-          h3.style.textAlign="center";
-          h3.style.width="100%";
-          card.appendChild(h3);
-        }
-
-        const contentWrapper=document.createElement("div");
-        contentWrapper.className="content-wrapper "+((el.image||el.images)&&el.text?"row":"col");
-
-        if(el.images && Array.isArray(el.images)){
-          const imgGroup=document.createElement("div");
-          imgGroup.style.display="flex";
-          imgGroup.style.gap="1rem";
-          imgGroup.style.justifyContent="center";
-          el.images.forEach(src=>{
-            const img=document.createElement("img");
-            img.src=src;
-            img.style.width="250px";
-            img.style.height="auto";
-            img.style.borderRadius="8px";
-            img.style.cursor="zoom-in";
-            img.addEventListener("click",()=>openLightbox(src));
-            imgGroup.appendChild(img);
-          });
-          contentWrapper.appendChild(imgGroup);
-        } 
-        else if(el.image){
-          const img=document.createElement("img");
-          img.src=el.image;
-          img.style.width="250px";
-          img.style.height="auto";
-          img.style.borderRadius="8px";
-          img.style.cursor="zoom-in";
-          img.style.marginRight="1rem"; // ✅ espacement image/texte
-          img.addEventListener("click",()=>openLightbox(el.image));
-          contentWrapper.appendChild(img);
-        }
-
-        if(el.text){
-          const p=document.createElement("p");
-          p.style.flex="1";
-          p.textContent=el.text;
-          contentWrapper.appendChild(p);
-        }
-
-        card.appendChild(contentWrapper);
-        itemsDiv.appendChild(card);
-      });
-
-      catDiv.addEventListener("click",()=>{
-        document.querySelectorAll(".work-category").forEach(c=>c.classList.remove("active"));
-        document.querySelectorAll(".work-items").forEach(i=>i.style.display="none");
-        catDiv.classList.add("active");
-        itemsDiv.style.display="flex";
-      });
-
-      catContainer.appendChild(catDiv);
-      itemsContainer.appendChild(itemsDiv);
-    });
-
-    content.appendChild(catContainer);
-    content.appendChild(itemsContainer);
-
-  } else {
-    if (!Array.isArray(data[section])) return;
-    data[section].forEach(item=>{
-      let card=document.createElement("div");
-      card.className="card";
-
-      if(section==="vouches" && item.image){
-        card.innerHTML=`
-          ${item.image?`<img src="${item.image}" alt="${item.title||''}" style="width:60%;border-radius:50%;display:block;margin:0 auto;">`:""}
-          ${item.title?`<h3 class="vouche-title">${item.title}</h3>`:""}
-          ${item.text?`<p class="vouche-text">${item.text}</p>`:""}
-        `;
-      } else if(section==="contact"){
-        if(item.type==="link"){
-          card.classList.add("clickable");
-          card.innerHTML=`<p>${item.label}</p>`;
-          card.addEventListener("click",()=>window.open(item.url,"_blank"));
-        } else if(item.text){
-          card.innerHTML=`<p>${item.text}</p>`;
-        } else if(item.title){
-          card.innerHTML=`<h3 style="margin:0 0 0.5rem 0; color:#00acc1;">${item.title}</h3>`;
-        }
-      } else {
-        card.innerHTML=`<p>${item}</p>`;
-      }
-      content.appendChild(card);
-    });
+  /** <picture> with a WebP source and the original file as fallback. */
+  function picture(src, alt, w, h, srcsetFn = webp) {
+    const pic = el("picture");
+    pic.append(el("source", { type: "image/webp", srcset: srcsetFn(src) }));
+    const img = el("img", { src, alt: alt || "", loading: "lazy", decoding: "async" });
+    if (w) img.width = w;
+    if (h) img.height = h;
+    pic.append(img);
+    return pic;
   }
 
-  // ✅ alignement des hauteurs expertise / vouches après rendu images
-  if(section==="expertise"||section==="vouches"){
-    const equalize = ()=>{
-      const cards = content.querySelectorAll('.card');
-      let max = 0;
-      cards.forEach(c=>{ c.style.height='auto'; max = Math.max(max, c.offsetHeight); });
-      cards.forEach(c=>c.style.height=max+'px');
-    };
-    setTimeout(equalize, 200);
-    window.addEventListener('resize', equalize);
+  /**
+   * data.json stores one blob of text per entry, using "<b>Role</b>",
+   * "<i>Period</i>" and "• " bullets. Turn that into real markup so the page
+   * gets proper headings and lists instead of a pre-wrapped paragraph.
+   */
+  function parseBlocks(text) {
+    const out = [];
+    let role = null;
+    for (const raw of String(text).split("\n")) {
+      const line = raw.trim();
+      if (!line) continue;
+      const b = line.match(/^<b>(.*?)<\/b>$/i);
+      const i = line.match(/^<i>(.*?)<\/i>$/i);
+      if (b) { role = { title: b[1], period: "", bullets: [] }; out.push(role); continue; }
+      if (i && role && !role.period) { role.period = i[1]; continue; }
+      if (!role) { role = { title: "", period: "", bullets: [] }; out.push(role); }
+      role.bullets.push(line.replace(/^[••*-]\s*/, ""));
+    }
+    return out;
   }
-}
 
-document.querySelectorAll("nav button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    showSection(btn.dataset.section);
+  const bulletList = items => {
+    const ul = el("ul", { className: "bullets" });
+    items.forEach(t => {
+      const li = el("li", {}, t);
+      if (/top\s*1\b|champion|winner/i.test(t)) li.classList.add("win");
+      ul.append(li);
+    });
+    return ul;
+  };
+
+  /* ---- Section renderers ---- */
+
+  const renderers = {
+    bio(items) {
+      const box = el("div", { className: "prose" });
+      items.forEach(text => String(text).split(/\n{2,}/).forEach(p => {
+        if (p.trim()) box.append(el("p", {}, p.trim()));
+      }));
+      return box;
+    },
+
+    experience(items) {
+      const list = el("div", { className: "timeline" });
+      items.forEach(item => {
+        // Titles may carry their own "- <i>dates</i>" suffix; lift it out so the
+        // period renders once, on the right, like a CV.
+        let title = item.title || "";
+        let period = "";
+        const m = title.match(/\s*[-–—]\s*<i>(.*?)<\/i>\s*$/i);
+        if (m) { period = m[1]; title = title.slice(0, m.index); }
+
+        const blocks = parseBlocks(item.text);
+        if (!period) {
+          const first = blocks.find(b => b.period), last = [...blocks].reverse().find(b => b.period);
+          if (first) period = first === last ? first.period
+            : `${last.period.split(/\s*[-–—]\s*/)[0]} – ${first.period.split(/\s*[-–—]\s*/).pop()}`;
+        }
+
+        const entry = el("div", { className: "entry" });
+        const logo = el("div", { className: "entry-logo" });
+        // No width/height attributes here: the logos aren't all square (the
+        // All Gamers lockup is 442x640), and a false 1:1 ratio would distort
+        // them. The .entry-logo box is a fixed size, so there's no layout shift.
+        logo.append(picture(item.image, `${title.trim()} logo`));
+
+        const body = el("div");
+        const head = el("div", { className: "entry-head" });
+        head.append(el("h3", {}, title.trim()));
+        if (period) head.append(el("span", { className: "period" }, period));
+        body.append(head);
+
+        // With a single role, its period already shows in the entry header —
+        // don't print the same dates twice.
+        const solo = blocks.length === 1;
+        blocks.forEach(b => {
+          const role = el("div", { className: "role" });
+          const showPeriod = b.period && !(solo && b.period === period);
+          if (b.title || showPeriod) {
+            const rt = el("div", { className: "role-title" });
+            if (b.title)   rt.append(el("b", {}, b.title));
+            if (showPeriod) rt.append(el("i", {}, b.period));
+            role.append(rt);
+          }
+          if (b.bullets.length) role.append(bulletList(b.bullets));
+          body.append(role);
+        });
+
+        entry.append(logo, body);
+        list.append(entry);
+      });
+      return list;
+    },
+
+    expertise(items) {
+      const grid = el("div", { className: "grid-2" });
+      items.forEach((item, i) => {
+        const cell = el("div", { className: "skill" });
+        cell.append(el("span", { className: "skill-num", textContent: String(i + 1).padStart(2, "0") }));
+        cell.append(el("h3", {}, item.title));
+        cell.append(bulletList(parseBlocks(item.text).flatMap(b => b.bullets)));
+        grid.append(cell);
+      });
+      return grid;
+    },
+
+    vouches(items) {
+      const grid = el("div", { className: "grid-2" });
+      items.forEach(item => {
+        const fig = el("figure", { className: "vouch" });
+        fig.append(el("blockquote", { textContent: (item.text || "").replace(/^[“"]|[”"]$/g, "").trim() }));
+        const cap = el("figcaption");
+        if (item.image) cap.append(picture(item.image, "", 48, 48));
+        cap.append(el("cite", { textContent: item.title || "" }));
+        fig.append(cap);
+        grid.append(fig);
+      });
+      return grid;
+    },
+
+    work(categories) {
+      const wrap = el("div");
+      const filters = el("div", { className: "filters" });
+      filters.setAttribute("role", "tablist");
+      filters.setAttribute("aria-label", "Work categories");
+      const panels = el("div");
+      const buttons = [];
+
+      categories.forEach((cat, i) => {
+        const btn = el("button", { type: "button", textContent: cat.category });
+        btn.id = `work-tab-${i}`;
+        btn.setAttribute("role", "tab");
+        btn.setAttribute("aria-controls", `work-panel-${i}`);
+
+        const panel = el("div", { className: "work-list" });
+        panel.id = `work-panel-${i}`;
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", btn.id);
+
+        cat.items.forEach(item => {
+          const images = item.images || (item.image ? [item.image] : []);
+          const row = el("div", { className: "work-item" + (images.length ? "" : " no-media") });
+
+          let shots = null;
+          if (images.length) {
+            shots = el("div", { className: "shots" });
+            images.forEach((src, n) => {
+              const label = (item.title || "screenshot")
+                + (images.length > 1 ? ` (${n + 1}/${images.length})` : "");
+              const b = el("button", { type: "button", className: "shot" });
+              b.setAttribute("aria-label", `Enlarge: ${label}`);
+              b.append(picture(src, label, null, null, thumb));
+              b.addEventListener("click", () => openLightbox(webp(src), src, label));
+              shots.append(b);
+            });
+          }
+
+          const body = el("div");
+          if (item.title) body.append(el("h3", {}, item.title));
+          if (item.text) body.append(bulletList(parseBlocks(item.text).flatMap(b => b.bullets)));
+
+          row.append(...(shots ? [shots, body] : [body]));
+          panel.append(row);
+        });
+
+        const select = () => buttons.forEach((b, j) => {
+          const on = j === i;
+          b.setAttribute("aria-selected", String(on));
+          b.tabIndex = on ? 0 : -1;
+          panels.children[j].hidden = !on;
+        });
+        btn.addEventListener("click", select);
+        btn.addEventListener("keydown", e => {
+          const dir = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 1, ArrowUp: -1 }[e.key];
+          if (!dir) return;
+          e.preventDefault();
+          const next = buttons[(i + dir + buttons.length) % buttons.length];
+          next.focus(); next.click();
+        });
+
+        buttons.push(btn);
+        filters.append(btn);
+        panels.append(panel);
+      });
+
+      if (buttons.length) buttons[0].click();   // open the first category, never an empty panel
+      wrap.append(filters, panels);
+      return wrap;
+    },
+
+    contact(items) {
+      const wrap = el("div");
+      const ICONS = {
+        email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6.5L21 6"/></svg>',
+        x:     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.8 21H1.6l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.8H5.8z"/></svg>',
+        discord:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.4A16.6 16.6 0 0 0 15.2 4l-.3.6a15 15 0 0 0-5.8 0L8.8 4a16.6 16.6 0 0 0-4.1 1.4C2 9.3 1.3 13.1 1.6 16.8A16.9 16.9 0 0 0 6.8 19l1-1.6a11 11 0 0 1-1.7-.8l.4-.3a11.9 11.9 0 0 0 11 0l.4.3a11 11 0 0 1-1.7.8l1 1.6a16.9 16.9 0 0 0 5.2-2.2c.4-4.3-.7-8-3.1-11.4zM8.4 14.6c-1 0-1.9-.9-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1zm7.2 0c-1 0-1.9-.9-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1z"/></svg>'
+      };
+
+      items.filter(i => i.text || i.title).forEach(i =>
+        wrap.append(el("p", { className: "contact-lead", textContent: (i.text || i.title).replace(/\n+/g, " ") })));
+
+      const list = el("div", { className: "channels" });
+
+      items.filter(i => i.type === "link").forEach(item => {
+        const kind = /^mailto:/i.test(item.url) ? "email" : /x\.com|twitter/i.test(item.url) ? "x" : "link";
+        const value = String(item.label).replace(/^[^:]*:\s*/, "") || item.label;
+        const row = el("a", { className: "channel", href: item.url });
+        if (!/^mailto:/i.test(item.url)) { row.target = "_blank"; row.rel = "noopener noreferrer"; }
+        row.innerHTML =
+          (ICONS[kind] || ICONS.email) +
+          `<span class="label">${kind === "x" ? "X" : kind === "email" ? "Email" : "Link"}</span>` +
+          `<span class="value"></span><span class="arrow" aria-hidden="true">↗</span>`;
+        row.querySelector(".value").textContent = kind === "x" ? "@Phenomene_05" : value;
+        list.append(row);
+      });
+
+      // Plain "Discord : handle" rows aren't links — render them as a channel too.
+      items.forEach(i => {
+        const m = i.text && i.text.match(/^\s*Discord\s*[:：]\s*(\S+)/i);
+        if (!m) return;
+        const row = el("div", { className: "channel" });
+        row.innerHTML = ICONS.discord + '<span class="label">Discord</span><span class="value"></span>';
+        row.querySelector(".value").textContent = m[1];
+        list.append(row);
+        wrap.querySelectorAll(".contact-lead").forEach(p => {
+          if (p.textContent.trim() === i.text.trim()) p.remove();
+        });
+      });
+
+      wrap.append(list);
+      return wrap;
+    }
+  };
+
+  /* ---- Routing ---- */
+
+  function showSection(id) {
+    const meta = SECTIONS.find(s => s.id === id) || SECTIONS[0];
+
+    nav.querySelectorAll("button").forEach(b => {
+      const on = b.dataset.section === meta.id;
+      b.setAttribute("aria-selected", String(on));
+      b.tabIndex = on ? 0 : -1;
+    });
+
+    // On narrow screens the nav is one sideways-scrolling row — keep the
+    // active tab in view instead of letting it sit off-screen.
+    if (nav.scrollWidth > nav.clientWidth + 1) {
+      const active = nav.querySelector('[aria-selected="true"]');
+      if (active) active.scrollIntoView({
+        inline: "center", block: "nearest", behavior: booted ? "smooth" : "auto"
+      });
+    }
+    updateNavFades();
+
+    const shell = el("div", { className: "shell panel" });
+    const head = el("div", { className: "section-head" });
+    head.append(el("span", { className: "num", textContent: meta.num }));
+    head.append(el("h2", {}, meta.heading));
+    shell.append(head);
+
+    const items = data && data[meta.id];
+    shell.append(Array.isArray(items) && items.length
+      ? renderers[meta.id](items)
+      : el("p", { className: "status", textContent: "Nothing here yet." }));
+
+    content.replaceChildren(shell);
+
+    // Scroll past the hero on a tab change, but leave the first paint alone.
+    if (booted) {
+      const top = content.getBoundingClientRect().top + window.scrollY
+                - (document.querySelector(".topbar").offsetHeight + 16);
+      if (window.scrollY > top) window.scrollTo({ top, behavior: "smooth" });
+    }
+    booted = true;
+  }
+
+  function buildNav() {
+    nav.replaceChildren(...SECTIONS.map(s => {
+      const b = el("button", { type: "button", textContent: s.label });
+      b.dataset.section = s.id;
+      b.setAttribute("role", "tab");
+      b.addEventListener("click", () => {
+        if (location.hash.slice(1) === s.id) showSection(s.id);
+        else location.hash = s.id;
+      });
+      b.addEventListener("keydown", e => {
+        const dir = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        if (!dir) return;
+        e.preventDefault();
+        const list = [...nav.querySelectorAll("button")];
+        const next = list[(list.indexOf(b) + dir + list.length) % list.length];
+        next.focus(); next.click();
+      });
+      return b;
+    }));
+  }
+
+  const routeFromHash = () => showSection(location.hash.slice(1) || SECTIONS[0].id);
+
+  // Tell the user which way the tab strip can still scroll (mobile only; on a
+  // wide screen nothing overflows and both fades stay off).
+  const topbar = document.querySelector(".topbar");
+  function updateNavFades() {
+    const max = nav.scrollWidth - nav.clientWidth;
+    topbar.classList.toggle("can-left", max > 1 && nav.scrollLeft > 2);
+    topbar.classList.toggle("can-right", max > 1 && nav.scrollLeft < max - 2);
+  }
+  nav.addEventListener("scroll", updateNavFades, { passive: true });
+  window.addEventListener("resize", updateNavFades);
+
+  /* ---- Lightbox ---- */
+
+  const lightbox = document.getElementById("lightbox");
+  const lightImg = lightbox.querySelector("img");
+  const closeBtn = lightbox.querySelector(".close-btn");
+  let lastFocus = null;
+
+  function openLightbox(src, fallback, alt) {
+    lastFocus = document.activeElement;
+    lightImg.alt = alt || "";
+    lightImg.onerror = () => { lightImg.onerror = null; lightImg.src = fallback; };
+    lightImg.src = src;
+    lightbox.classList.add("is-open");
+    document.body.classList.add("no-scroll");
+    closeBtn.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("no-scroll");
+    lightImg.removeAttribute("src");
+    if (lastFocus && lastFocus.isConnected) lastFocus.focus();
+  }
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
   });
-});
 
-function openLightbox(src){
-  const lightbox=document.getElementById("lightbox");
-  const img=lightbox.querySelector("img");
-  img.src=src;
-  lightbox.style.display="flex";
-}
+  /* ---- Boot ---- */
 
-document.querySelector("#lightbox .close-btn").addEventListener("click",()=>{
-  document.getElementById("lightbox").style.display="none";
-});
+  document.getElementById("year").textContent = new Date().getFullYear();
+  buildNav();
 
-loadData();
+  fetch("data.json")
+    .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
+    .then(json => {
+      data = json;
+      window.addEventListener("hashchange", routeFromHash);
+      routeFromHash();
+    })
+    .catch(err => {
+      console.error("Could not load data.json:", err);
+      content.replaceChildren(el("div", { className: "shell" },
+        '<p class="status">Content failed to load. Please refresh, or reach me at ' +
+        '<a href="mailto:hentgentheo@gmail.com">hentgentheo@gmail.com</a>.</p>'));
+    });
+})();
 </script>
 </body>
 </html>
