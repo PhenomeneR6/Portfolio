@@ -73,13 +73,16 @@
         },
         {
           "title": "PLAYER IMPROVEMENT TOOL - PART 2",
-          "image": "img/works/Review of the week.png",
-          "text": "• Review of the week, one sheet per session: date, opponent, map(s)\n• Positives first, then the learning areas - what the player took away from the week: about himself, about the game, about the team\n• Out of those, one MAIN learning area, so he leaves with a single priority instead of a list\n• Main focus for the next session written twice: what the coach sees, and what the player himself wants to work on\n• Best rounds and learning rounds noted, so the review is watched and not just talked about\n• Confidence level filled by the player (low / medium / high) twice per meeting: once at the start, once at the end - the gap between the two tells me what the review actually did for him, and how to handle him in the days after\n• Kept between reviews and checked again at the next one, so progress is tracked over the season instead of restarting every month"
+          "images": [
+            "img/works/Review of the week.png",
+            "img/works/Development score.png"
+          ],
+          "text": "• Review of the week, one sheet per session: date, opponent, map(s)\n• Positives first, then the learning areas - what the player took away from the week: about himself, about the game, about the team\n• Out of those, one MAIN learning area, so he leaves with a single priority instead of a list\n• Main focus for the next session written twice: what the coach sees, and what the player himself wants to work on\n• Best rounds and learning rounds noted, so the review is watched and not just talked about\n• Confidence level filled by the player (low / medium / high) twice per meeting: once at the start, once at the end - the gap between the two tells me what the review actually did for him, and how to handle him in the days after\n• Kept between reviews and checked again at the next one, so progress is tracked over the season instead of restarting every month\n• The sheet closes on a FINAL DEVELOPMENT SCORE: Mechanics, Tactical, Communication, Role Performance and Mental / Discipline, each out of 5\n• Every category is scored twice, by the coach and by the player, so we see straight away where our readings differ - and those gaps are usually the most useful part of the conversation\n• The five add up to an overall score out of 25, which gives the player a simple number to follow week after week"
         },
         {
           "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1",
           "image": "img/works/Imagery.png",
-          "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Every day and before matches\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm"
+          "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Planned around the week and before matches, in the dose the player actually needs\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm"
         },
         {
           "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2",
@@ -88,7 +91,7 @@
         },
         {
           "title": "MENTAL WORK & STRESS MANAGEMENT - PART 3",
-          "text": "• Breathing exercises before practice and matches - a player who knows how to control his breath stays calmer under pressure, and comes down from a high-pressure situation faster\n• Activation exercises before scrims and officials - 5 to 10 minutes of reflex and focus work to switch the brain and the muscles on, so nobody starts flat. It also builds a routine, and the routine itself reduces stress\n• Positive thoughts worked on day to day, in individual and team meetings - players are held accountable for negative thought patterns, because a confident team is part of a healthy system\n• A coach has to catch negative behaviour early and address it right away rather than let it settle\n• Imagery kept running every day and before matches, on top of the exercises above\n• I analyse the team's and each player's needs to plan how much of those exercises they actually need - some have to calm down, others have to switch on - and I adjust the volume through the season depending on the schedule and the pressure of the event"
+          "text": "• Breathing exercises before practice and matches - a player who knows how to control his breath stays calmer under pressure, and comes down from a high-pressure situation faster\n• Activation exercises before scrims and officials - 5 to 10 minutes of reflex and focus work to switch the brain and the muscles on, so nobody starts flat. It also builds a routine, and the routine itself reduces stress\n• Positive thoughts worked on day to day, in individual and team meetings - players are held accountable for negative thought patterns, because a confident team is part of a healthy system\n• A coach has to catch negative behaviour early and address it right away rather than let it settle\n• Imagery runs alongside those exercises, planned around the week rather than stacked on top of everything else\n• I analyse the team's and each player's needs to plan how much of those exercises they actually need - some have to calm down, others have to switch on - and I adjust the volume through the season depending on the schedule and the pressure of the event"
         }
       ]
     },
