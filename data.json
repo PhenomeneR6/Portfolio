@@ -50,7 +50,7 @@
     },
     {
       "title": "GAMEPLAY",
-      "text": " • Strat making within the meta\n  • Defining the meta\n  • Game preparation & Gameplan\n  • Opponent Gameplay analysis\n  • Counter Strating & Gameplay Adaptation\n  • R&D on future patches"
+      "text": " • Strat making within the meta\n  • Defining the meta\n  • Game preparation & Gameplan\n  • Opponent Gameplay analysis\n  • VOD review (team & individual)\n  • Counter Strating & Gameplay Adaptation\n  • R&D on future patches"
     },
     {
       "title": "DATA",
@@ -67,9 +67,13 @@
           "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead"
         },
         {
-          "title": "PLAYER IMPROVEMENT TOOL",
+          "title": "PLAYER IMPROVEMENT TOOL - PART 1",
           "image": "img/works/Player goal.png",
-          "text": " • Weekly or bi-weekly review \n• Setting up individual goals and points of improvement"
+          "text": "• Weekly or bi-weekly review, done with the player\n• Setting up individual goals and points of improvement\n• We go through the period together: what worked, what did not, and why\n• The player fills his own part, so the review stays a conversation and not a verdict"
+        },
+        {
+          "title": "PLAYER IMPROVEMENT TOOL - PART 2",
+          "text": "• The summary that comes out of the review: what the player has to focus on next\n• Two or three points maximum, written in his words, so it stays usable in game\n• Kept visible between reviews and checked again at the next one\n• Lets both of us track progress over the season instead of restarting from zero every month"
         },
         {
           "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1",
@@ -80,6 +84,10 @@
           "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2",
           "image": "img/works/Gameday feedback.png",
           "text": "• Feedback filled by players after official games\n• Review with the coach\n• Debrief to help the player improve on his mental/stress management"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 3",
+          "text": "• Breathing exercises to bring the heart rate down between rounds and before matches\n• Activation exercises to get players to the right level of arousal before a game, instead of starting flat\n• Routines built around the match day: before the session, between maps, after a loss\n• I analyse the team's and each player's needs to plan how much of those exercises they actually need - some need to calm down, others need to switch on\n• Volume and type are adjusted through the season depending on the schedule and the pressure of the event"
         }
       ]
     },
@@ -96,6 +104,7 @@
         },
         {
           "title": "BANK - CEO DEFAULTS - ATK",
+          "date": "March 2026",
           "image": "img/works/Bank CEO defaults.png",
           "text": "• Three default ways to attack Top\n\n• Open trump windows\n\n• KILL - focus the Trump player, kill him and keep flooding. If Ace/Hibana are banned, take an execute operator (Ying/Grim/Sens)\n\n• PLANT - create chaos with Sens/Rauora. Once Sens pulls the wall, Rauora jumps in through the door to plant while Glaz pushes jani door to deny a C4 or a smoke on the plant. Ace/Hibana clears stock hallway, or Flores/Ying if banned. Flash Soda and push, Dokkaebi backstab or spiderman\n\n• STOCK OPENING KILL - cheese play for the opening kill on the stock player: when he falls back because the wall is open, or Capitao fires him, rappel upside down on main skylight to kill him\n\n• If no Ace/Hibana: RL goes Stock, Mcie rappel"
         },
@@ -117,6 +126,29 @@
       ]
     },
     {
+      "category": "Counter Strats",
+      "items": [
+        {
+          "title": "TRAIN TARGET & EXEC / DINING BAIT - ATK",
+          "date": "vs M80",
+          "image": "img/works/ATT Counter.png",
+          "text": "• Counter-strat built against one opponent in particular, straight out of their own analysis\n\n• The target is their habit, not the map: we attack the read they always make\n\n• Bait layer on Exec / Dining first, so their utility and their rotations commit\n\n• Each phase of the take is drawn on its own blueprint - positions, utility, order of entry\n\n• Operator line-up listed above the strat so every player knows his pick before the round starts"
+        },
+        {
+          "title": "HORI RUSH - ATK",
+          "date": "vs M80",
+          "image": "img/works/Att counter 22.png",
+          "text": "• Fast horizontal rush designed against their standard setup\n\n• One blueprint with every player's path, entry point and the order they go in\n\n• Called when their default leaves us a window to take the site before their utility is placed"
+        },
+        {
+          "title": "MINING - FAKE AGGRO - DEF",
+          "date": "vs M80",
+          "image": "img/works/Counter d mining.png",
+          "text": "• Defensive counter built for the way they attack Mining\n\n• Fake aggro early: we show pressure, take the time, then play to falloff instead of holding the fight\n\n• Valkyrie is hidden and kept for late-round info rather than burned at the start\n\n• Three blueprints, one per phase of the round, with the operator line-up underneath\n\n• The point is to break their timing: they prepare against our usual defence, not against this one"
+        }
+      ]
+    },
+    {
       "category": "Opponent Analysis",
       "items": [
         {
@@ -125,7 +157,15 @@
             "img/works/Lair opponent analysis.png",
             "img/works/Lair game plan.png"
           ],
-          "text": "• One prep sheet per map: their attack and defence bans, our own, and the bans we expect them to use against us\n\n• Attack and defence notes broken down per bombsite, built from their recent games - the source matches are referenced so every read stays traceable\n\n• A summary that boils the detail down to two usable lines for the players: how they attack, how they defend\n\n• From that analysis, the game plan: the exact strat to call on each bombsite, in order\n\n• Each call carries its operator swaps per player, plus the fallback if a key operator gets banned"
+          "text": "• Two slides per map: the opponent analysis first, then the game plan\n\n• ANALYSIS - their attack and defence bans, our own, and the bans we expect them to use against us\n\n• Attack and defence notes broken down per bombsite, built from their recent games - the source matches are referenced so every read stays traceable\n\n• A summary that boils the detail down to two usable lines for the players: how they attack, how they defend\n\n• GAME PLAN / DEFENCE - the defence plan per bombsite, with the player adjustments that go with it\n\n• GAME PLAN / ATTACK - built to help the IGL guide the team and call the right attack depending on the triggers they see in the round\n\n• Each call carries its operator swaps per player, plus the fallback if a key operator gets banned"
+        },
+        {
+          "title": "OPPONENT ANALYSIS - OTHER FORMATS",
+          "images": [
+            "img/works/D opp analysis.png",
+            "img/works/Counter att.png"
+          ],
+          "text": "• Same preparation, delivered in whichever format the team and the staff actually read\n\n• Annotated blueprints: their start, their anchors and the reads we expect, written straight on the map\n\n• Setup boards next to it, so players see the positions instead of reading about them\n\n• Highlighted notes for the moments that decide the round, kept short enough to be remembered in game\n\n• I adapt the format to the structure and to the players - slides, blueprints, boards or written notes - rather than forcing one template on everyone"
         }
       ]
     },
@@ -151,11 +191,6 @@
           "title": "LIVE DATA WORKFLOW",
           "image": "img/works/Script.png",
           "text": "• Automated process\n• Allowing me to collect data live during scrims\n• Data is available as soon as practices end"
-        },
-        {
-          "title": "OPPONENT DATA COLLECTION",
-          "image": "img/works/Enemy data.png",
-          "text": "• Automated Opponent data collection base on Liquipedia's data\n• Custom timespan to get only useful data\n• GRID data could also be accessible via API if given access to the org"
         }
       ]
     }

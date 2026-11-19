@@ -392,6 +392,11 @@ ul.bullets li.win{ color:var(--text); font-weight:500; }
   font-size:clamp(1rem,2vw,1.2rem); letter-spacing:.01em;
   margin-bottom:1rem; text-wrap:balance;
 }
+.work-item h3:has(+ .work-date){ margin-bottom:.35rem; }
+.work-date{
+  margin:0 0 1rem; font-size:.72rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-faint);
+}
 .shots{ display:flex; flex-direction:column; gap:.75rem; }
 .shot{
   display:block; width:100%; padding:0; border:1px solid var(--line);
@@ -774,6 +779,7 @@ body.no-scroll{ overflow:hidden; }
 
           const body = el("div");
           if (item.title) body.append(el("h3", {}, item.title));
+          if (item.date) body.append(el("p", { className: "work-date" }, item.date));
           if (item.text) body.append(bulletList(parseBlocks(item.text).flatMap(b => b.bullets)));
 
           row.append(...(shots ? [shots, body] : [body]));
