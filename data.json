@@ -59,39 +59,46 @@
   ],
   "work": [
     {
-      "category": "Team & Players Performance",
+      "category": "Opponent Analysis",
       "items": [
         {
-          "title": "TEAM GOALS TOOL",
-          "image": "img/works/team goal.png",
-          "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead"
-        },
-        {
-          "title": "PLAYER IMPROVEMENT TOOL - PART 1",
-          "image": "img/works/Player goal.png",
-          "text": "• Weekly or bi-weekly review, done with the player\n• Setting up individual goals and points of improvement\n• We go through the period together: what worked, what did not, and why\n• The player fills his own part, so the review stays a conversation and not a verdict"
-        },
-        {
-          "title": "PLAYER IMPROVEMENT TOOL - PART 2",
+          "title": "OPPONENT ANALYSIS & GAME PLAN - LAIR",
           "images": [
-            "img/works/Review of the week.png",
-            "img/works/Development score.png"
+            "img/works/Lair opponent analysis.png",
+            "img/works/Lair game plan.png"
           ],
-          "text": "• Review of the week, one sheet per session: date, opponent, map(s)\n• Positives first, then the learning areas - what the player took away from the week: about himself, about the game, about the team\n• Out of those, one MAIN learning area, so he leaves with a single priority instead of a list\n• Main focus for the next session written twice: what the coach sees, and what the player himself wants to work on\n• Best rounds and learning rounds noted, so the review is watched and not just talked about\n• Confidence level filled by the player (low / medium / high) twice per meeting: once at the start, once at the end - the gap between the two tells me what the review actually did for him, and how to handle him in the days after\n• Kept between reviews and checked again at the next one, so progress is tracked over the season instead of restarting every month\n• The sheet closes on a FINAL DEVELOPMENT SCORE: Mechanics, Tactical, Communication, Role Performance and Mental / Discipline, each out of 5\n• Every category is scored twice, by the coach and by the player, so we see straight away where our readings differ - and those gaps are usually the most useful part of the conversation\n• The five add up to an overall score out of 25, which gives the player a simple number to follow week after week"
+          "text": "• Two slides per map: the opponent analysis first, then the game plan\n\n• ANALYSIS - their attack and defence bans, our own, and the bans we expect them to use against us\n\n• Attack and defence notes broken down per bombsite, built from their recent games - the source matches are referenced so every read stays traceable\n\n• A summary that boils the detail down to two usable lines for the players: how they attack, how they defend\n\n• GAME PLAN / DEFENCE - the defence plan per bombsite, with the player adjustments that go with it\n\n• GAME PLAN / ATTACK - built to help the IGL guide the team and call the right attack depending on the triggers they see in the round\n\n• Each call carries its operator swaps per player, plus the fallback if a key operator gets banned"
         },
         {
-          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1",
-          "image": "img/works/Imagery.png",
-          "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Planned around the week and before matches, in the dose the player actually needs\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm"
+          "title": "OPPONENT ANALYSIS - OTHER FORMATS",
+          "images": [
+            "img/works/D opp analysis.png",
+            "img/works/Counter att.png"
+          ],
+          "text": "• Same preparation, delivered in whichever format the team and the staff actually read\n\n• Annotated blueprints: their start, their anchors and the reads we expect, written straight on the map\n\n• Setup boards next to it, so players see the positions instead of reading about them\n\n• Highlighted notes for the moments that decide the round, kept short enough to be remembered in game\n\n• I adapt the format to the structure and to the players - slides, blueprints, boards or written notes - rather than forcing one template on everyone"
+        }
+      ]
+    },
+    {
+      "category": "Counter Strats",
+      "items": [
+        {
+          "title": "KAFE - READING - ATK / TRAIN TARGET",
+          "date": "With OXG · vs M80",
+          "image": "img/works/ATT Counter.png",
+          "text": "• Counter built from their own VODs: in one of their Reading defences, Kaid was isolated in Train - alone, no gadget to help him, no Dining rotate and no line of sight to support him\n\n• So we explode mining window with Blitz/Buck/Sens to kill him there, Ying holding his chimney fall back, Rauora controlling the top flank with her gadget\n\n• Once he is down we flip and flood Reading: Sens stays Train to bait the Dining plant, Blitz/Buck push Reading door, Ying flashes cocktail + laundry through the drone hole, Rauora peeks new hatch\n\n• Called only once we ID Kaid - they do not run him on any of their other defences\n\n• Every phase of the take is drawn on its own blueprint, with the operator line-up above the strat"
         },
         {
-          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2",
-          "image": "img/works/Gameday feedback.png",
-          "text": "• Feedback filled by players after official games\n• Review with the coach\n• Debrief to help the player improve on his mental/stress management"
+          "title": "KAFE - KITCHEN - ATK / HORI RUSH",
+          "date": "With OXG · vs M80",
+          "image": "img/works/Att counter 22.png",
+          "text": "• Rush designed against their roam setup on Kitchen\n\n• I noticed that with Tub/Kaid they close Bakery and Freezer and roam heavy top, leaving only the Tub on site in Freezer and absolutely no trap on the reception side\n\n• So we push fast reception into site, into Freezer, and kill the Tub before the roamers can come back\n\n• Then plant and hold the rotations: red side, VIP/Bar side and the hatch drop\n\n• One blueprint with every player's path and entry point, so the rush stays coordinated instead of being a coin flip"
         },
         {
-          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 3",
-          "text": "• Breathing exercises before practice and matches - a player who knows how to control his breath stays calmer under pressure, and comes down from a high-pressure situation faster\n• Activation exercises before scrims and officials - 5 to 10 minutes of reflex and focus work to switch the brain and the muscles on, so nobody starts flat. It also builds a routine, and the routine itself reduces stress\n• Positive thoughts worked on day to day, in individual and team meetings - players are held accountable for negative thought patterns, because a confident team is part of a healthy system\n• A coach has to catch negative behaviour early and address it right away rather than let it settle\n• Imagery runs alongside those exercises, planned around the week rather than stacked on top of everything else\n• I analyse the team's and each player's needs to plan how much of those exercises they actually need - some have to calm down, others have to switch on - and I adjust the volume through the season depending on the schedule and the pressure of the event"
+          "title": "KAFE - MINING - DEF / FAKE AGGRO",
+          "date": "With OXG · vs M80",
+          "image": "img/works/Counter d mining.png",
+          "text": "• M80 knew both of our Mining defences: the fall out into Kitchen to deny the plant with Pulse/Valk, and the aggressive one where we fight for top floor control\n\n• So I wanted to make them think we were running the aggressive strat\n\n• We show the fight and hold top floor for a minute or more, then fall back into Kitchen and play to deny the plant\n\n• Valkyrie hides during prep phase and three C4s are lined up for the plant deny\n\n• A counter-strat in the real sense: they prepared against our habits, so the strat is built on what they expect to see"
         }
       ]
     },
@@ -134,50 +141,6 @@
       ]
     },
     {
-      "category": "Counter Strats",
-      "items": [
-        {
-          "title": "KAFE - READING - ATK / TRAIN TARGET",
-          "date": "With OXG · vs M80",
-          "image": "img/works/ATT Counter.png",
-          "text": "• Counter built from their own VODs: in one of their Reading defences, Kaid was isolated in Train - alone, no gadget to help him, no Dining rotate and no line of sight to support him\n\n• So we explode mining window with Blitz/Buck/Sens to kill him there, Ying holding his chimney fall back, Rauora controlling the top flank with her gadget\n\n• Once he is down we flip and flood Reading: Sens stays Train to bait the Dining plant, Blitz/Buck push Reading door, Ying flashes cocktail + laundry through the drone hole, Rauora peeks new hatch\n\n• Called only once we ID Kaid - they do not run him on any of their other defences\n\n• Every phase of the take is drawn on its own blueprint, with the operator line-up above the strat"
-        },
-        {
-          "title": "KAFE - KITCHEN - ATK / HORI RUSH",
-          "date": "With OXG · vs M80",
-          "image": "img/works/Att counter 22.png",
-          "text": "• Rush designed against their roam setup on Kitchen\n\n• I noticed that with Tub/Kaid they close Bakery and Freezer and roam heavy top, leaving only the Tub on site in Freezer and absolutely no trap on the reception side\n\n• So we push fast reception into site, into Freezer, and kill the Tub before the roamers can come back\n\n• Then plant and hold the rotations: red side, VIP/Bar side and the hatch drop\n\n• One blueprint with every player's path and entry point, so the rush stays coordinated instead of being a coin flip"
-        },
-        {
-          "title": "KAFE - MINING - DEF / FAKE AGGRO",
-          "date": "With OXG · vs M80",
-          "image": "img/works/Counter d mining.png",
-          "text": "• M80 knew both of our Mining defences: the fall out into Kitchen to deny the plant with Pulse/Valk, and the aggressive one where we fight for top floor control\n\n• So I wanted to make them think we were running the aggressive strat\n\n• We show the fight and hold top floor for a minute or more, then fall back into Kitchen and play to deny the plant\n\n• Valkyrie hides during prep phase and three C4s are lined up for the plant deny\n\n• A counter-strat in the real sense: they prepared against our habits, so the strat is built on what they expect to see"
-        }
-      ]
-    },
-    {
-      "category": "Opponent Analysis",
-      "items": [
-        {
-          "title": "OPPONENT ANALYSIS & GAME PLAN - LAIR",
-          "images": [
-            "img/works/Lair opponent analysis.png",
-            "img/works/Lair game plan.png"
-          ],
-          "text": "• Two slides per map: the opponent analysis first, then the game plan\n\n• ANALYSIS - their attack and defence bans, our own, and the bans we expect them to use against us\n\n• Attack and defence notes broken down per bombsite, built from their recent games - the source matches are referenced so every read stays traceable\n\n• A summary that boils the detail down to two usable lines for the players: how they attack, how they defend\n\n• GAME PLAN / DEFENCE - the defence plan per bombsite, with the player adjustments that go with it\n\n• GAME PLAN / ATTACK - built to help the IGL guide the team and call the right attack depending on the triggers they see in the round\n\n• Each call carries its operator swaps per player, plus the fallback if a key operator gets banned"
-        },
-        {
-          "title": "OPPONENT ANALYSIS - OTHER FORMATS",
-          "images": [
-            "img/works/D opp analysis.png",
-            "img/works/Counter att.png"
-          ],
-          "text": "• Same preparation, delivered in whichever format the team and the staff actually read\n\n• Annotated blueprints: their start, their anchors and the reads we expect, written straight on the map\n\n• Setup boards next to it, so players see the positions instead of reading about them\n\n• Highlighted notes for the moments that decide the round, kept short enough to be remembered in game\n\n• I adapt the format to the structure and to the players - slides, blueprints, boards or written notes - rather than forcing one template on everyone"
-        }
-      ]
-    },
-    {
       "category": "Internal & External Data",
       "items": [
         {
@@ -199,6 +162,43 @@
           "title": "LIVE DATA WORKFLOW",
           "image": "img/works/Script.png",
           "text": "• Automated process\n• Allowing me to collect data live during scrims\n• Data is available as soon as practices end"
+        }
+      ]
+    },
+    {
+      "category": "Team & Players Performance",
+      "items": [
+        {
+          "title": "TEAM GOALS TOOL",
+          "image": "img/works/team goal.png",
+          "text": "• Weekly planning\n• Setting up collective goals\n• Improvements focused on the week ahead"
+        },
+        {
+          "title": "PLAYER IMPROVEMENT TOOL - PART 1",
+          "image": "img/works/Player goal.png",
+          "text": "• Weekly or bi-weekly review, done with the player\n• Setting up individual goals and points of improvement\n• We go through the period together: what worked, what did not, and why\n• The player fills his own part, so the review stays a conversation and not a verdict"
+        },
+        {
+          "title": "PLAYER IMPROVEMENT TOOL - PART 2",
+          "images": [
+            "img/works/Review of the week.png",
+            "img/works/Development score.png"
+          ],
+          "text": "• Review of the week, one sheet per session: date, opponent, map(s)\n• Positives first, then the learning areas - what the player took away from the week: about himself, about the game, about the team\n• Out of those, one MAIN learning area, so he leaves with a single priority instead of a list\n• Main focus for the next session written twice: what the coach sees, and what the player himself wants to work on\n• Best rounds and learning rounds noted, so the review is watched and not just talked about\n• Confidence level filled by the player (low / medium / high) twice per meeting: once at the start, once at the end - the gap between the two tells me what the review actually did for him, and how to handle him in the days after\n• Kept between reviews and checked again at the next one, so progress is tracked over the season instead of restarting every month\n• The sheet closes on a FINAL DEVELOPMENT SCORE: Mechanics, Tactical, Communication, Role Performance and Mental / Discipline, each out of 5\n• Every category is scored twice, by the coach and by the player, so we see straight away where our readings differ - and those gaps are usually the most useful part of the conversation\n• The five add up to an overall score out of 25, which gives the player a simple number to follow week after week"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 1",
+          "image": "img/works/Imagery.png",
+          "text": "• Imagery points filled by players\n• Review with the coach during individual meetings\n• Following up imagery exercises (Internal or external)\n• Planned around the week and before matches, in the dose the player actually needs\n• Imagery helps a lot in anticipating highly stressful situations\n• Makes your decision faster and better on gameday\n• Increases your focus and calm"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 2",
+          "image": "img/works/Gameday feedback.png",
+          "text": "• Feedback filled by players after official games\n• Review with the coach\n• Debrief to help the player improve on his mental/stress management"
+        },
+        {
+          "title": "MENTAL WORK & STRESS MANAGEMENT - PART 3",
+          "text": "• Breathing exercises before practice and matches - a player who knows how to control his breath stays calmer under pressure, and comes down from a high-pressure situation faster\n• Activation exercises before scrims and officials - 5 to 10 minutes of reflex and focus work to switch the brain and the muscles on, so nobody starts flat. It also builds a routine, and the routine itself reduces stress\n• Positive thoughts worked on day to day, in individual and team meetings - players are held accountable for negative thought patterns, because a confident team is part of a healthy system\n• A coach has to catch negative behaviour early and address it right away rather than let it settle\n• Imagery runs alongside those exercises, planned around the week rather than stacked on top of everything else\n• I analyse the team's and each player's needs to plan how much of those exercises they actually need - some have to calm down, others have to switch on - and I adjust the volume through the season depending on the schedule and the pressure of the event"
         }
       ]
     }
